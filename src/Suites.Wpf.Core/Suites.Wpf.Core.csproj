@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net471</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>DaneSpiritGOD</Authors>
+    <Company>NanJing.cn</Company>
+    <Description>Some common packages for .net core,e.g. Microsoft.Extensions.Configuration,Microsoft.Extensions.Logging.Also some useful apis.</Description>
+    <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
+    <PackageTags>.netcore2.0 baselib</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Suites.Core\Suites.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+
+</Project>
