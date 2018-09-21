@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net471</TargetFramework>
     <LangVersion>latest</LangVersion>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Authors>DaneSpiritGOD</Authors>
     <Company>NanJing.cn</Company>
     <Description>Some common packages for .net core,e.g. Microsoft.Extensions.Configuration,Microsoft.Extensions.Logging.Also some useful apis.</Description>

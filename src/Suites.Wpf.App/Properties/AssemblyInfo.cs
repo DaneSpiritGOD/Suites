@@ -8,7 +8,7 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Suites.Wpf.App")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("wpf in netstandard")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("Suites.Wpf.App")]

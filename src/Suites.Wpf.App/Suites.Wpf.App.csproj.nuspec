@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Suites.Wpf.App</id>
+    <version>1.0.0</version>
+    <authors>DaneSpiritGOD</authors>
+    <owners>NanJing.cn</owners>
+    <licenseUrl>https://github.com/DaneSpiritGOD/Suites</licenseUrl>
+    <projectUrl>https://github.com/DaneSpiritGOD/Suites</projectUrl>
+    <iconUrl>https://github.com/DaneSpiritGOD/Suites</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Some common packages for .net core,e.g. Microsoft.Extensions.Configuration,Microsoft.Extensions.Logging.Also some useful apis.</description>
+    <releaseNotes>new.</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>.netcore2.0 baselib</tags>
+    <dependencies>
+      <dependency id="ControlzEx" version="[3.0.2.4,4.0.0)" />
+    </dependencies>
+  </metadata>
+</package>

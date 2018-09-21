@@ -95,20 +95,6 @@
     <None Include="ReadMe.md" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Suites.Core\Suites.Core.csproj">
-      <Project>{59cb9129-56fa-40de-bf1b-d68fa08dea32}</Project>
-      <Name>Suites.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Suites.Prism.Wpf.Fx\Suites.Prism.Wpf.Fx.csproj">
-      <Project>{bea16ec7-426d-4ab5-8890-13b229535924}</Project>
-      <Name>Suites.Prism.Wpf.Fx</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Suites.Wpf.Core\Suites.Wpf.Core.csproj">
-      <Project>{6995f79d-43e7-4ea5-98f9-f7f253d00561}</Project>
-      <Name>Suites.Wpf.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="Controls\ImageView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -141,6 +127,12 @@
     </PackageReference>
     <PackageReference Include="MaterialDesignThemes.MahApps">
       <Version>0.0.12</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Wpf">
+      <Version>7.1.0.172-pre</Version>
+    </PackageReference>
+    <PackageReference Include="Suites.Wpf.Core">
+      <Version>1.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

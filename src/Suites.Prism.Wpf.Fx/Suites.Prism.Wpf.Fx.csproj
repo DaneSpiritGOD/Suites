@@ -5,7 +5,7 @@
     <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Authors>DaneSpiritGOD</Authors>
     <Company>NanJing.cn</Company>
     <Description>Some common packages for .net core,e.g. Microsoft.Extensions.Configuration,Microsoft.Extensions.Logging.Also some useful apis.</Description>

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netcoreapp2.1</TargetFrameworks>
     <LangVersion>latest</LangVersion>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Authors>DaneSpiritGOD</Authors>
     <Company>NanJing.cn</Company>
     <Description>Some common packages for .net core,e.g. Microsoft.Extensions.Configuration,Microsoft.Extensions.Logging.Also some useful apis.</Description>
