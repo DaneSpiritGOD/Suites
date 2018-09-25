@@ -135,5 +135,11 @@
       <Version>1.0.0</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Suites.Core\Suites.Core.csproj">
+      <Project>{D0855038-B243-48A9-9A8B-20FE94CFA4B4}</Project>
+      <Name>Suites.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
