@@ -13,7 +13,6 @@ namespace Microsoft.Extensions.Logging.Control
         public AutoClearControl(IControl control, int maxCount)
         {
             _condition = maxCount >= 1 ? new Condition(maxCount) : default;
-            _maxCount = maxCount;
             _control = NamedNullException.Assert(control, nameof(control));
         }
 

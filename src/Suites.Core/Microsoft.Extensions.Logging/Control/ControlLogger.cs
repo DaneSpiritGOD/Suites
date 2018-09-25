@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Suites.Core.Microsoft.Extensions.Logging.Control
+namespace Microsoft.Extensions.Logging.Control
 {
     public class ControlLogger : ILogger
     {

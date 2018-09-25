@@ -14,7 +14,7 @@ namespace Microsoft.Extensions.Logging.Control
 
         public TimedRefreshControl(IControl control, int timeInMillisecond)
         {
-            var time = Math.Max(1000, timeInMillisecond);
+            var time = Math.Max(20, timeInMillisecond);
             _timer = new Timer(timerCallback, new object(), 5000, time);
             _sb = new StringBuilder();
             _synObj = new object();
