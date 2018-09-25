@@ -51,6 +51,16 @@ namespace Microsoft.Extensions.Logging.Control
             return false;
         }
 
+        private static readonly IReadOnlyDictionary<LogLevel, string> LogLevelInChinese = new Dictionary<LogLevel, string>
+        {
+            [LogLevel.Critical] = "致命",
+            [LogLevel.Debug] = "调试",
+            [LogLevel.Error] = "错误",
+            [LogLevel.Information] = "信息",
+            [LogLevel.None] = "(无)",
+            [LogLevel.Trace] = "跟踪",
+            [LogLevel.Warning] = "警告"
+        };
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
             if (IsEnabled(logLevel))
@@ -62,7 +72,7 @@ namespace Microsoft.Extensions.Logging.Control
                 string text = formatter(state, exception);
                 if (!string.IsNullOrEmpty(text))
                 {
-                    text = $"{logLevel}: {text}";
+                    text = $"{DateTime.Now.ToLongTimeString()} {LogLevelInChinese[logLevel]}: {text}{Environment.NewLine}";
                     if (exception != null)
                     {
                         text = text + Environment.NewLine + Environment.NewLine + exception.ToString();

@@ -21,7 +21,7 @@ namespace Microsoft.Extensions.Logging.Control
         {
             _textBox.Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new Action<string>(msg =>
             {
-                _textBox.AppendText($"{msg}/r/n");
+                _textBox.AppendText(msg);
                 _textBox.ScrollToEnd();
             }), text);
         }
