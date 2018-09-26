@@ -7,7 +7,6 @@ namespace Microsoft.Extensions.Logging.Control
     public class AutoClearControl : IControl
     {
         private readonly Condition _condition;
-        private readonly int _maxCount;
         private readonly IControl _control;
 
         public AutoClearControl(IControl control, int maxCount)
