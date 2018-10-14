@@ -93,6 +93,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="ReadMe.md" />
+    <None Include="Suites.Wpf.App.csproj.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\ImageView.xaml">
@@ -125,15 +126,16 @@
     <PackageReference Include="MaterialDesignThemes">
       <Version>2.5.0-ci1169</Version>
     </PackageReference>
-    <PackageReference Include="MaterialDesignThemes.MahApps">
-      <Version>0.0.12</Version>
-    </PackageReference>
-    <PackageReference Include="Prism.Wpf">
-      <Version>7.1.0.172-pre</Version>
-    </PackageReference>
-    <PackageReference Include="Suites.Wpf.Core">
-      <Version>1.0.0</Version>
-    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Suites.Core\Suites.Core.csproj">
+      <Project>{d0855038-b243-48a9-9a8b-20fe94cfa4b4}</Project>
+      <Name>Suites.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Suites.Prism.Wpf.Fx\Suites.Prism.Wpf.Fx.csproj">
+      <Project>{65de3de8-fba1-423d-a897-83be30694d2e}</Project>
+      <Name>Suites.Prism.Wpf.Fx</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,18 +1,36 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using NLog.Extensions.Logging;
 
 namespace Microsoft.Extensions.Hosting
 {
     public static class HostBuilderExt
     {
-        public static IHostBuilder CreateDefaultHostBuilder() => CreateDefaultHostBuilder(null);
+        private static IServiceProvider _serviceProvider;
+        public static IServiceProvider DefaultServiceProvider
+        {
+            get => _serviceProvider;
+            set
+            {
+                NamedNullException.Assert(value, nameof(value));
+                if (_serviceProvider != default)
+                {
+                    throw new RuntimeException($"您不能设置{nameof(DefaultServiceProvider)}两次。");
+                }
+                _serviceProvider = value;
+            }
+        }
+
+        public static IHostBuilder CreateDefaultHostBuilder()
+        {
+            return CreateDefaultHostBuilder(null);
+        }
 
         public static IHostBuilder CreateDefaultHostBuilder(string[] args)
         {

@@ -12,10 +12,11 @@
     <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
     <PackageTags>.netcore2.0 baselib</PackageTags>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Prism.Wpf" Version="7.1.0.172-pre" />
+    <PackageReference Include="Prism.Wpf" Version="7.1.0.279-pre" />
   </ItemGroup>
 
   <ItemGroup>

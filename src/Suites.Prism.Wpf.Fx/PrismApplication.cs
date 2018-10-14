@@ -47,6 +47,7 @@ namespace Microsoft.Extensions.DependencyInjection.Prism
 
         protected override Window CreateShell()
         {
+            HostBuilderExt.DefaultServiceProvider = BuildedHost.Services;
             return BuildedHost.Services.GetRequiredService<TMainWindow>();
         }
 

@@ -20,7 +20,7 @@ pack_netcore("Suites.WindowsPlatform")
 pack_netcore("Suites.Wpf.Core")
 
 #nuget spec $src_dir"Suites.Wpf.App\Suites.Wpf.App.csproj"
-nuget pack $src_dir"Suites.Wpf.App\Suites.Wpf.App.csproj" -OutputDirectory $nupkg_output_dir -Properties Configuration=Release
+nuget pack $src_dir"Suites.Wpf.App\Suites.Wpf.App.csproj.nuspec" -OutputDirectory $nupkg_output_dir -Properties Configuration=Release
 
 nuget init $nupkg_output_dir $nuget_source
 remove-item $nupkg_output_dir\*.nupkg
