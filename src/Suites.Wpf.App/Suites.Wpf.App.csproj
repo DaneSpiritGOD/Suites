@@ -61,13 +61,13 @@
     <Compile Include="Controls\PasswordBoxHelper.cs" />
     <Compile Include="Converters\String2ColorBrushConverter.cs" />
     <Compile Include="ObservableBoolValue.cs" />
-    <Compile Include="Pie\CompositePieSeriesDataConverter.cs" />
-    <Compile Include="Pie\DefaultPieSeriesDataConverter.cs" />
-    <Compile Include="Pie\IPieSeriesData.cs" />
-    <Compile Include="Pie\IPieSeriesDataConverter.cs" />
-    <Compile Include="Pie\PieChartDataSource.cs" />
-    <Compile Include="Pie\PieSeriesDataConverterBase.cs" />
-    <Compile Include="Pie\Resources.cs" />
+    <Compile Include="Controls\Pie\CompositePieSeriesDataConverter.cs" />
+    <Compile Include="Controls\Pie\DefaultPieSeriesDataConverter.cs" />
+    <Compile Include="Controls\Pie\IPieSeriesData.cs" />
+    <Compile Include="Controls\Pie\IPieSeriesDataConverter.cs" />
+    <Compile Include="Controls\Pie\PieChartDataSource.cs" />
+    <Compile Include="Controls\Pie\PieSeriesDataConverterBase.cs" />
+    <Compile Include="Controls\Pie\Resources.cs" />
     <Compile Include="Interactivity\PopupNewWindowAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
