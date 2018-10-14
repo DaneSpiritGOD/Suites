@@ -49,6 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseConverter.cs" />
+    <Compile Include="Controls\Clock.xaml.cs">
+      <DependentUpon>Clock.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\Bool2VisibilityConverter.cs" />
     <Compile Include="Colors.cs" />
     <Compile Include="Controls\ImageButton.cs" />
@@ -96,6 +99,10 @@
     <None Include="Suites.Wpf.App.csproj.nuspec" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\Clock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\ImageView.xaml">
       <SubType>Designer</SubType>
     </Page>
