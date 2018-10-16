@@ -146,6 +146,9 @@
     <PackageReference Include="MaterialDesignThemes">
       <Version>2.5.0-ci1201</Version>
     </PackageReference>
+    <PackageReference Include="MaterialDesignThemes.MahApps">
+      <Version>0.0.12</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Suites.Core\Suites.Core.csproj">
