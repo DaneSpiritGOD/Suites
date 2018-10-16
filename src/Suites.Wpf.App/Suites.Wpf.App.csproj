@@ -161,10 +161,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Converters\colors\art-color-table.png" />
+    <None Include="Converters\colors\art-color-table.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Converters\colors\MaterialDesignColors.png" />
+    <None Include="Converters\colors\MaterialDesignColors.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
