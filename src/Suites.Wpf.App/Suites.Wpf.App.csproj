@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -52,8 +54,16 @@
     <Compile Include="Controls\Clock.xaml.cs">
       <DependentUpon>Clock.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Pie\SimplePie.xaml.cs">
+      <DependentUpon>SimplePie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Pie\SimpleSeries.cs" />
+    <Compile Include="Controls\Pie\SolutionSummaryView.xaml.cs">
+      <DependentUpon>SolutionSummaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Pie\SolutionSummaryViewModel.cs" />
     <Compile Include="Converters\Bool2VisibilityConverter.cs" />
-    <Compile Include="Colors.cs" />
+    <Compile Include="ColorProvider.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\ImageView.xaml.cs">
       <DependentUpon>ImageView.xaml</DependentUpon>
@@ -61,12 +71,7 @@
     <Compile Include="Controls\PasswordBoxHelper.cs" />
     <Compile Include="Converters\String2ColorBrushConverter.cs" />
     <Compile Include="ObservableBoolValue.cs" />
-    <Compile Include="Controls\Pie\CompositePieSeriesDataConverter.cs" />
-    <Compile Include="Controls\Pie\DefaultPieSeriesDataConverter.cs" />
-    <Compile Include="Controls\Pie\IPieSeriesData.cs" />
-    <Compile Include="Controls\Pie\IPieSeriesDataConverter.cs" />
-    <Compile Include="Controls\Pie\PieChartDataSource.cs" />
-    <Compile Include="Controls\Pie\PieSeriesDataConverterBase.cs" />
+    <Compile Include="Controls\Pie\IPieSeriesConverter.cs" />
     <Compile Include="Controls\Pie\Resources.cs" />
     <Compile Include="Interactivity\PopupNewWindowAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -108,6 +113,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\Pie\SimplePie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Pie\SolutionSummaryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
     </Page>

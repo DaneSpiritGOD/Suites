@@ -10,6 +10,18 @@
         Height="450"
         Width="800">
   <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition />
+      <RowDefinition />
+      <RowDefinition Height="50" />
+    </Grid.RowDefinitions>
     <swa:Clock FontSize="25" />
+    <swa:SimplePie Grid.Row="1"
+                   Source="{Binding Classes}" />
+    <Button Content="点击我试试看!"
+            Command="{Binding AddA}"
+            Grid.Row="2"
+            MaxWidth="100"
+            MaxHeight="50" />
   </Grid>
 </Window>

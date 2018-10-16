@@ -58,4 +58,7 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://suites.com/", "Suites.Wpf.App")]
 [assembly: XmlnsDefinition("http://suites.com/", "Suites.Wpf.App.Controls")]
 [assembly: XmlnsDefinition("http://suites.com/", "Suites.Wpf.App.Converters")]
+[assembly: XmlnsDefinition("http://suites.com/", "Suites.Wpf.App.Converters")]
+[assembly: XmlnsDefinition("http://suites.com/", "Suites.Wpf.App.Controls.Pie")]
+
 [assembly: XmlnsPrefix("http://suites.com/", "swa")]
