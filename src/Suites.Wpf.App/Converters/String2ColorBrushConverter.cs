@@ -24,7 +24,7 @@ namespace Suites.Wpf.App.Converters
                 }
                 else
                 {
-                    return new ColorConverter().ConvertFrom(color);
+                    return new BrushConverter().ConvertFrom(color);
                 }
             }
             catch
