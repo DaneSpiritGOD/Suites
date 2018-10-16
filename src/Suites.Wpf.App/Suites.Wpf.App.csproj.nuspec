@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Suites.Wpf.App</id>
-    <version>1.0.12</version>
+    <version>1.0.13</version>
     <authors>DaneSpiritGOD</authors>
     <owners>NanJing.cn</owners>
     <licenseUrl>https://github.com/DaneSpiritGOD/Suites</licenseUrl>
@@ -21,7 +21,7 @@
       <dependency id="MaterialDesignThemes" version="2.5.0-ci1201" />
       <dependency id="MaterialDesignThemes.MahApps" version="0.0.12" />
       <dependency id="Suites.Prism.Wpf.Fx" version="1.0.3" />
-      <dependency id="Suites.Core" version="1.0.7" />
+      <dependency id="Suites.Core" version="1.0.8" />
     </dependencies>
   </metadata>
   <files>
