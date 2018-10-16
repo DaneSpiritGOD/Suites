@@ -94,5 +94,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Suites.Core\Suites.Core.csproj">
+      <Project>{d0855038-b243-48a9-9a8b-20fe94cfa4b4}</Project>
+      <Name>Suites.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Suites.Wpf.App\Suites.Wpf.App.csproj">
+      <Project>{27791379-9c80-49d3-8591-0cf18b9ef2df}</Project>
+      <Name>Suites.Wpf.App</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Prism.Core">
+      <Version>7.1.0.431</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

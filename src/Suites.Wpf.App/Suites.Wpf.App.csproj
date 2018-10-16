@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -49,8 +51,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseConverter.cs" />
+    <Compile Include="Controls\Clock.xaml.cs">
+      <DependentUpon>Clock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Pie\SimplePie.xaml.cs">
+      <DependentUpon>SimplePie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Pie\SimpleSeries.cs" />
+    <Compile Include="Controls\Pie\SolutionSummaryView.xaml.cs">
+      <DependentUpon>SolutionSummaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Pie\SolutionSummaryViewModel.cs" />
     <Compile Include="Converters\Bool2VisibilityConverter.cs" />
-    <Compile Include="Colors.cs" />
+    <Compile Include="ColorProvider.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\ImageView.xaml.cs">
       <DependentUpon>ImageView.xaml</DependentUpon>
@@ -58,13 +71,8 @@
     <Compile Include="Controls\PasswordBoxHelper.cs" />
     <Compile Include="Converters\String2ColorBrushConverter.cs" />
     <Compile Include="ObservableBoolValue.cs" />
-    <Compile Include="Pie\CompositePieSeriesDataConverter.cs" />
-    <Compile Include="Pie\DefaultPieSeriesDataConverter.cs" />
-    <Compile Include="Pie\IPieSeriesData.cs" />
-    <Compile Include="Pie\IPieSeriesDataConverter.cs" />
-    <Compile Include="Pie\PieChartDataSource.cs" />
-    <Compile Include="Pie\PieSeriesDataConverterBase.cs" />
-    <Compile Include="Pie\Resources.cs" />
+    <Compile Include="Controls\Pie\IPieSeriesConverter.cs" />
+    <Compile Include="Controls\Pie\Resources.cs" />
     <Compile Include="Interactivity\PopupNewWindowAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -96,11 +104,23 @@
     <None Include="Suites.Wpf.App.csproj.nuspec" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\Clock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\ImageView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\Pie\SimplePie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Pie\SolutionSummaryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -124,7 +144,10 @@
       <Version>1.1.3</Version>
     </PackageReference>
     <PackageReference Include="MaterialDesignThemes">
-      <Version>2.5.0-ci1169</Version>
+      <Version>2.5.0-ci1201</Version>
+    </PackageReference>
+    <PackageReference Include="MaterialDesignThemes.MahApps">
+      <Version>0.0.12</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +159,12 @@
       <Project>{65de3de8-fba1-423d-a897-83be30694d2e}</Project>
       <Name>Suites.Prism.Wpf.Fx</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Converters\colors\art-color-table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Converters\colors\MaterialDesignColors.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

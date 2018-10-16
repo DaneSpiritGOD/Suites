@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Suites.Wpf.LiveCharts.Pie
+namespace Suites.Wpf.App.Controls.Pie
 {
     public static class Resources
     {
