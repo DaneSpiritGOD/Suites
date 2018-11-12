@@ -18,7 +18,7 @@ namespace System.Windows.Media.Imaging
             //2017-11-12
             //var mem = new MemoryStream(data.ToArray());
             //尝试直接array的原引用，而不复制array
-            var mem = new MemoryStream(data.GetArray());
+            var mem = new MemoryStream(data.GetZeroIndexedArrayOrCopyedContent());
 
             img.BeginInit();
             img.StreamSource = mem;
