@@ -10,7 +10,7 @@
     <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
     <PackageTags>.netcore2.0 baselib</PackageTags>
-    <Version>1.0.10</Version>
+    <Version>1.0.11</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
@@ -19,11 +19,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.1.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.KeyPerFile" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.1" />
-    <PackageReference Include="NLog.Config" Version="4.5.10" />
+    <PackageReference Include="NLog.Config" Version="4.5.11" />
     <PackageReference Include="NLog.Extensions.Logging" Version="1.3.0" />
     <PackageReference Include="System.Threading.Channels" Version="4.5.0" />
   </ItemGroup>
