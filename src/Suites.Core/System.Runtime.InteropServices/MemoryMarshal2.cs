@@ -12,7 +12,7 @@ namespace System.Runtime.InteropServices
         /// <typeparam name="T"></typeparam>
         /// <param name="memory"></param>
         /// <returns></returns>
-        public static T[] GetZeroIndexedArrayOrCopyedContent<T>(this Memory<T> memory)
+        public static T[] GetZeroIndexedArrayOrCopyedContent<T>(this ReadOnlyMemory<T> memory)
         {
             return (MemoryMarshal.TryGetArray(memory, out ArraySegment<T> segment) && segment.Offset == 0 && segment.Array.Length == memory.Length) ? segment.Array : memory.ToArray();
         }
