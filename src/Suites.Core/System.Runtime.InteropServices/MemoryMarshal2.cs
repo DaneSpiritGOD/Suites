@@ -16,5 +16,10 @@ namespace System.Runtime.InteropServices
         {
             return (MemoryMarshal.TryGetArray(memory, out ArraySegment<T> segment) && segment.Offset == 0 && segment.Array.Length == memory.Length) ? segment.Array : memory.ToArray();
         }
+
+        public static T[] GetZeroIndexedArrayOrCopyedContent<T>(this Memory<T> memory)
+        {
+            return ((ReadOnlyMemory<T>)memory).GetZeroIndexedArrayOrCopyedContent();
+        }
     }
 }
