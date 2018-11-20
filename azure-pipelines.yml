@@ -22,7 +22,7 @@ jobs:
       buildPlatform: 'Any CPU'
       buildConfiguration: 'Release'
       packConfiguration: 'Release'
-      srcRoot: '../src/'
+      srcRoot: './src/'
 
     steps:
     - task: DotNetCoreInstaller@0
