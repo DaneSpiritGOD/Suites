@@ -3,28 +3,50 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
 
-pool:
-  vmImage: 'VS2017-Win2016'
+name: DaneSpiritGOD.Suites  # build numbering format
+#resources:
+  #containers: [ container ]
+  #repositories: [ repository ]
+#variables: { string: string } | [ variable ]
+trigger: 
+- master
+pr: 
+- master
+jobs:
+  - job: packNugets
+    pool:
+      vmImage: 'VS2017-Win2016'
 
-variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+    variables:
+      #solution: '**/*.sln'
+      buildPlatform: 'Any CPU'
+      buildConfiguration: 'Release'
+      packConfiguration: 'Release'
+      srcRoot: '../src/'
 
-steps:
-- task: NuGetToolInstaller@0
+    steps:
+    - task: DotNetCoreInstaller@0
+      inputs:
+        packageType: 'sdk' # Options: runtime, sdk
+        version: '2.1.500'
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
+    - script: dotnet pack -c $(packConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)Suites.Core/Suites.Core.csproj
 
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    - script: dotnet nuget push $(Build.ArtifactStagingDirectory)/Suites.Core.nupkg -k $(neget.key)
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    #- task: NuGetToolInstaller@0
+
+    #- task: NuGetCommand@2
+      #inputs:
+        #restoreSolution: '$(solution)'
+
+    #- task: VSBuild@1
+      #inputs:
+        #solution: '$(solution)'
+        #platform: '$(buildPlatform)'
+        #configuration: '$(buildConfiguration)'
+
+    #- task: VSTest@2
+      #inputs:
+        #platform: '$(buildPlatform)'
+        #configuration: '$(buildConfiguration)'
