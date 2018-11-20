@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace Suites.Wpf.App.Converters
 {
@@ -14,7 +15,22 @@ namespace Suites.Wpf.App.Converters
         public object Convert(object value, Type targetType, object parameter,
                       CultureInfo culture)
         {
-            return ColorProvider.ColorBrushes[value as string];
+            var color = value as string;
+            try
+            {
+                if (ColorProvider.ColorBrushes.ContainsKey(color))
+                {
+                    return ColorProvider.ColorBrushes[color];
+                }
+                else
+                {
+                    return new BrushConverter().ConvertFrom(color);
+                }
+            }
+            catch
+            {
+                return Brushes.Black;
+            }
         }
 
         public object ConvertBack(

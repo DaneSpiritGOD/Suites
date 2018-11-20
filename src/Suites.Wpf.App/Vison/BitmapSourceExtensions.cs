@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +14,12 @@ namespace System.Windows.Media.Imaging
         {
             NotTrueException.Assert(!data.IsEmpty, nameof(data));
             var img = new BitmapImage();
-            var mem = new MemoryStream(data.ToArray());
+
+            //2017-11-12
+            //var mem = new MemoryStream(data.ToArray());
+            //尝试直接array的原引用，而不复制array
+            var mem = new MemoryStream(data.GetZeroIndexedArrayOrCopyedContent());
+
             img.BeginInit();
             img.StreamSource = mem;
             img.CacheOption = BitmapCacheOption.OnLoad;
@@ -28,7 +34,10 @@ namespace System.Windows.Media.Imaging
 
             NamedNullException.Assert(source, nameof(source));
             NamedNullException.Assert(defectRects, nameof(defectRects));
-            if (defectRects.Length == 0) return source;
+            if (defectRects.Length == 0)
+            {
+                return source;
+            }
 
             var dv = new DrawingVisual();
             var dc = dv.RenderOpen();
@@ -61,11 +70,19 @@ namespace System.Windows.Media.Imaging
         public static PixelValue CopyPixel(this BitmapSource bs, int x, int y)
         {
             if (bs == null)
+            {
                 throw new ArgumentNullException(nameof(bs) + " is null.");
+            }
+
             if (x >= bs.PixelWidth || x < 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(x));
+            }
+
             if (y >= bs.PixelHeight || y < 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(y));
+            }
 
             var chn = bs.GetChannelCount();
             var value = new byte[chn];
@@ -77,8 +94,10 @@ namespace System.Windows.Media.Imaging
                 (bs.Format.BitsPerPixel * bs.PixelWidth + 7) / 8,
                 0);
 
-            var pixelValue = new PixelValue();
-            pixelValue.Alpha = PixelValue.AlphaDefault;
+            var pixelValue = new PixelValue
+            {
+                Alpha = PixelValue.AlphaDefault
+            };
             switch (chn)
             {
                 case 1:
@@ -109,7 +128,10 @@ namespace System.Windows.Media.Imaging
             return bytes;
         }
 
-        public static Rect FullRect(this BitmapSource source) => new Rect(new Point(0, 0), new Point(source.PixelWidth - 1, source.PixelHeight - 1));
+        public static Rect FullRect(this BitmapSource source)
+        {
+            return new Rect(new Point(0, 0), new Point(source.PixelWidth - 1, source.PixelHeight - 1));
+        }
 
         public static PixelFormat CalcPixelFormat(this int channelCount)
         {

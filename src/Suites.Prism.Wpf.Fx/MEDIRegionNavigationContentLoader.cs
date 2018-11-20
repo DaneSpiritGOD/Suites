@@ -26,7 +26,6 @@ namespace Microsoft.Extensions.DependencyInjection.Prism
             var contractCandidates = base.GetCandidatesFromRegion(region, candidateNavigationContract);
             if (!contractCandidates.Any())
             {
-#warning 以下代码没有经过严谨的推敲！
                 var matchingRegistration = _serviceCollection
                     .Where(r => candidateNavigationContract.Equals(r.ServiceType.Name, StringComparison.Ordinal))
                     .FirstOrDefault();
