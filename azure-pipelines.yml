@@ -53,7 +53,7 @@ jobs:
         feedsToUse: 'select'
         includeNuGetOrg: true
     - task: MSBuild@1
-      project: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
+      solution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
       configuration: $(buildConfiguration)
       platform: '$(buildPlatform)'
     - task: NuGetCommand@2
