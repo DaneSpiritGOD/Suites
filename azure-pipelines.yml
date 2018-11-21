@@ -23,6 +23,14 @@ jobs:
       buildConfiguration: 'Release'
       packConfiguration: 'Release'
       srcRoot: './src/'
+      nugetSource: 'https://api.nuget.org/v3/index.json'
+      corePrj: 'Suites.Core'
+      autoMapperPrj: 'Suites.AutoMapper'
+      mediatRPrj: 'Suites.MediatR'
+      prismPrj: 'Suites.Prism.Wpf.Fx'
+      winPrj: 'Suites.WindowsPlatform'
+      wpfAppPrj: 'Suites.Wpf.App'
+      wpfCorePrj: 'Suites.Wpf.Core'
 
     steps:
     - task: DotNetCoreInstaller@0
@@ -30,9 +38,9 @@ jobs:
         packageType: 'sdk' # Options: runtime, sdk
         version: '2.1.500'
 
-    - script: dotnet pack -c $(packConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)Suites.Core/Suites.Core.csproj
+    - script: dotnet pack -c $(packConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(corePrj)/$(corePrj).csproj
 
-    - script: dotnet nuget push $(Build.ArtifactStagingDirectory)/Suites.Core.nupkg -k $(nuget.key)
+    - script: dotnet nuget push $(Build.ArtifactStagingDirectory)/$(corePrj).nupkg -k $(nuget.key) -s $(nugetSource)
 
     #- task: NuGetToolInstaller@0
 
