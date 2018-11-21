@@ -21,9 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9F88C795-5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suites.Wpf.App.Test", "test\Suites.Wpf.App.Test\Suites.Wpf.App.Test.csproj", "{CF03DFDC-EB7D-48F7-B537-F62ADC8A6F72}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "azure.pipeline", "azure.pipeline", "{761E223F-760C-43F6-AB5A-C8CC72E8B87C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{8CF8FAF8-58B7-4D5D-B747-F80E8983ECBC}"
 	ProjectSection(SolutionItems) = preProject
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Global
