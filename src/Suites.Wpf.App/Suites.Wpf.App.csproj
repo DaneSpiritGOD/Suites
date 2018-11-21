@@ -58,10 +58,6 @@
       <DependentUpon>SimplePie.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Pie\SimpleSeries.cs" />
-    <Compile Include="Controls\Pie\SolutionSummaryView.xaml.cs">
-      <DependentUpon>SolutionSummaryView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Pie\SolutionSummaryViewModel.cs" />
     <Compile Include="Converters\Bool2VisibilityConverter.cs" />
     <Compile Include="ColorProvider.cs" />
     <Compile Include="Controls\ImageButton.cs" />
@@ -116,10 +112,6 @@
     <Page Include="Controls\Pie\SimplePie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Pie\SolutionSummaryView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
