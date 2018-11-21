@@ -14,6 +14,7 @@ pr:
 - master
 jobs:
   - job: packNugets
+    displayName: '打包nuget并上传到服务器'
     pool:
       vmImage: 'VS2017-Win2016'
 
@@ -21,7 +22,6 @@ jobs:
       #solution: '**/*.sln'
       buildPlatform: 'Any CPU'
       buildConfiguration: 'Release'
-      packConfiguration: 'Release'
       srcRoot: './src/'
       nugetSource: 'https://api.nuget.org/v3/index.json'
       corePrj: 'Suites.Core'
@@ -38,9 +38,32 @@ jobs:
         packageType: 'sdk' # Options: runtime, sdk
         version: '2.1.500'
 
-    - script: dotnet pack -c $(packConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(corePrj)/$(corePrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(corePrj)/$(corePrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(autoMapperPrj)/$(autoMapperPrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(mediatRPrj)/$(mediatRPrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(prismPrj)/$(prismPrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(winPrj)/$(winPrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wpfCorePrj)/$(wpfCorePrj).csproj
 
-    - script: dotnet nuget push $(Build.ArtifactStagingDirectory)/$(corePrj).nupkg -k $(nuget.key) -s $(nugetSource)
+    - task: NuGetToolInstaller@0
+    - task: NuGetCommand@2
+      inputs:
+        command: 'restore'
+        restoreSolution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
+        feedsToUse: 'select'
+        includeNuGetOrg: true
+    - task: MSBuild@1
+      project: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
+      configuration: $(buildConfiguration)
+      platform: '$(buildPlatform)'
+    - task: NuGetCommand@2
+      inputs:
+        command: pack
+        packagesToPack: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj.nuspec
+        configuration: $(buildConfiguration)
+        packDestination: $(Build.ArtifactStagingDirectory)
+
+    - script: dotnet nuget push $(Build.ArtifactStagingDirectory)/*.nupkg -k $(nuget.key) -s $(nugetSource)
 
     #- task: NuGetToolInstaller@0
 
