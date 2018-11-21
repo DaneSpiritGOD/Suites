@@ -14,7 +14,7 @@ pr:
 - master
 jobs:
   - job: packNugets
-    displayName: '打包nuget并上传到服务器'
+    displayName: 'nuget pack and push'
     pool:
       vmImage: 'VS2017-Win2016'
 
@@ -54,8 +54,9 @@ jobs:
         includeNuGetOrg: true
     - task: VSBuild@1
       inputs: 
-        solution: $(solution)
-        msbuildArgs: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
+        solution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
+        #solution: $(solution)
+        #msbuildArgs: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
         configuration: $(buildConfiguration)
         platform: '$(buildPlatform)'
     - task: NuGetCommand@2
