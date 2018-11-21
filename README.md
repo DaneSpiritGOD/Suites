@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/DaneSpiritGOD/Suites/_apis/build/status/DaneSpiritGOD.Suites)](https://dev.azure.com/DaneSpiritGOD/Suites/_build/latest?definitionId=1)
+
 # 介绍
 Suites是本人在进行客户端开发时，对项目进行.net core/standard改造的过程中积累的一些类库。
 
