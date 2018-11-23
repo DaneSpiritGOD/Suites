@@ -54,9 +54,10 @@ jobs:
         includeNuGetOrg: true
     - task: VSBuild@1
       inputs: 
-        solution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
-        #solution: $(solution)
-        msbuildArgs: '-r -p:OutDir=bin\Release'
+        #solution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
+        solution: $(solution)
+        #msbuildArgs: '-r -p:OutDir=bin\Release'
+        msbuildArgs: '-r -t:$(wpfCorePrj):Rebuild'
         configuration: $(buildConfiguration)
         platform: '$(buildPlatform)'
     - task: NuGetCommand@2
