@@ -52,12 +52,18 @@ jobs:
         restoreSolution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
         feedsToUse: 'select'
         includeNuGetOrg: true
-    - task: VSBuild@1
+    #- task: VSBuild@1
+      #inputs: 
+        ##solution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
+        #solution: $(solution)
+        ##msbuildArgs: '-r -p:OutDir=bin\Release'
+        #msbuildArgs: '-r -t:$(wpfCorePrj):Rebuild'
+        #configuration: $(buildConfiguration)
+        #platform: '$(buildPlatform)'
+    - task: MSBuild@1
       inputs: 
-        #solution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
-        solution: $(solution)
-        #msbuildArgs: '-r -p:OutDir=bin\Release'
-        msbuildArgs: '-r -t:$(wpfCorePrj):Rebuild'
+        solution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
+        msbuildArguments: '-r -p:OutDir=bin\Release'
         configuration: $(buildConfiguration)
         platform: '$(buildPlatform)'
     - task: NuGetCommand@2
