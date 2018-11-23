@@ -56,7 +56,7 @@ jobs:
       inputs: 
         solution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
         #solution: $(solution)
-        #msbuildArgs: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
+        msbuildArgs: '-r -p:OutDir=bin\Release'
         configuration: $(buildConfiguration)
         platform: '$(buildPlatform)'
     - task: NuGetCommand@2
