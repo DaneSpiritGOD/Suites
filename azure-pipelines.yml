@@ -71,7 +71,7 @@ jobs:
         configuration: $(buildConfiguration)
         packDestination: $(Build.ArtifactStagingDirectory)
 
-    - script: dotnet nuget push $(Build.ArtifactStagingDirectory)\*.nupkg -k $(nuget.key) -s $(nugetSource)
+    - script: dotnet nuget push $(Build.ArtifactStagingDirectory)\*.nupkg -k $(nuget.key) -s $(nugetSource) -n
 
     #- task: NuGetToolInstaller@0
 
