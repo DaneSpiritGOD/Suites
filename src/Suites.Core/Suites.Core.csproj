@@ -27,4 +27,8 @@
     <PackageReference Include="System.Threading.Channels" Version="4.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="System.Buffers\" />
+  </ItemGroup>
+
 </Project>
