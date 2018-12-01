@@ -12,7 +12,7 @@
     <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
     <PackageTags>.netcore2.0 baselib</PackageTags>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,6 +27,9 @@
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="System.Xaml">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xaml.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.1\WindowsBase.dll</HintPath>
     </Reference>
