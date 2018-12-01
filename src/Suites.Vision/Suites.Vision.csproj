@@ -3,14 +3,16 @@
   <PropertyGroup>
     <TargetFramework>net471</TargetFramework>
     <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Authors>DaneSpiritGOD</Authors>
     <Company>NanJing.cn</Company>
-    <Description>Some common packages for .net core,e.g. Microsoft.Extensions.Configuration,Microsoft.Extensions.Logging.Also some useful apis.</Description>
+    <Description>Computer Vision Helper Class</Description>
     <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
     <PackageTags>.netcore2.0 baselib</PackageTags>
-    <Version>1.0.5</Version>
+    <Version>0.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,7 +22,6 @@
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
 

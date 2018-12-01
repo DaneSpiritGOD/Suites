@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Suites.Wpf.App
+namespace Suites.Wpf.Core
 {
     public static class WindowAttacher
     {

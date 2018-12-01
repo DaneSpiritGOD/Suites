@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Suites.Wpf.App.Interactivity
+namespace Suites.Prism.Wpf.Fx.Interactivity
 {
     public class PopupNewWindowAction : PopupWindowAction
     {
