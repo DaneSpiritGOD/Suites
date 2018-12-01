@@ -10,10 +10,12 @@ namespace Suites.Wpf.Core
 {
     public static class WpfUtils
     {
-        public static void CriticalPopup(this Exception ex, ILogger logger)
+        public static void CriticalPopup(this Exception ex, ILogger logger = default)
         {
-            logger.LogCritical(ex,"严重错误。");
-            MessageBox.Show(ex.ToString(), "", MessageBoxButton.OK, MessageBoxImage.Error);
+            const string CRITICAL = "严重错误";
+
+            logger?.LogCritical(ex, CRITICAL);
+            MessageBox.Show(ex.ToString(), CRITICAL, MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

@@ -44,52 +44,29 @@ jobs:
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(corePrj)/$(corePrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(autoMapperPrj)/$(autoMapperPrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(mediatRPrj)/$(mediatRPrj).csproj
-    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(prismPrj)/$(prismPrj).csproj
+    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(prismPrj)/$(prismPrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(winPrj)/$(winPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wpfCorePrj)/$(wpfCorePrj).csproj
-    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(visionPrj)/$(visionPrj).csproj
-    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(avalonEditPrj)/$(avalonEditPrj).csproj
-
-    - task: NuGetToolInstaller@0
-    - task: NuGetCommand@2
-      inputs:
-        command: 'restore'
-        restoreSolution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
-        feedsToUse: 'select'
-        includeNuGetOrg: true
-    - task: VSBuild@1
-      inputs: 
-        solution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
-        configuration: $(buildConfiguration)
-        platform: '$(csprojBuildPlatform)'
-    #- task: MSBuild@1
-      #inputs: 
-        #solution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
-        #msbuildArguments: '-r -p:OutDir=bin\Release'
-        #configuration: $(buildConfiguration)
-        #platform: '$(csprojBuildPlatform)'
-    - task: NuGetCommand@2
-      inputs:
-        command: pack
-        packagesToPack: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj.nuspec
-        configuration: $(buildConfiguration)
-        packDestination: $(Build.ArtifactStagingDirectory)
-
-    - script: dotnet nuget push $(Build.ArtifactStagingDirectory)\*.nupkg -k $(nuget.key) -s $(nugetSource) # -n
+    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(visionPrj)/$(visionPrj).csproj
+    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(avalonEditPrj)/$(avalonEditPrj).csproj
 
     #- task: NuGetToolInstaller@0
-
     #- task: NuGetCommand@2
       #inputs:
-        #restoreSolution: '$(solution)'
-
+        #command: 'restore'
+        #restoreSolution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
+        #feedsToUse: 'select'
+        #includeNuGetOrg: true
     #- task: VSBuild@1
+      #inputs: 
+        #solution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
+        #configuration: $(buildConfiguration)
+        #platform: '$(csprojBuildPlatform)'
+    #- task: NuGetCommand@2
       #inputs:
-        #solution: '$(solution)'
-        #platform: '$(buildPlatform)'
-        #configuration: '$(buildConfiguration)'
+        #command: pack
+        #packagesToPack: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj.nuspec
+        #configuration: $(buildConfiguration)
+        #packDestination: $(Build.ArtifactStagingDirectory)
 
-    #- task: VSTest@2
-      #inputs:
-        #platform: '$(buildPlatform)'
-        #configuration: '$(buildConfiguration)'
+    - script: dotnet nuget push $(Build.ArtifactStagingDirectory)\*.nupkg -k $(nuget.key) -s $(nugetSource) # -n
