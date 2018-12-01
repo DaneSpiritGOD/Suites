@@ -60,6 +60,6 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://suites.com/", "Suites.Wpf.App.Converters")]
 [assembly: XmlnsDefinition("http://suites.com/", "Suites.Wpf.App.Converters")]
 [assembly: XmlnsDefinition("http://suites.com/", "Suites.Wpf.App.Controls.Pie")]
-[assembly: XmlnsDefinition("http://suites.com/", "Suites.Wpf.App.Interactivity")]
+//[assembly: XmlnsDefinition("http://suites.com/", "Suites.Wpf.App.Interactivity")]
 
 [assembly: XmlnsPrefix("http://suites.com/", "swa")]

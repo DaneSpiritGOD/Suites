@@ -50,7 +50,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseConverter.cs" />
     <Compile Include="Controls\Clock.xaml.cs">
       <DependentUpon>Clock.xaml</DependentUpon>
     </Compile>
@@ -58,7 +57,6 @@
       <DependentUpon>SimplePie.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Pie\SimpleSeries.cs" />
-    <Compile Include="Converters\Bool2VisibilityConverter.cs" />
     <Compile Include="ColorProvider.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\ImageView.xaml.cs">
@@ -66,10 +64,8 @@
     </Compile>
     <Compile Include="Controls\PasswordBoxHelper.cs" />
     <Compile Include="Converters\String2ColorBrushConverter.cs" />
-    <Compile Include="ObservableBoolValue.cs" />
     <Compile Include="Controls\Pie\IPieSeriesConverter.cs" />
     <Compile Include="Controls\Pie\Resources.cs" />
-    <Compile Include="Interactivity\PopupNewWindowAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -83,11 +79,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Vison\BitmapSourceExtensions.cs" />
-    <Compile Include="Vison\Defect.cs" />
-    <Compile Include="Vison\ImageMetaData.cs" />
-    <Compile Include="Vison\PixelValue.cs" />
-    <Compile Include="WindowAttacher.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -147,9 +138,13 @@
       <Project>{d0855038-b243-48a9-9a8b-20fe94cfa4b4}</Project>
       <Name>Suites.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Suites.Prism.Wpf.Fx\Suites.Prism.Wpf.Fx.csproj">
-      <Project>{65de3de8-fba1-423d-a897-83be30694d2e}</Project>
-      <Name>Suites.Prism.Wpf.Fx</Name>
+    <ProjectReference Include="..\Suites.Vision\Suites.Vision.csproj">
+      <Project>{f12f9d90-7403-46a6-a5a5-f467c0592c81}</Project>
+      <Name>Suites.Vision</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Suites.Wpf.Core\Suites.Wpf.Core.csproj">
+      <Project>{9446e6ba-0392-4930-86cc-7ad5aa0f8a05}</Project>
+      <Name>Suites.Wpf.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +152,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Converters\colors\MaterialDesignColors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interactivity\" />
+    <Folder Include="Vison\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

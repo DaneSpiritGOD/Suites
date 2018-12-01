@@ -1,4 +1,5 @@
-﻿using Suites.Wpf.MaterialDesign;
+﻿using Suites.Wpf.Core.Converters;
+using Suites.Wpf.MaterialDesign;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
