@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Suites.Mvvm;
 
 namespace Suites.Wpf.App.Controls.Pie
 {

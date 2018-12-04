@@ -1,5 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
+using Suites.Mvvm;
 using Suites.Wpf.App.Controls.Pie;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using BindableBase = Suites.Mvvm.BindableBase;
 
 namespace Suites.Wpf.App.Test
 {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Suites.Wpf.Core
+namespace Suites.Mvvm
 {
     public class ObservableBoolValue : INotifyPropertyChanged
     {
