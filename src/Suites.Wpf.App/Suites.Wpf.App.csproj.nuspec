@@ -21,7 +21,7 @@
       <dependency id="MaterialDesignThemes" version="2.5.0.1205" />
       <dependency id="MaterialDesignThemes.MahApps" version="0.0.12" />
       <dependency id="Suites.Wpf.Core" version="1.0.7"/>
-      <dependency id="Suites.Vision" version="0.0.1"/>
+      <dependency id="Suites.Vision" version="0.0.2"/>
       <dependency id="Suites.Core" version="1.0.14" />
     </dependencies>
   </metadata>
