@@ -26,6 +26,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\Suites.Wpf.App.dll" target="lib\net471"/>
+    <file src="bin\Release\Suites.Wpf.App.dll" target="lib\net461"/>
   </files>
 </package>
