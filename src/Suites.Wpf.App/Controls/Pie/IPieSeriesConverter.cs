@@ -1,11 +1,12 @@
-﻿using LiveCharts.Wpf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LiveCharts.Wpf;
+using Suites.Mvvm;
 
 namespace Suites.Wpf.App.Controls.Pie
 {
@@ -29,19 +30,10 @@ namespace Suites.Wpf.App.Controls.Pie
         public abstract string ExtractTitle(T data);
         public abstract ObservableDoubleValue ExtractValue(T data);
 
-        public virtual string ExtractColor(object data)
-        {
-            return ExtractColor((T)data);
-        }
+        public virtual string ExtractColor(object data) => ExtractColor((T)data);
 
-        public virtual string ExtractTitle(object data)
-        {
-            return ExtractTitle((T)data);
-        }
+        public virtual string ExtractTitle(object data) => ExtractTitle((T)data);
 
-        public virtual ObservableDoubleValue ExtractValue(object data)
-        {
-            return ExtractValue((T)data);
-        }
+        public virtual ObservableDoubleValue ExtractValue(object data) => ExtractValue((T)data);
     }
 }

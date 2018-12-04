@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace System.Collections.ObjectModel
+namespace Suites.Mvvm
 {
     public class ObservableDoubleValue : INotifyPropertyChanged
     {

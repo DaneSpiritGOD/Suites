@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <Folder Include="System.Buffers\" />
+    <Folder Include="System.Collections.ObjectModel\" />
   </ItemGroup>
 
 </Project>

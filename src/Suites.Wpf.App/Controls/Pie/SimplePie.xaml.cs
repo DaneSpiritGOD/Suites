@@ -1,9 +1,4 @@
-﻿using LiveCharts;
-using LiveCharts.Configurations;
-using LiveCharts.Defaults;
-using LiveCharts.Wpf;
-using Suites.Wpf.App.Converters;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,6 +16,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Configurations;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
+using Suites.Mvvm;
+using Suites.Wpf.App.Converters;
 
 namespace Suites.Wpf.App.Controls.Pie
 {
@@ -54,10 +55,7 @@ namespace Suites.Wpf.App.Controls.Pie
             pie.onSourceChanged(e.OldValue, e.NewValue);
         }
 
-        protected virtual void onSourceChanged(object oldItems, object newItems)
-        {
-            initial(oldItems, newItems);
-        }
+        protected virtual void onSourceChanged(object oldItems, object newItems) => initial(oldItems, newItems);
 
         private void initial(object oldItems, object newItems)
         {
