@@ -44,10 +44,9 @@ namespace System
     {
         public NamedNullException(string variableName) : base($"{variableName} is null.") { }
 
-        public static T Assert<T>(T arg, string exceptionShowName, [CallerMemberName]string methodName = null) where T : class
-        {
-            return arg ?? throw new NamedNullException($"variable: {exceptionShowName} in method: {methodName}");
-        }
+        public static T Assert<T>(T arg, string exceptionShowName, [CallerMemberName]string methodName = null)
+            where T : class
+            => arg ?? throw new NamedNullException($"variable: {exceptionShowName} in method: {methodName}");
     }
 
     public class NumberOutOfRangeException<T> : RuntimeException where T : struct, IComparable

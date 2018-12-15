@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Suites.Wpf.Controls.ImageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="500"
+             x:Name="container"
+             xmlns:local="clr-namespace:Suites.Wpf.Controls">
+  <DockPanel Margin="0">
+    <StatusBar Visibility="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type local:ImageView}},Path=ShowStatusBar}"
+               DockPanel.Dock="Bottom">
+      <StatusBarItem Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type local:ImageView}},Path=SizeContent}" />
+      <Separator />
+      <StatusBarItem Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type local:ImageView}},Path=LocationContent}" />
+      <Separator />
+      <StatusBarItem Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type local:ImageView}},Path=ColorContent}" />
+    </StatusBar>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Disabled"
+                  Background="#808080"
+                  Focusable="False"
+                  x:Name="scrollViewer"
+                  PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+      <!--Loaded="scrollViewer_Loaded"-->
+      <!--Source="{Binding ElementName=container,Path=Source}"-->
+      <Image x:Name="image"
+             Source="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type local:ImageView}},Path=Source}"
+             Stretch="Uniform"
+             Cursor="SizeAll"
+             RenderOptions.BitmapScalingMode="NearestNeighbor"
+             MouseLeftButtonDown="Image_MouseLeftButtonDown"
+             MouseLeftButtonUp="Image_MouseLeftButtonUp"
+             MouseMove="Image_MouseMove">
+        <Image.RenderTransform>
+          <TransformGroup>
+            <ScaleTransform x:Name="scaleTransform" />
+            <TranslateTransform x:Name="translateTransform" />
+          </TransformGroup>
+        </Image.RenderTransform>
+      </Image>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>
