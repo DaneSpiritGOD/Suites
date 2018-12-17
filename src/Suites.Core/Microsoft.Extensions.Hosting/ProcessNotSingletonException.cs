@@ -6,7 +6,7 @@ namespace Microsoft.Extensions.Hosting
 {
     public class ProcessNotSingletonException : RuntimeException
     {
-        public ProcessNotSingletonException() : base("second app instance created!") { }
+        public ProcessNotSingletonException() : base("不允许存在相同的应用程序实例!") { }
 
         public ProcessNotSingletonException(string msg) : base(msg)
         {
