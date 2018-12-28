@@ -1,4 +1,4 @@
-﻿using Suites.Wpf.Core.Converters;
+﻿using Suites.Wpf.Converters;
 using Suites.Wpf.MaterialDesign;
 using System;
 using System.Collections.Generic;

@@ -28,9 +28,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{8CF8FA
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suites.Vision", "Suites.Vision\Suites.Vision.csproj", "{F12F9D90-7403-46A6-A5A5-F467C0592C81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suites.Vision", "Suites.Vision\Suites.Vision.csproj", "{F12F9D90-7403-46A6-A5A5-F467C0592C81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suites.Wpf.AvalonEdit", "Suites.Wpf.AvalonEdit\Suites.Wpf.AvalonEdit.csproj", "{18059C30-5E0A-4A60-97D3-75BEC6F783B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suites.Wpf.AvalonEdit", "Suites.Wpf.AvalonEdit\Suites.Wpf.AvalonEdit.csproj", "{18059C30-5E0A-4A60-97D3-75BEC6F783B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suites.Wpf.Controls", "Suites.Wpf.Controls\Suites.Wpf.Controls.csproj", "{D705EAB0-8EBE-402F-9D9D-A01F09A24633}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,6 +80,10 @@ Global
 		{18059C30-5E0A-4A60-97D3-75BEC6F783B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18059C30-5E0A-4A60-97D3-75BEC6F783B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18059C30-5E0A-4A60-97D3-75BEC6F783B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D705EAB0-8EBE-402F-9D9D-A01F09A24633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D705EAB0-8EBE-402F-9D9D-A01F09A24633}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D705EAB0-8EBE-402F-9D9D-A01F09A24633}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D705EAB0-8EBE-402F-9D9D-A01F09A24633}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

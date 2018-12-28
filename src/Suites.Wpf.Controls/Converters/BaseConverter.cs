@@ -5,13 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 
-namespace Suites.Wpf.Core.Converters
+namespace Suites.Wpf.Converters
 {
     public abstract class BaseConverter : MarkupExtension
     {
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return this;
-        }
+        public override object ProvideValue(IServiceProvider serviceProvider) => this;
     }
 }

@@ -51,19 +51,11 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Clock.xaml.cs">
-      <DependentUpon>Clock.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\Pie\SimplePie.xaml.cs">
       <DependentUpon>SimplePie.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Pie\SimpleSeries.cs" />
     <Compile Include="ColorProvider.cs" />
-    <Compile Include="Controls\ImageButton.cs" />
-    <Compile Include="Controls\ImageView.xaml.cs">
-      <DependentUpon>ImageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\PasswordBoxHelper.cs" />
     <Compile Include="Converters\String2ColorBrushConverter.cs" />
     <Compile Include="Controls\Pie\IPieSeriesConverter.cs" />
     <Compile Include="Controls\Pie\Resources.cs" />
@@ -90,15 +82,6 @@
     </None>
     <None Include="ReadMe.md" />
     <None Include="Suites.Wpf.App.csproj.nuspec" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Controls\Clock.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ImageView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\Pie\SimplePie.xaml">
@@ -142,6 +125,10 @@
     <ProjectReference Include="..\Suites.Vision\Suites.Vision.csproj">
       <Project>{f12f9d90-7403-46a6-a5a5-f467c0592c81}</Project>
       <Name>Suites.Vision</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Suites.Wpf.Controls\Suites.Wpf.Controls.csproj">
+      <Project>{d705eab0-8ebe-402f-9d9d-a01f09a24633}</Project>
+      <Name>Suites.Wpf.Controls</Name>
     </ProjectReference>
     <ProjectReference Include="..\Suites.Wpf.Core\Suites.Wpf.Core.csproj">
       <Project>{9446e6ba-0392-4930-86cc-7ad5aa0f8a05}</Project>

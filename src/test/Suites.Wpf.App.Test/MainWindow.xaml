@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Suites.Wpf.App.Test"
         xmlns:swa="http://suites.com/"
+        xmlns:swc="http://suites.com/wpf/controls"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="450"
@@ -15,7 +16,7 @@
       <RowDefinition />
       <RowDefinition Height="50" />
     </Grid.RowDefinitions>
-    <swa:Clock FontSize="25" />
+    <swc:Clock FontSize="25" />
     <swa:SimplePie Grid.Row="1"
                    Source="{Binding Classes}" />
     <Button Content="点击我试试看!"

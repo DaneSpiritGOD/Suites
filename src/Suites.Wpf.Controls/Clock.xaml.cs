@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace Suites.Wpf.App.Controls
+namespace Suites.Wpf.Controls
 {
     /// <summary>
     /// Interaction logic for Clock.xaml
