@@ -21,7 +21,7 @@ namespace Suites.Wpf.Controls
     /// </summary>
     public partial class Clock : UserControl
     {
-        private readonly DispatcherTimer _timer = new DispatcherTimer(DispatcherPriority.ApplicationIdle);
+        private readonly DispatcherTimer _timer = new DispatcherTimer(DispatcherPriority.Background);
 
         public Clock()
         {

@@ -6,25 +6,28 @@
         xmlns:local="clr-namespace:Suites.Wpf.App.Test"
         xmlns:swa="http://suites.com/"
         xmlns:swc="http://suites.com/wpf/controls"
+        xmlns:res="clr-namespace:Suites.Wpf.App.Test.Properties"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="450"
         Width="800">
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition />
-      <RowDefinition />
-      <RowDefinition Height="50" />
-      <RowDefinition Height="50" />
-    </Grid.RowDefinitions>
+  <Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Suites.Wpf.Controls;component/Themes/Controls.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Window.Resources>
+  <StackPanel>
     <swc:Clock FontSize="25" />
-    <swa:SimplePie Grid.Row="1"
-                   Source="{Binding Classes}" />
+    <swa:SimplePie Source="{Binding Classes}" />
     <Button Content="点击我试试看!"
             Command="{Binding AddA}"
-            Grid.Row="2"
             MaxWidth="100"
             MaxHeight="50" />
-    <swc:DataPager Grid.Row="3" />
-  </Grid>
+    <swc:DataPager />
+    <swc:SearchBox swc:TextBoxHelper.NullText="{x:Static res:Resources.SearchBoxBrushString}" />
+    <TextBox swc:TextBoxHelper.NullText="{x:Static res:Resources.SearchBoxBrushString}"
+             Style="{StaticResource NullTextBoxStyle}" BorderBrush="Black" BorderThickness="50"/>
+  </StackPanel>
 </Window>
