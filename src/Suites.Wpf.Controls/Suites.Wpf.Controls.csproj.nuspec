@@ -14,8 +14,7 @@
     <copyright>Copyright 2018</copyright>
     <tags>.netcore2.0 baselib</tags>
     <dependencies>
-      <dependency id="Suites.Wpf.Core" version="1.0.8"/>
-      <dependency id="Suites.Vision" version="0.0.2"/>
+      <dependency id="Suites.Vision" version="0.0.3"/>
     </dependencies>
   </metadata>
   <files>

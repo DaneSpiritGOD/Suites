@@ -15,6 +15,7 @@
       <RowDefinition />
       <RowDefinition />
       <RowDefinition Height="50" />
+      <RowDefinition Height="50" />
     </Grid.RowDefinitions>
     <swc:Clock FontSize="25" />
     <swa:SimplePie Grid.Row="1"
@@ -24,5 +25,6 @@
             Grid.Row="2"
             MaxWidth="100"
             MaxHeight="50" />
+    <swc:DataPager Grid.Row="3" />
   </Grid>
 </Window>
