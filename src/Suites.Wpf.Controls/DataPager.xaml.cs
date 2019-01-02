@@ -221,25 +221,26 @@ namespace Suites.Wpf.Controls
             {
                 this.PageIndex = Convert.ToInt32(this.ButtonText1.Text) - 1;
             }
-
-
         }
 
-        private void Button2_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e) => this.PageIndex = Convert.ToInt32(this.ButtonText2.Text) - 1;
+        private void Button2_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+            => PageIndex = Convert.ToInt32(this.ButtonText2.Text) - 1;
 
-        private void Button3_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e) => this.PageIndex = Convert.ToInt32(this.ButtonText3.Text) - 1;
+        private void Button3_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+            => PageIndex = Convert.ToInt32(this.ButtonText3.Text) - 1;
 
-        private void Button4_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e) => this.PageIndex = Convert.ToInt32(this.ButtonText4.Text) - 1;
+        private void Button4_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+            => PageIndex = Convert.ToInt32(this.ButtonText4.Text) - 1;
 
         private void Button5_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (this.ButtonText5.Text == "...")
+            if (ButtonText5.Text == "...")
             {
-                this.PageIndex = Convert.ToInt32(this.ButtonText4.Text) + 1 - 1;
+                PageIndex = Convert.ToInt32(ButtonText4.Text) + 1 - 1;
             }
             else
             {
-                this.PageIndex = Convert.ToInt32(this.ButtonText5.Text) - 1;
+                PageIndex = Convert.ToInt32(ButtonText5.Text) - 1;
             }
         }
 
@@ -291,9 +292,10 @@ namespace Suites.Wpf.Controls
             }
         }
 
-        private void ButtonPreviousPage_Click(object sender, RoutedEventArgs e) => this.PageIndex -= 1;
+        private void ButtonPreviousPage_Click(object sender, RoutedEventArgs e)
+            => this.PageIndex -= 1;
 
-        private void ButtonNextPage_Click(object sender, RoutedEventArgs e) => this.PageIndex += 1;
-
+        private void ButtonNextPage_Click(object sender, RoutedEventArgs e)
+            => this.PageIndex += 1;
     }
 }
