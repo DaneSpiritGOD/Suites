@@ -10,7 +10,7 @@
     <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
     <PackageTags>.netcore2.0 baselib</PackageTags>
-    <Version>1.0.15</Version>
+    <Version>1.0.16</Version>
     <RootNamespace>Suites</RootNamespace>
   </PropertyGroup>
 
