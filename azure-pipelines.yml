@@ -54,6 +54,8 @@ jobs:
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(avalonEditPrj)/$(avalonEditPrj).csproj
 
     - task: NuGetToolInstaller@0
+      inputs:
+        versionSpec: '4.9.2'
     - task: NuGetCommand@2
       inputs:
         command: 'restore'
