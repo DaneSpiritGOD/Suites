@@ -25,13 +25,12 @@ namespace Suites.Wpf.Controls
             InitializeComponent();
         }
 
-        public static readonly DependencyProperty SearchTextProperty =
-            DependencyProperty.Register("SearchText", typeof(string), typeof(SearchBox));
+        public static readonly DependencyProperty TextProperty = TextBox.TextProperty.AddOwner(typeof(SearchBox));
 
-        public string SearchText
+        public string Text
         {
-            get => (string)GetValue(SearchTextProperty);
-            set => SetValue(SearchTextProperty, value);
+            get => (string)GetValue(TextProperty);
+            set => SetValue(TextProperty, value);
         }
     }
 }

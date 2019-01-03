@@ -1,7 +1,7 @@
-﻿using Suites.Wpf.App.Controls.Pie;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Suites.Wpf.App.Controls.Pie;
 
 namespace Suites.Wpf.App.Test
 {
@@ -26,5 +27,5 @@ namespace Suites.Wpf.App.Test
         {
             InitializeComponent();
         }
-    }    
+    }
 }

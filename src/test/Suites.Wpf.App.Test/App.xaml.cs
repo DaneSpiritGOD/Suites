@@ -1,8 +1,4 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using Suites.Mvvm;
-using Suites.Wpf.App.Controls.Pie;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Configuration;
@@ -10,6 +6,10 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Prism.Commands;
+using Prism.Mvvm;
+using Suites.Mvvm;
+using Suites.Wpf.App.Controls.Pie;
 using BindableBase = Suites.Mvvm.BindableBase;
 
 namespace Suites.Wpf.App.Test
@@ -55,6 +55,15 @@ namespace Suites.Wpf.App.Test
                 Classes[1].Value.Value += 2;
                 Classes[2].Value.Value += 3;
             });
+
+
+        }
+
+        private string _searchText;
+        public string SearchText
+        {
+            get => _searchText;
+            set => SetProperty(ref _searchText, value);
         }
     }
 }
