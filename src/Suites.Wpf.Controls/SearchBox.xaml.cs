@@ -25,7 +25,10 @@ namespace Suites.Wpf.Controls
             InitializeComponent();
         }
 
-        public static readonly DependencyProperty TextProperty = TextBox.TextProperty.AddOwner(typeof(SearchBox));
+        public static readonly DependencyProperty TextProperty = TextBox.TextProperty.AddOwner(typeof(SearchBox),
+            new FrameworkPropertyMetadata(string.Empty,
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault | FrameworkPropertyMetadataOptions.Journal,
+                default, default, true, UpdateSourceTrigger.LostFocus));
 
         public string Text
         {
