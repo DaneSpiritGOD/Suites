@@ -27,7 +27,7 @@
             MaxHeight="50" />
     <swc:DataPager />
     <StackPanel Orientation="Horizontal">
-      <swc:SearchBox Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+      <swc:SearchBox Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"
                      swc:TextBoxHelper.NullText="{x:Static res:Resources.SearchBoxBrushString}" />
     </StackPanel>
     <TextBox swc:TextBoxHelper.NullText="{x:Static res:Resources.SearchBoxBrushString}"
