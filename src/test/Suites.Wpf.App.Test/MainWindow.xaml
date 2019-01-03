@@ -28,6 +28,8 @@
     <swc:DataPager />
     <swc:SearchBox swc:TextBoxHelper.NullText="{x:Static res:Resources.SearchBoxBrushString}" />
     <TextBox swc:TextBoxHelper.NullText="{x:Static res:Resources.SearchBoxBrushString}"
-             Style="{StaticResource NullTextBoxStyle}" BorderBrush="Black" BorderThickness="50"/>
+             Style="{StaticResource NullTextBoxStyle}"
+             BorderBrush="Black"
+             BorderThickness="1" />
   </StackPanel>
 </Window>

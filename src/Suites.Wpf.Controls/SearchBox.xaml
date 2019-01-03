@@ -43,7 +43,7 @@
                                   VerticalAlignment="Center" />
       <TextBox x:Name="TextBoxSearch"
                Grid.Column="1"
-               Margin="0 5 5 5"
+               Margin="0 1"
                BorderThickness="0"
                Style="{StaticResource NullTextBoxStyle}"
                VerticalContentAlignment="Center"
