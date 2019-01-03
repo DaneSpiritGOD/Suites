@@ -31,6 +31,7 @@
                      swc:TextBoxHelper.NullText="{x:Static res:Resources.SearchBoxBrushString}" />
     </StackPanel>
     <TextBox swc:TextBoxHelper.NullText="{x:Static res:Resources.SearchBoxBrushString}"
-             Style="{StaticResource NullTextBoxStyle}" />
+             Style="{StaticResource NullTextBoxStyle}" FontSize="20" Width="200"/>
+    <TextBox Text="abc" />
   </StackPanel>
 </Window>
