@@ -48,7 +48,7 @@
                Style="{StaticResource NullTextBoxStyle}"
                VerticalContentAlignment="Center"
                local:TextBoxHelper.NullText="{Binding (local:TextBoxHelper.NullText),ElementName=shell}"
-               Text="{Binding SearchText,ElementName=shell,UpdateSourceTrigger=PropertyChanged}" />
+               Text="{Binding Text,ElementName=shell,UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
   </Border>
 </UserControl>
