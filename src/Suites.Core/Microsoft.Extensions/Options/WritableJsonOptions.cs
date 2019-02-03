@@ -33,9 +33,11 @@ namespace Microsoft.Extensions.Options.Writable
 
         public void Update(Action<T> applyChanges)
         {
-            var fileProvider = _environment.ContentRootFileProvider;
-            var fileInfo = fileProvider.GetFileInfo(_file);
-            var physicalPath = fileInfo.PhysicalPath;
+            var physicalPath = _environment.ContentRootFileProvider.GetFileInfo(_file).PhysicalPath;
+            if(string.IsNullOrWhiteSpace(physicalPath) && Path.IsPathRooted(_file))
+            {
+                physicalPath = _file;
+            }
 
             var jObject = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(physicalPath));
             var sectionObject = jObject.TryGetValue(_section, out JToken section) ?
