@@ -6,7 +6,7 @@ namespace System.Threading.Tasks
 {
     public static class TaskEx
     {
-        public static readonly Task CompletedTask = Task.FromResult<object>(null);
+        public static readonly Task CompletedTask = Task.FromResult(false);
 
         public static Task<T> FromException<T>(T value)
             where T : Exception
