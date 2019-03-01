@@ -34,7 +34,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suites.Wpf.AvalonEdit", "Su
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suites.Wpf.Controls", "Suites.Wpf.Controls\Suites.Wpf.Controls.csproj", "{D705EAB0-8EBE-402F-9D9D-A01F09A24633}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suites.Microsoft.NetCore.App", "Suites.Microsoft.NetCore.App\Suites.Microsoft.NetCore.App.csproj", "{99035A6C-B98B-43D1-AF72-5A3958BD920D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suites.Microsoft.NetCore.App", "Suites.Microsoft.NetCore.App\Suites.Microsoft.NetCore.App.csproj", "{99035A6C-B98B-43D1-AF72-5A3958BD920D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suites.Utils", "Suites.Utils\Suites.Utils.csproj", "{0C15CE67-C92F-4C57-B066-EE91721E50CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -90,6 +92,10 @@ Global
 		{99035A6C-B98B-43D1-AF72-5A3958BD920D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99035A6C-B98B-43D1-AF72-5A3958BD920D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99035A6C-B98B-43D1-AF72-5A3958BD920D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C15CE67-C92F-4C57-B066-EE91721E50CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C15CE67-C92F-4C57-B066-EE91721E50CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C15CE67-C92F-4C57-B066-EE91721E50CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C15CE67-C92F-4C57-B066-EE91721E50CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
