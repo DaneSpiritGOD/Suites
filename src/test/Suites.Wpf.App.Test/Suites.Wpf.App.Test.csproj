@@ -99,6 +99,10 @@
       <Project>{d0855038-b243-48a9-9a8b-20fe94cfa4b4}</Project>
       <Name>Suites.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Suites.Utils\Suites.Utils.csproj">
+      <Project>{0c15ce67-c92f-4c57-b066-ee91721e50ce}</Project>
+      <Name>Suites.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Suites.Wpf.App\Suites.Wpf.App.csproj">
       <Project>{27791379-9c80-49d3-8591-0cf18b9ef2df}</Project>
       <Name>Suites.Wpf.App</Name>
