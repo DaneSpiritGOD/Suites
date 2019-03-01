@@ -25,6 +25,7 @@ jobs:
       buildConfiguration: 'Release'
       srcRoot: './src/'
       nugetSource: 'https://api.nuget.org/v3/index.json'
+      basePrj: 'Suites.Utils'
       corePrj: 'Suites.Core'
       autoMapperPrj: 'Suites.AutoMapper'
       mediatRPrj: 'Suites.MediatR'
@@ -41,8 +42,9 @@ jobs:
     - task: DotNetCoreInstaller@0
       inputs:
         packageType: 'sdk' # Options: runtime, sdk
-        version: '2.2.103'
+        version: '2.2.104'
 
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(basePrj)/$(basePrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(corePrj)/$(corePrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(autoMapperPrj)/$(autoMapperPrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(mediatRPrj)/$(mediatRPrj).csproj

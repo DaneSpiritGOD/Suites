@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>Suites</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Authors>DaneSpiritGOD</Authors>
+    <Company>NanJing.cn</Company>
+    <Description>base lib for suites.core</Description>
+    <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
+    <PackageTags>utils</PackageTags>
+    <Version>0.0.1</Version>
+  </PropertyGroup>
+</Project>

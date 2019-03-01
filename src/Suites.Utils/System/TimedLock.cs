@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading;
 
 // Thanks to Eric Gunnerson for recommending this be a struct rather
 // than a class - avoids a heap allocation.
@@ -12,7 +7,7 @@ using System.Threading.Tasks;
 // Thanks to Chance Gillespie and Jocelyn Coulmance for pointing out
 // the bugs that then crept in when I changed it to use struct...
 
-namespace Suites.Core
+namespace System
 {
 #if DEBUG
     public class TimedLock : IDisposable
@@ -21,17 +16,15 @@ namespace Suites.Core
 #endif
     {
         public static TimedLock Lock(object o)
-        {
-            return Lock(o, TimeSpan.FromSeconds(10));
-        }
+            => Lock(o, TimeSpan.FromSeconds(10));
 
         public static TimedLock Lock(object o, TimeSpan timeout)
         {
-            TimedLock tl = new TimedLock(o);
+            var tl = new TimedLock(o);
             if (!Monitor.TryEnter(o, timeout))
             {
 #if DEBUG
-            System.GC.SuppressFinalize(tl);
+                System.GC.SuppressFinalize(tl);
 #endif
                 throw new LockTimeoutException();
             }
@@ -43,7 +36,7 @@ namespace Suites.Core
         {
             target = o;
         }
-        private object target;
+        private readonly object target;
 
         public void Dispose()
         {
@@ -54,18 +47,18 @@ namespace Suites.Core
             // the error. If Dispose is called, we suppress the
             // finalizer.
 #if DEBUG
-        GC.SuppressFinalize(this);
+            GC.SuppressFinalize(this);
 #endif
         }
 
 #if DEBUG
-    ~TimedLock()
-    {
-        // If this finalizer runs, someone somewhere failed to
-        // call Dispose, which means we've failed to leave
-        // a monitor!
-        System.Diagnostics.Debug.Fail("Undisposed lock");
-    }
+        ~TimedLock()
+        {
+            // If this finalizer runs, someone somewhere failed to
+            // call Dispose, which means we've failed to leave
+            // a monitor!
+            System.Diagnostics.Debug.Fail("Undisposed lock");
+        }
 #endif
 
     }
