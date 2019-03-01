@@ -13,7 +13,7 @@
     <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
     <PackageTags>webapiclient.jit</PackageTags>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <RootNamespace>WebApiClient.Extensions</RootNamespace>
   </PropertyGroup>
 
