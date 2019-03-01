@@ -19,6 +19,5 @@
   </metadata>
   <files>
     <file src="bin\Release\Suites.Wpf.Controls.dll" target="lib\net461"/>
-    <file src="bin\Release\Suites.Wpf.Controls.dll" target="lib\net45"/>
   </files>
 </package>
