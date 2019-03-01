@@ -122,6 +122,10 @@
       <Project>{d0855038-b243-48a9-9a8b-20fe94cfa4b4}</Project>
       <Name>Suites.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Suites.Utils\Suites.Utils.csproj">
+      <Project>{0c15ce67-c92f-4c57-b066-ee91721e50ce}</Project>
+      <Name>Suites.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Suites.Vision\Suites.Vision.csproj">
       <Project>{f12f9d90-7403-46a6-a5a5-f467c0592c81}</Project>
       <Name>Suites.Vision</Name>
