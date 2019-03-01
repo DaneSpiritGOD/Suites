@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Suites.Wpf.Controls</id>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
     <authors>DaneSpiritGOD</authors>
     <owners>NanJing.cn</owners>
     <licenseUrl>https://github.com/DaneSpiritGOD/Suites</licenseUrl>
@@ -14,10 +14,11 @@
     <copyright>Copyright 2018</copyright>
     <tags>.netcore2.0 baselib</tags>
     <dependencies>
-      <dependency id="Suites.Vision" version="0.0.4"/>
+      <dependency id="Suites.Vision" version="0.0.5"/>
     </dependencies>
   </metadata>
   <files>
     <file src="bin\Release\Suites.Wpf.Controls.dll" target="lib\net461"/>
+    <file src="bin\Release\Suites.Wpf.Controls.dll" target="lib\net45"/>
   </files>
 </package>
