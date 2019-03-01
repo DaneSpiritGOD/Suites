@@ -27,6 +27,8 @@ jobs:
       nugetSource: 'https://api.nuget.org/v3/index.json'
       basePrj: 'Suites.Utils'
       corePrj: 'Suites.Core'
+      wacAbPrj: 'Suites.WebApiClient.Extensions.Abstraction'
+      wacPrj: 'Suites.WebApiClient.Extensions'
       autoMapperPrj: 'Suites.AutoMapper'
       mediatRPrj: 'Suites.MediatR'
       prismPrj: 'Suites.Prism.Wpf.Fx'
@@ -44,8 +46,10 @@ jobs:
         packageType: 'sdk' # Options: runtime, sdk
         version: '2.2.104'
 
-    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(basePrj)/$(basePrj).csproj
+    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(basePrj)/$(basePrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(corePrj)/$(corePrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacAbPrj)/$(wacAbPrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacPrj)/$(wacPrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(autoMapperPrj)/$(autoMapperPrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(mediatRPrj)/$(mediatRPrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(netcoreapp)/$(netcoreapp).csproj
