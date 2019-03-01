@@ -48,38 +48,38 @@ jobs:
 
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(basePrj)/$(basePrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(corePrj)/$(corePrj).csproj
-    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacAbPrj)/$(wacAbPrj).csproj
-    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacPrj)/$(wacPrj).csproj
-    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(autoMapperPrj)/$(autoMapperPrj).csproj
-    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(mediatRPrj)/$(mediatRPrj).csproj
+    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacAbPrj)/$(wacAbPrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacPrj)/$(wacPrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(autoMapperPrj)/$(autoMapperPrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(mediatRPrj)/$(mediatRPrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(netcoreapp)/$(netcoreapp).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(prismPrj)/$(prismPrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(winPrj)/$(winPrj).csproj
-    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wpfCorePrj)/$(wpfCorePrj).csproj
-    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(visionPrj)/$(visionPrj).csproj
-    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(avalonEditPrj)/$(avalonEditPrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wpfCorePrj)/$(wpfCorePrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(visionPrj)/$(visionPrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(avalonEditPrj)/$(avalonEditPrj).csproj
 
-    #- script: dotnet restore $(srcRoot)$(visionPrj)/$(visionPrj).csproj
-    #- task: NuGetToolInstaller@0
-      #inputs:
-        #versionSpec: '4.9.2'
-    #- task: NuGetCommand@2
-      #inputs:
-        #command: 'restore'
-        #restoreSolution: $(srcRoot)$(controls)/$(controls).csproj
-        #feedsToUse: 'select'
-        #includeNuGetOrg: true
-    #- task: VSBuild@1
-      #inputs: 
-        #solution: $(srcRoot)$(controls)/$(controls).csproj
-        #configuration: $(buildConfiguration)
-        #platform: '$(csprojBuildPlatform)'
-    #- task: NuGetCommand@2
-      #inputs:
-        #command: pack
-        #packagesToPack: $(srcRoot)$(controls)/$(controls).csproj.nuspec
-        #configuration: $(buildConfiguration)
-        #packDestination: $(Build.ArtifactStagingDirectory)
+    - script: dotnet restore $(srcRoot)$(visionPrj)/$(visionPrj).csproj
+    - task: NuGetToolInstaller@0
+      inputs:
+        versionSpec: '4.9.2'
+    - task: NuGetCommand@2
+      inputs:
+        command: 'restore'
+        restoreSolution: $(srcRoot)$(controls)/$(controls).csproj
+        feedsToUse: 'select'
+        includeNuGetOrg: true
+    - task: VSBuild@1
+      inputs: 
+        solution: $(srcRoot)$(controls)/$(controls).csproj
+        configuration: $(buildConfiguration)
+        platform: '$(csprojBuildPlatform)'
+    - task: NuGetCommand@2
+      inputs:
+        command: pack
+        packagesToPack: $(srcRoot)$(controls)/$(controls).csproj.nuspec
+        configuration: $(buildConfiguration)
+        packDestination: $(Build.ArtifactStagingDirectory)
 
     #- task: NuGetToolInstaller@0
     #- task: NuGetCommand@2
