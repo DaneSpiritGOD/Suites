@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9F88C795-5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suites.Wpf.App.Test", "test\Suites.Wpf.App.Test\Suites.Wpf.App.Test.csproj", "{CF03DFDC-EB7D-48F7-B537-F62ADC8A6F72}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{8CF8FAF8-58B7-4D5D-B747-F80E8983ECBC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "000 - global", "000 - global", "{8CF8FAF8-58B7-4D5D-B747-F80E8983ECBC}"
 	ProjectSection(SolutionItems) = preProject
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
 		..\LICENSE = ..\LICENSE
@@ -38,9 +38,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suites.Microsoft.NetCore.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suites.Utils", "Suites.Utils\Suites.Utils.csproj", "{0C15CE67-C92F-4C57-B066-EE91721E50CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suites.WebApiClient.Extensions", "Suites.WebApiClient.Extensions\Suites.WebApiClient.Extensions.csproj", "{3FF5DCA2-6A69-44AC-A28C-0B873BBEA664}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suites.WebApiClient.Extensions", "Suites.WebApiClient.Extensions\Suites.WebApiClient.Extensions.csproj", "{3FF5DCA2-6A69-44AC-A28C-0B873BBEA664}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suites.WebApiClient.Extensions.Abstraction", "Suites.WebApiClient.Extensions.Abstraction\Suites.WebApiClient.Extensions.Abstraction.csproj", "{B54F06FD-41C6-4FE1-8EBF-A80A24988D7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suites.WebApiClient.Extensions.Abstraction", "Suites.WebApiClient.Extensions.Abstraction\Suites.WebApiClient.Extensions.Abstraction.csproj", "{B54F06FD-41C6-4FE1-8EBF-A80A24988D7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "001 - Base", "001 - Base", "{D667E4C9-553E-4CC6-BC45-503B17DCA8F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,7 +115,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{D0855038-B243-48A9-9A8B-20FE94CFA4B4} = {D667E4C9-553E-4CC6-BC45-503B17DCA8F9}
 		{CF03DFDC-EB7D-48F7-B537-F62ADC8A6F72} = {9F88C795-5FF0-4D7C-B17C-6AAC016D4C2C}
+		{0C15CE67-C92F-4C57-B066-EE91721E50CE} = {D667E4C9-553E-4CC6-BC45-503B17DCA8F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37E197FA-F309-494E-91FD-41824748EE70}
