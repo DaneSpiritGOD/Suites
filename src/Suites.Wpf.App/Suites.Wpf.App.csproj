@@ -126,12 +126,8 @@
       <Project>{0c15ce67-c92f-4c57-b066-ee91721e50ce}</Project>
       <Name>Suites.Utils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Suites.Vision\Suites.Vision.csproj">
-      <Project>{f12f9d90-7403-46a6-a5a5-f467c0592c81}</Project>
-      <Name>Suites.Vision</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Suites.Wpf.Controls\Suites.Wpf.Controls.csproj">
-      <Project>{d705eab0-8ebe-402f-9d9d-a01f09a24633}</Project>
+      <Project>{968329a8-027e-4514-8a8d-7085fc2579df}</Project>
       <Name>Suites.Wpf.Controls</Name>
     </ProjectReference>
     <ProjectReference Include="..\Suites.Wpf.Core\Suites.Wpf.Core.csproj">

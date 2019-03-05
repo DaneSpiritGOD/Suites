@@ -55,11 +55,11 @@ jobs:
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(netcoreapp)/$(netcoreapp).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(prismPrj)/$(prismPrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(winPrj)/$(winPrj).csproj
-    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wpfCorePrj)/$(wpfCorePrj).csproj
+    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wpfCorePrj)/$(wpfCorePrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(visionPrj)/$(visionPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(avalonEditPrj)/$(avalonEditPrj).csproj
 
-    - script: dotnet restore $(srcRoot)$(visionPrj)/$(visionPrj).csproj
+    #- script: dotnet restore $(srcRoot)$(visionPrj)/$(visionPrj).csproj
     - task: NuGetToolInstaller@0
       inputs:
         versionSpec: '4.9.2'

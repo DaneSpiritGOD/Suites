@@ -107,10 +107,6 @@
       <Project>{27791379-9c80-49d3-8591-0cf18b9ef2df}</Project>
       <Name>Suites.Wpf.App</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Suites.Wpf.Controls\Suites.Wpf.Controls.csproj">
-      <Project>{d705eab0-8ebe-402f-9d9d-a01f09a24633}</Project>
-      <Name>Suites.Wpf.Controls</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Prism.Core">

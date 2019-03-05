@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace System.Windows.Media.Imaging
 {
@@ -57,15 +52,9 @@ namespace System.Windows.Media.Imaging
             return renderedBmp;
         }
 
-        public static int GetChannelCount(this BitmapSource bs)
-        {
-            return (bs.Format.BitsPerPixel + 7) / 8;
-        }
+        public static int GetChannelCount(this BitmapSource bs) => (bs.Format.BitsPerPixel + 7) / 8;
 
-        public static int GetStride(this BitmapSource bs)
-        {
-            return (bs.PixelWidth * bs.Format.BitsPerPixel + 7) / 8;
-        }
+        public static int GetStride(this BitmapSource bs) => (bs.PixelWidth * bs.Format.BitsPerPixel + 7) / 8;
 
         public static PixelValue CopyPixel(this BitmapSource bs, int x, int y)
         {
@@ -128,10 +117,7 @@ namespace System.Windows.Media.Imaging
             return bytes;
         }
 
-        public static Rect FullRect(this BitmapSource source)
-        {
-            return new Rect(new Point(0, 0), new Point(source.PixelWidth - 1, source.PixelHeight - 1));
-        }
+        public static Rect FullRect(this BitmapSource source) => new Rect(new Point(0, 0), new Point(source.PixelWidth - 1, source.PixelHeight - 1));
 
         public static PixelFormat CalcPixelFormat(this int channelCount)
         {
