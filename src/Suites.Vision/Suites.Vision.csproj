@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net471;net461</TargetFrameworks>
+    <TargetFrameworks>net461;net471</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
@@ -16,7 +16,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Memory" Version="4.5.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Suites.Core\Suites.Core.csproj" />
+    <ProjectReference Include="..\Suites.Utils\Suites.Utils.csproj" />
   </ItemGroup>
 
   <ItemGroup>
