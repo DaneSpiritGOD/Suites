@@ -35,7 +35,6 @@ jobs:
       winPrj: 'Suites.WindowsPlatform'
       wpfAppPrj: 'Suites.Wpf.App'
       wpfCorePrj: 'Suites.Wpf.Core'
-      visionPrj: 'Suites.Vision'
       avalonEditPrj: 'Suites.Wpf.AvalonEdit'
       netcoreapp: 'Suites.Microsoft.NetCore.App'
       controls: 'Suites.Wpf.Controls'
@@ -46,20 +45,18 @@ jobs:
         packageType: 'sdk' # Options: runtime, sdk
         version: '2.2.104'
 
-    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(basePrj)/$(basePrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(basePrj)/$(basePrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(corePrj)/$(corePrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacAbPrj)/$(wacAbPrj).csproj
-    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacPrj)/$(wacPrj).csproj
-    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(autoMapperPrj)/$(autoMapperPrj).csproj
-    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(mediatRPrj)/$(mediatRPrj).csproj
+    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacPrj)/$(wacPrj).csproj
+    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(autoMapperPrj)/$(autoMapperPrj).csproj
+    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(mediatRPrj)/$(mediatRPrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(netcoreapp)/$(netcoreapp).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(prismPrj)/$(prismPrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(winPrj)/$(winPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wpfCorePrj)/$(wpfCorePrj).csproj
-    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(visionPrj)/$(visionPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(avalonEditPrj)/$(avalonEditPrj).csproj
 
-    - script: dotnet restore $(srcRoot)$(visionPrj)/$(visionPrj).csproj
     - task: NuGetToolInstaller@0
       inputs:
         versionSpec: '4.9.2'

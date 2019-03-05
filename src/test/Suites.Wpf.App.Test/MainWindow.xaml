@@ -13,25 +13,8 @@
         Width="800">
   <Window.Resources>
     <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/Suites.Wpf.Controls;component/Themes/Controls.xaml" />
-      </ResourceDictionary.MergedDictionaries>
+      <ResourceDictionary.MergedDictionaries></ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </Window.Resources>
-  <StackPanel>
-    <swc:Clock FontSize="25" />
-    <swa:SimplePie Source="{Binding Classes}" />
-    <Button Content="点击我试试看!"
-            Command="{Binding AddA}"
-            MaxWidth="100"
-            MaxHeight="50" />
-    <swc:DataPager />
-    <StackPanel Orientation="Horizontal">
-      <swc:SearchBox Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"
-                     swc:TextBoxHelper.NullText="{x:Static res:Resources.SearchBoxBrushString}" />
-    </StackPanel>
-    <TextBox swc:TextBoxHelper.NullText="{x:Static res:Resources.SearchBoxBrushString}"
-             Style="{StaticResource NullTextBoxStyle}" FontSize="20" Width="200"/>
-    <TextBox Text="abc" />
-  </StackPanel>
+  <StackPanel></StackPanel>
 </Window>

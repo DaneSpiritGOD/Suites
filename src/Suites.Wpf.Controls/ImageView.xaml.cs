@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
-
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Suites.Wpf.Controls
 {
@@ -17,9 +16,9 @@ namespace Suites.Wpf.Controls
     /// </summary>
     public partial class ImageView : UserControl, INotifyPropertyChanged
     {
-        const double power = 1.03;
-        const double powerNeg = 1 / power;
-        const double minScaleValue = 0.01;
+        private const double power = 1.03;
+        private const double powerNeg = 1 / power;
+        private const double minScaleValue = 0.01;
 
         public ImageView()
         {
@@ -59,10 +58,7 @@ namespace Suites.Wpf.Controls
             _mouseLBPressed = false;
         }
 
-        private bool isControlKeyPressed()
-        {
-            return !CtrlNeeded || (Keyboard.Modifiers == ModifierKeys.Control);
-        }
+        private bool isControlKeyPressed() => !CtrlNeeded || (Keyboard.Modifiers == ModifierKeys.Control);
 
         /// <summary>
         /// 鼠标移动时的事件，当鼠标按下并移动时发生
@@ -120,18 +116,21 @@ namespace Suites.Wpf.Controls
             //因为Image是ScrollViewer的子元素，事件源为ScrollViewer，事件节点在ScrollViewer
             //2016.10.27 无论如何，(Preview)MouseWheel的目标节点为ScrollViewer，所以捕捉事件应该放到ScrollViewer中
             //2016.11.1 经过继承ScrollViewer的OnPreviewMouseWheel发现，Preview滚轮事件被ScrollViewer下的Grid处理，所以当然不会触发Image的（Preview/）MouseWheel，无语！
-            if (!isControlKeyPressed()) return;
+            if (!isControlKeyPressed())
+                return;
             e.Handled = true;
 
             //判断鼠标是否在Image控件有效区域内，如果不是不进行有效行为
             var pointRelatedToImageControl = e.GetPosition(image);//这里获得的是Image控件原始尺寸对应的坐标,不会缩小放大
-            if (!IsPointInControl(image, pointRelatedToImageControl)) return;
+            if (!IsPointInControl(image, pointRelatedToImageControl))
+                return;
 
             //var delta = e.Delta * 0.001;            
             double powerRT = System.Math.Sign(e.Delta) > 0 ? power : powerNeg;
 
             //if (scaleTransform.ScaleX + delta < 0.01) return;
-            if (scaleTransform.ScaleX * powerRT < minScaleValue) return;
+            if (scaleTransform.ScaleX * powerRT < minScaleValue)
+                return;
 
             var p1 = scaleTransform.Transform(pointRelatedToImageControl);//获得缩放前的实际坐标，相对于固定坐标系
 
@@ -151,8 +150,8 @@ namespace Suites.Wpf.Controls
         #region Property
         public ImageSource Source
         {
-            get { return (ImageSource)GetValue(SourceProperty); }
-            set { SetValue(SourceProperty, value); }
+            get => (ImageSource)GetValue(SourceProperty);
+            set => SetValue(SourceProperty, value);
         }
 
         public static readonly DependencyProperty SourceProperty =
@@ -160,8 +159,8 @@ namespace Suites.Wpf.Controls
 
         public bool CtrlNeeded
         {
-            get { return (bool)GetValue(CtrlNeededProperty); }
-            set { SetValue(CtrlNeededProperty, value); }
+            get => (bool)GetValue(CtrlNeededProperty);
+            set => SetValue(CtrlNeededProperty, value);
         }
 
         public static readonly DependencyProperty CtrlNeededProperty =
@@ -170,14 +169,8 @@ namespace Suites.Wpf.Controls
         #region StatusBar
         public Visibility ShowStatusBar
         {
-            get
-            {
-                return (Visibility)GetValue(ShowStatusBarProperty);
-            }
-            set
-            {
-                SetValue(ShowStatusBarProperty, value);
-            }
+            get => (Visibility)GetValue(ShowStatusBarProperty);
+            set => SetValue(ShowStatusBarProperty, value);
         }
 
         public static readonly DependencyProperty ShowStatusBarProperty =
@@ -227,28 +220,28 @@ namespace Suites.Wpf.Controls
             return items;
         }
 
-        const string SizeHeader = "S";
-        string _sizeContent = genBracketPair(SizeHeader, genBracketPairParams(3, '-'));
+        private const string SizeHeader = "S";
+        private string _sizeContent = genBracketPair(SizeHeader, genBracketPairParams(3, '-'));
         public string SizeContent
         {
-            get { return _sizeContent; }
-            set { SetProperty(ref _sizeContent, value); }
+            get => _sizeContent;
+            set => SetProperty(ref _sizeContent, value);
         }
 
-        const string ColorHeader = "C";
-        string _colorContent = genBracketPair(ColorHeader, genBracketPairParams(3, '-'));
+        private const string ColorHeader = "C";
+        private string _colorContent = genBracketPair(ColorHeader, genBracketPairParams(3, '-'));
         public string ColorContent
         {
-            get { return _colorContent; }
-            set { SetProperty(ref _colorContent, value); }
+            get => _colorContent;
+            set => SetProperty(ref _colorContent, value);
         }
 
-        const string LocationHeader = "L";
-        string _locationContent = genBracketPair(LocationHeader, genBracketPairParams(2, '-'));
+        private const string LocationHeader = "L";
+        private string _locationContent = genBracketPair(LocationHeader, genBracketPairParams(2, '-'));
         public string LocationContent
         {
-            get { return _locationContent; }
-            set { SetProperty(ref _locationContent, value); }
+            get => _locationContent;
+            set => SetProperty(ref _locationContent, value);
         }
         #endregion
         #endregion Property
