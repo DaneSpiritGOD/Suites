@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Suites.Wpf.Controls
 {
@@ -25,15 +14,34 @@ namespace Suites.Wpf.Controls
             InitializeComponent();
         }
 
-        public static readonly DependencyProperty TextProperty = TextBox.TextProperty.AddOwner(typeof(SearchBox),
+        private static readonly Type _thisType = typeof(SearchBox);
+
+        public static readonly DependencyProperty TextProperty = TextBox.TextProperty.AddOwner(_thisType,
             new FrameworkPropertyMetadata(string.Empty,
-                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault | FrameworkPropertyMetadataOptions.Journal,
-                default, default, true, UpdateSourceTrigger.LostFocus));
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault | FrameworkPropertyMetadataOptions.Journal));
 
         public string Text
         {
             get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
+        }
+
+        public static readonly DependencyProperty SearchIconVisibilityProperty = DependencyProperty.Register("SearchIconVisibility",
+            typeof(Visibility), _thisType, new FrameworkPropertyMetadata(Visibility.Visible));
+
+        public Visibility SearchIconVisibility
+        {
+            get => (Visibility)GetValue(SearchIconVisibilityProperty);
+            set => SetValue(SearchIconVisibilityProperty, value);
+        }
+
+        public static readonly DependencyProperty ClearIconVisibilityProperty = DependencyProperty.Register("ClearIconVisibility",
+            typeof(Visibility), _thisType, new FrameworkPropertyMetadata(Visibility.Visible));
+
+        public Visibility ClearIconVisibility
+        {
+            get => (Visibility)GetValue(ClearIconVisibilityProperty);
+            set => SetValue(ClearIconVisibilityProperty, value);
         }
     }
 }

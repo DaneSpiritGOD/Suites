@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Suites.Wpf.App.Test"
         xmlns:swa="http://suites.com/"
-        xmlns:swc="http://suites.com/wpf/controls"
+        xmlns:swc="clr-namespace:Suites.Wpf.Controls;assembly=Suites.Wpf.Controls"
         xmlns:res="clr-namespace:Suites.Wpf.App.Test.Properties"
         mc:Ignorable="d"
         Title="MainWindow"
@@ -16,5 +16,14 @@
       <ResourceDictionary.MergedDictionaries></ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </Window.Resources>
-  <StackPanel></StackPanel>
+  <StackPanel>
+    <swc:SearchBox ClearIconVisibility="Collapsed"
+                   SearchIconVisibility="Collapsed"
+                   Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}">
+      <swc:SearchBox.InputBindings>
+        <KeyBinding Key="Return"
+                    Command="{Binding ReturnCommand}" />
+      </swc:SearchBox.InputBindings>
+    </swc:SearchBox>
+  </StackPanel>
 </Window>

@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Suites.Wpf.Controls</id>
-    <version>0.0.8</version>
+    <version>0.0.9</version>
     <authors>DaneSpiritGOD</authors>
     <owners>NanJing.cn</owners>
     <licenseUrl>https://github.com/DaneSpiritGOD/Suites</licenseUrl>
@@ -15,7 +15,8 @@
     <tags>.netcore2.0 baselib</tags>
     <dependencies>
       <dependency id="System.Memory" version="4.5.2"/>
-      <dependency id="Suites.Utils" version="0.0.3"/>
+      <dependency id="Microsoft.Xaml.Behaviors.Wpf" version="1.0.1"/>
+      <dependency id="Suites.Utils" version="0.0.4"/>
     </dependencies>
   </metadata>
   <files>

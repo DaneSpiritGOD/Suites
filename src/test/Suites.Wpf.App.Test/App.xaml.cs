@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows;
+using System.Windows.Input;
 using Prism.Commands;
-using Prism.Mvvm;
 using Suites.Mvvm;
 using Suites.Wpf.App.Controls.Pie;
 using BindableBase = Suites.Mvvm.BindableBase;
@@ -56,14 +51,21 @@ namespace Suites.Wpf.App.Test
                 Classes[2].Value.Value += 3;
             });
 
-
+            ReturnCommand = new DelegateCommand(Return);
         }
 
         private string _searchText;
         public string SearchText
         {
             get => _searchText;
-            set => SetProperty(ref _searchText, value);
+            set => SetProperty(ref _searchText, value, () =>
+            {
+                Trace.WriteLine($"Current Value: {_searchText}");
+            });
         }
+
+        public ICommand ReturnCommand { get; }
+        private void Return()
+            => Trace.WriteLine("return key pressed.");
     }
 }
