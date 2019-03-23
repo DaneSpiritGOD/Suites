@@ -19,6 +19,7 @@
   <StackPanel>
     <swc:SearchBox ClearIconVisibility="Collapsed"
                    SearchIconVisibility="Collapsed"
+                   Background="Transparent"
                    Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}">
       <swc:SearchBox.InputBindings>
         <KeyBinding Key="Return"
