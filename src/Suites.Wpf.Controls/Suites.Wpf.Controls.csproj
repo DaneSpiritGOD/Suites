@@ -27,15 +27,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Resources\search.png" />
+    <Resource Include="**\*.png" />
   </ItemGroup>
-
+  
   <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.0.1" />
     <PackageReference Include="System.Memory" Version="4.5.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\search.png" />
   </ItemGroup>
 
 </Project>

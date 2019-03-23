@@ -4,55 +4,72 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Suites.Wpf.Controls"
-             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             xmlns:opt="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+             xmlns:Interactions="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d"
-             d:DesignHeight="30"
-             d:DesignWidth="800"
+             d:DesignHeight="24"
+             d:DesignWidth="100"
              Name="shell">
   <UserControl.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Suites.Wpf.Controls;component/Themes/Controls.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Suites.Wpf.Controls;component/Themes/ColorBrushes.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Suites.Wpf.Controls;component/Themes/ImageCaches.xaml" />
       </ResourceDictionary.MergedDictionaries>
-      <BitmapImage x:Key="Serach.BI"
-                   opt:Freeze="True"
-                   UriSource="pack://application:,,,/Suites.Wpf.Controls;component/Resources/search.png" />
     </ResourceDictionary>
   </UserControl.Resources>
   <Border BorderThickness="1"
           CornerRadius="2"
-          Background="#f5f5f5">
+          Background="{StaticResource C.Background}">
     <Border.Style>
       <Style TargetType="{x:Type Border}">
         <Setter Property="BorderBrush"
-                Value="#DDDDDD" />
+                Value="{StaticResource C.Border}" />
         <Style.Triggers>
-          <DataTrigger Binding="{Binding Path=IsKeyboardFocusWithin,ElementName=TextBoxSearch}"
+          <DataTrigger Binding="{Binding Path=IsKeyboardFocusWithin,ElementName=TextBox_Search}"
                        Value="True">
             <Setter Property="BorderBrush"
-                    Value="LightBlue" />
+                    Value="{StaticResource C.Border.Selected}" />
           </DataTrigger>
         </Style.Triggers>
       </Style>
     </Border.Style>
     <Grid>
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="auto" />
+        <ColumnDefinition Width="Auto" />
         <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
       </Grid.ColumnDefinitions>
-      <Image Source="{StaticResource Serach.BI}"
-                                  HorizontalAlignment="Center"
-                                  Margin="10 0 5 0"
-                                  VerticalAlignment="Center" />
-      <TextBox x:Name="TextBoxSearch"
+      <ContentPresenter Content="{StaticResource BI.Search}"
+                        Width="12px"
+                        Margin="8px 0 0 0"
+                        VerticalAlignment="Center"
+                        Visibility="{Binding SearchIconVisibility,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},Mode=OneWay}" />
+      <TextBox x:Name="TextBox_Search"
                Grid.Column="1"
-               Margin="0 1"
+               FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},Mode=OneWay}"
+               FontFamily="{Binding FontFamily,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},Mode=OneWay}"
+               Margin="5px 4px 0 4px"
                BorderThickness="0"
-               Style="{StaticResource NullTextBoxStyle}"
                VerticalContentAlignment="Center"
-               local:TextBoxHelper.NullText="{Binding (local:TextBoxHelper.NullText),ElementName=shell}"
-               Text="{Binding Text,ElementName=shell,UpdateSourceTrigger=PropertyChanged}" />
+               Text="{Binding Text,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},UpdateSourceTrigger=PropertyChanged}" />
+      <Button Grid.Column="2"
+              HorizontalAlignment="Right"
+              Background="Transparent"
+              BorderThickness="0"
+              VerticalAlignment="Center"
+              Content="{StaticResource BI.Clear}"
+              Width="12px"
+              VerticalContentAlignment="Center"
+              Visibility="{Binding ClearIconVisibility,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},Mode=OneWay}"
+              Margin="0 0 9px 0">
+        <Interactions:Interaction.Triggers>
+          <Interactions:EventTrigger EventName="Click">
+            <Interactions:CallMethodAction TargetObject="{Binding ElementName=TextBox_Search}"
+                                           MethodName="Clear" />
+          </Interactions:EventTrigger>
+        </Interactions:Interaction.Triggers>
+      </Button>
     </Grid>
   </Border>
 </UserControl>

@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:res="clr-namespace:Suites.Wpf.Controls.Resources"
+                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:opt="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    xmlns:src="clr-namespace:Suites.Wpf.Controls">
+  <SolidColorBrush x:Key="C.Background"
+                   Color="#F5F5F5"
+                   opt:Freeze="True" />
+  <SolidColorBrush x:Key="C.Border"
+                   Color="#DDDDDD"
+                   opt:Freeze="True" />
+  <SolidColorBrush x:Key="C.Border.Selected"
+                   Color="#287DDC"
+                   opt:Freeze="True" />
+</ResourceDictionary>

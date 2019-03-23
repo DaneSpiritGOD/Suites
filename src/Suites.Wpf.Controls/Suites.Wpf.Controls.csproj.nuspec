@@ -15,7 +15,8 @@
     <tags>.netcore2.0 baselib</tags>
     <dependencies>
       <dependency id="System.Memory" version="4.5.2"/>
-      <dependency id="Suites.Utils" version="0.0.3"/>
+      <dependency id="Microsoft.Xaml.Behaviors.Wpf" version="1.0.1"/>
+      <dependency id="Suites.Utils" version="0.0.4"/>
     </dependencies>
   </metadata>
   <files>
