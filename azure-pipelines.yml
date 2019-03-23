@@ -45,7 +45,7 @@ jobs:
         packageType: 'sdk' # Options: runtime, sdk
         version: '2.2.104'
 
-    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(utilsPrj)/$(utilsPrj).csproj
+    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(utilsPrj)/$(utilsPrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(corePrj)/$(corePrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacAbPrj)/$(wacAbPrj).csproj
     #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacPrj)/$(wacPrj).csproj
@@ -60,6 +60,12 @@ jobs:
     - task: NuGetToolInstaller@0
       inputs:
         versionSpec: '4.9.2'
+    - task: NuGetCommand@2
+      inputs:
+        command: 'restore'
+        restoreSolution: $(srcRoot)$(utilsPrj)/$(utilsPrj).csproj
+        feedsToUse: 'select'
+        includeNuGetOrg: true
     - task: NuGetCommand@2
       inputs:
         command: 'restore'
