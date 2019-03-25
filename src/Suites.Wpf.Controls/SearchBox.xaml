@@ -23,12 +23,6 @@
           Background="{StaticResource C.Background}">
     <Border.Style>
       <Style TargetType="{x:Type Border}">
-        <!--<Setter Property="Background"
-                Value="{Binding Background,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},Mode=OneWay}" />-->
-        <!--<Setter Property="BorderBrush"
-                Value="{Binding BorderBrush,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},Mode=OneWay}" />-->
-        <!--<Setter Property="BorderThickness"
-                Value="{Binding BorderThickness,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},Mode=OneWay}" />-->
         <Style.Triggers>
           <DataTrigger Binding="{Binding Path=IsKeyboardFocusWithin,ElementName=TextBox_Search}"
                        Value="True">
@@ -55,7 +49,7 @@
                Foreground="{Binding Foreground,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},Mode=OneWay}"
                FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},Mode=OneWay}"
                FontFamily="{Binding FontFamily,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},Mode=OneWay}"
-               Margin="5px 4px 0 4px"
+               Margin="5px 0 0 0"
                BorderThickness="0"
                VerticalContentAlignment="Center"
                Text="{Binding Text,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},UpdateSourceTrigger=PropertyChanged}" />
