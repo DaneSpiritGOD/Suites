@@ -38,7 +38,7 @@
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="Auto" />
       </Grid.ColumnDefinitions>
-      <ContentPresenter Content="{StaticResource BI.Search}"
+      <ContentPresenter Content="{StaticResource Image.Search}"
                         Width="12px"
                         Margin="8px 0 0 0"
                         VerticalAlignment="Center"
@@ -58,7 +58,7 @@
               Background="Transparent"
               BorderThickness="0"
               VerticalAlignment="Center"
-              Content="{StaticResource BI.Clear}"
+              Content="{StaticResource Image.Clear}"
               Width="12px"
               VerticalContentAlignment="Center"
               Visibility="{Binding ClearIconVisibility,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},Mode=OneWay}"

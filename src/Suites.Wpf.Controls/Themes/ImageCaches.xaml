@@ -5,11 +5,11 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:opt="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
                     xmlns:src="clr-namespace:Suites.Wpf.Controls">
-  <Image x:Key="BI.Search"
+  <Image x:Key="Image.Search"
          Stretch="Uniform"
          opt:Freeze="True"
          Source="pack://application:,,,/Suites.Wpf.Controls;component/Resources/search.png" />
-  <Image x:Key="BI.Clear"
+  <Image x:Key="Image.Clear"
          opt:Freeze="True"
          Stretch="Uniform"
          Source="pack://application:,,,/Suites.Wpf.Controls;component/Resources/clear.png" />
