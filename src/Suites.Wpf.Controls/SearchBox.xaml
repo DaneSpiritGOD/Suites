@@ -7,8 +7,7 @@
              xmlns:Interactions="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d"
              d:DesignHeight="24"
-             d:DesignWidth="100"
-             Name="shell">
+             d:DesignWidth="100">
   <UserControl.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
@@ -18,13 +17,12 @@
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </UserControl.Resources>
-  <Border BorderThickness="1"
-          CornerRadius="2"
+  <Border CornerRadius="4"
+          BorderThickness="1"
+          BorderBrush="{StaticResource C.Border}"
           Background="{StaticResource C.Background}">
     <Border.Style>
       <Style TargetType="{x:Type Border}">
-        <Setter Property="BorderBrush"
-                Value="{StaticResource C.Border}" />
         <Style.Triggers>
           <DataTrigger Binding="{Binding Path=IsKeyboardFocusWithin,ElementName=TextBox_Search}"
                        Value="True">
@@ -46,10 +44,12 @@
                         VerticalAlignment="Center"
                         Visibility="{Binding SearchIconVisibility,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},Mode=OneWay}" />
       <TextBox x:Name="TextBox_Search"
+               Background="Transparent"
                Grid.Column="1"
+               Foreground="{Binding Foreground,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},Mode=OneWay}"
                FontSize="{Binding FontSize,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},Mode=OneWay}"
                FontFamily="{Binding FontFamily,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},Mode=OneWay}"
-               Margin="5px 4px 0 4px"
+               Margin="5px 0 0 0"
                BorderThickness="0"
                VerticalContentAlignment="Center"
                Text="{Binding Text,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},UpdateSourceTrigger=PropertyChanged}" />

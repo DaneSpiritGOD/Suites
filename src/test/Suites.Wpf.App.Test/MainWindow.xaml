@@ -17,8 +17,10 @@
     </ResourceDictionary>
   </Window.Resources>
   <StackPanel>
-    <swc:SearchBox ClearIconVisibility="Collapsed"
-                   SearchIconVisibility="Collapsed"
+    <swc:SearchBox ClearIconVisibility="Visible"
+                   SearchIconVisibility="Visible"
+                   Background="Transparent"
+                   Height="24px"
                    Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}">
       <swc:SearchBox.InputBindings>
         <KeyBinding Key="Return"
