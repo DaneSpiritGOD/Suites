@@ -3,6 +3,15 @@
   <PropertyGroup>
     <TargetFrameworks>net45;net461</TargetFrameworks>
     <LangVersion>latest</LangVersion>
+
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Authors>DaneSpiritGOD</Authors>
+    <Company>NanJing.cn</Company>
+    <Description>wpf controls</Description>
+    <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
+    <PackageTags>.netcore2.0 baselib wpf</PackageTags>
+    <Version>0.1.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,10 +39,16 @@
   <ItemGroup>
     <Resource Include="**\*.png" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.0.1" />
     <PackageReference Include="System.Memory" Version="4.5.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Paging.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
   </ItemGroup>
 
 </Project>

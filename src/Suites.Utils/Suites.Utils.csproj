@@ -14,6 +14,6 @@
     <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
     <PackageTags>utils</PackageTags>
-    <Version>0.0.4</Version>
+    <Version>0.0.5</Version>
   </PropertyGroup>
 </Project>
