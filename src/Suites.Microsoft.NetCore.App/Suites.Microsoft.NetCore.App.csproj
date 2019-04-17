@@ -18,7 +18,7 @@
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
     <PackageReference Include="System.Threading.Channels" Version="4.5.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.KeyPerFile" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.KeyPerFile" Version="2.2.4" />
   </ItemGroup>
 
 </Project>

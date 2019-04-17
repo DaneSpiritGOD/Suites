@@ -33,7 +33,8 @@ namespace Suites.Wpf.Controls
         }
 
         public static readonly DependencyProperty TotalPageProperty =
-        DependencyProperty.Register("TotalPage", typeof(int), typeof(DataPager), new PropertyMetadata(0, OnTotalPagePropertyChanged));
+        DependencyProperty.Register("TotalPage", typeof(int), typeof(DataPager),
+            new PropertyMetadata(0, OnTotalPagePropertyChanged));
 
         public int TotalPage
         {
@@ -96,14 +97,6 @@ namespace Suites.Wpf.Controls
             setButtonText(pager, currentPageButtonIndex);
             pager.SetButtonBorder(currentPageButtonIndex);
         }
-
-        //public static readonly DependencyProperty PageSizeProperty =
-        //    DependencyProperty.Register("PageSize", typeof(int), typeof(DataPager), new PropertyMetadata(1));
-        //public int PageSize
-        //{
-        //    get => (int)GetValue(PageSizeProperty);
-        //    set => SetValue(PageSizeProperty, value);
-        //}
 
         private static int getCurrentPageButtonIndex(DataPager pager)
         {
@@ -197,7 +190,8 @@ namespace Suites.Wpf.Controls
             Button5.Visibility = checkVisible(5);
         }
 
-        private Visibility checkVisible(int total) => TotalPage >= total ? Visibility.Visible : Visibility.Collapsed;
+        private Visibility checkVisible(int total)
+            => TotalPage >= total ? Visibility.Visible : Visibility.Collapsed;
 
         private void SetButtonBorder(int currentPageButtonIndex)
         {

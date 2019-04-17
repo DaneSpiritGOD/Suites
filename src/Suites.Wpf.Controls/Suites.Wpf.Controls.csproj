@@ -1,4 +1,4 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras/1.6.68">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <TargetFrameworks>net45;net461</TargetFrameworks>
@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System.Xaml" />
