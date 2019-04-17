@@ -5,12 +5,21 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:opt="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
                     xmlns:src="clr-namespace:Suites.Wpf.Controls">
-  <Image x:Key="BI.Search"
-         Stretch="Uniform"
-         opt:Freeze="True"
-         Source="pack://application:,,,/Suites.Wpf.Controls;component/Resources/search.png" />
-  <Image x:Key="BI.Clear"
-         opt:Freeze="True"
-         Stretch="Uniform"
-         Source="pack://application:,,,/Suites.Wpf.Controls;component/Resources/clear.png" />
+    <Image x:Key="Image.Search"
+           Stretch="Uniform"
+           opt:Freeze="True"
+           Source="pack://application:,,,/Suites.Wpf.Controls;component/Resources/search.png" />
+    <Image x:Key="Image.Clear"
+           opt:Freeze="True"
+           Stretch="Uniform"
+           Source="pack://application:,,,/Suites.Wpf.Controls;component/Resources/clear.png" />
+    <BitmapImage x:Key="Image.More.Page"
+                 opt:Freeze="True"
+                 UriSource="pack://application:,,,/Suites.Wpf.Controls;component/Resources/more-page.png" />
+    <BitmapImage x:Key="Image.Next.Page"
+                 opt:Freeze="True"
+                 UriSource="pack://application:,,,/Suites.Wpf.Controls;component/Resources/next-page.png" />
+    <BitmapImage x:Key="Image.Prev.Page"
+                 opt:Freeze="True"
+                 UriSource="pack://application:,,,/Suites.Wpf.Controls;component/Resources/prev-page.png" />
 </ResourceDictionary>

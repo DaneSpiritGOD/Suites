@@ -11,21 +11,22 @@
         Title="MainWindow"
         Height="450"
         Width="800">
-  <Window.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries></ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-  </Window.Resources>
-  <StackPanel>
-    <swc:SearchBox ClearIconVisibility="Visible"
-                   SearchIconVisibility="Visible"
-                   Background="Transparent"
-                   Height="24px"
-                   Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}">
-      <swc:SearchBox.InputBindings>
-        <KeyBinding Key="Return"
-                    Command="{Binding ReturnCommand}" />
-      </swc:SearchBox.InputBindings>
-    </swc:SearchBox>
-  </StackPanel>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries></ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <StackPanel>
+        <swc:SearchBox ClearIconVisibility="Visible"
+                       SearchIconVisibility="Visible"
+                       Background="Transparent"
+                       Height="24px"
+                       TextChanged="SearchBox_TextChanged"
+                       Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}">
+            <swc:SearchBox.InputBindings>
+                <KeyBinding Key="Return"
+                            Command="{Binding ReturnCommand}" />
+            </swc:SearchBox.InputBindings>
+        </swc:SearchBox>
+    </StackPanel>
 </Window>

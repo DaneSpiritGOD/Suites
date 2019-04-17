@@ -18,12 +18,30 @@ namespace Suites.Wpf.Controls
 
         public static readonly DependencyProperty TextProperty = TextBox.TextProperty.AddOwner(_thisType,
             new FrameworkPropertyMetadata(string.Empty,
-                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault | FrameworkPropertyMetadataOptions.Journal));
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault |
+                FrameworkPropertyMetadataOptions.Journal,
+                (d, e) =>
+                {
+                    ((SearchBox)d).OnTextChanged((string)e.NewValue);
+                }));
+
+        private void OnTextChanged(string newValue)
+        {
+            RaiseEvent(new TextChangedEventArgs2(newValue) { RoutedEvent = TextChangedEvent });
+        }
 
         public string Text
         {
             get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
+        }
+
+        public static readonly RoutedEvent TextChangedEvent = EventManager.RegisterRoutedEvent("TextChanged",
+            RoutingStrategy.Bubble, typeof(TextChangedEventHandler2), _thisType);
+        public event TextChangedEventHandler2 TextChanged
+        {
+            add => AddHandler(TextChangedEvent, value);
+            remove => RemoveHandler(TextChangedEvent, value);
         }
 
         public static readonly DependencyProperty SearchIconVisibilityProperty = DependencyProperty.Register("SearchIconVisibility",

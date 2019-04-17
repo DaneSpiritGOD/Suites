@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
+using Suites.Wpf.Controls;
 
 namespace Suites.Wpf.App.Test
 {
@@ -11,6 +13,11 @@ namespace Suites.Wpf.App.Test
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs2 e)
+        {
+            Trace.WriteLine(e.NewText);
         }
     }
 }

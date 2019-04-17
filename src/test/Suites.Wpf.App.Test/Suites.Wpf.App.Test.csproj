@@ -103,10 +103,6 @@
       <Project>{0c15ce67-c92f-4c57-b066-ee91721e50ce}</Project>
       <Name>Suites.Utils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Suites.Wpf.App\Suites.Wpf.App.csproj">
-      <Project>{27791379-9c80-49d3-8591-0cf18b9ef2df}</Project>
-      <Name>Suites.Wpf.App</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Suites.Wpf.Controls\Suites.Wpf.Controls.csproj">
       <Project>{968329a8-027e-4514-8a8d-7085fc2579df}</Project>
       <Name>Suites.Wpf.Controls</Name>
