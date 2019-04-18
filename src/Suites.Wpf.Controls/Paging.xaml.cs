@@ -105,8 +105,13 @@ namespace Suites.Wpf.Controls
         //}
         #endregion 属性
 
-        #region 初始化数据
-
+        /// <summary>
+        /// 初始化数据
+        /// </summary>
+        /// <param name="grd"></param>
+        /// <param name="total"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
         public void ShowPages(DataGrid grd, int total, int pageIndex, int pageSize)
         {
             _grdList = grd;
@@ -122,10 +127,9 @@ namespace Suites.Wpf.Controls
             }
         }
 
-        #endregion
-
-        #region 画数据
-
+        /// <summary>
+        /// 画数据
+        /// </summary>
         private void ReadDataTable()
         {
             try
@@ -145,8 +149,6 @@ namespace Suites.Wpf.Controls
                 DisplayPagingInfo();
             }
         }
-
-        #endregion
 
         /// <summary>
         /// 画每页显示等数据
@@ -396,14 +398,6 @@ namespace Suites.Wpf.Controls
                 Height = 12,
                 Text = "…"
             };
-
-            //Image tbk = new Image();
-            //tbk.VerticalAlignment = VerticalAlignment.Center;
-            //tbk.HorizontalAlignment = HorizontalAlignment.Center;
-            //tbk.Margin = new Thickness(10, 0, 5, 0);
-            //tbk.Width = 12;
-            //tbk.Height = 12;
-            //tbk.Source = new BitmapImage(new Uri("pack://application:,,,/KnowledgeTool.Theme_Default;component/Images/png-more-page.png"));
 
             Grid.SetColumn(tbk, grid.ColumnDefinitions.Count - 1);
             Grid.SetRow(tbk, 0);
