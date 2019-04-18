@@ -46,7 +46,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Paging.xaml">
+    <Compile Update="DataPager2.xaml.cs">
+      <DependentUpon>DataPager2.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="DataPager2.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
   </ItemGroup>

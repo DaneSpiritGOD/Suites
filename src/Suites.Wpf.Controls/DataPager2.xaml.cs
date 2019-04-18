@@ -9,11 +9,22 @@ namespace Suites.Wpf.Controls
     /// <summary>
     /// 分页控件   事件驱动
     /// </summary>
-    public partial class Paging : UserControl
+    public partial class DataPager2 : UserControl
     {
-        public delegate dynamic PageQuery(int page, int size);
+        /// <summary>
+        /// 最小页码索引
+        /// </summary>
+        private const int MIN_PAGE_INDEX = 0;
 
-        private const int MIN_PAGE_INDEX = 1;
+        /// <summary>
+        /// PageIndex默认值
+        /// </summary>
+        private const int DEFAULT_INITIALED_PAGE_INDEX = 0;
+
+        /// <summary>
+        /// TotalPage默认值
+        /// </summary>
+        private const int DEFAULT_INITIALED_TOTAL_PAGE = 0;
         private static int GetMaxPageIndex(int totalPageCount, int minPageIndex)
         {
             return Math.Max(minPageIndex + totalPageCount - 1, minPageIndex);
@@ -29,44 +40,17 @@ namespace Suites.Wpf.Controls
             return Math.Max(Math.Min(pageIndex, maxPageIndex), MIN_PAGE_INDEX);
         }
 
-        private static int GetPageBttonContentFromPageIndex(int pageIndex)
-        {
-            return MIN_PAGE_INDEX == 0 ? pageIndex + 1 : pageIndex;
-        }
-
-        private static int GetPageIndexFromPageBttonContent(int content)
-        {
-            return MIN_PAGE_INDEX == 0 ? content - 1 : content;
-        }
-
-        public Paging()
+        public DataPager2()
         {
             InitializeComponent();
         }
 
-        //每页显示多少条
-        private int _pageSize = 10;
-
-        //当前是第几页
-        private int _pageIndex = 1;
-
-        //DataGrid控件对象
-        private DataGrid _grdList;
-
-        //最大页数
-        private int _maxIndex = 1;
-
-        //一共多少条
-        private int _allNum;
-
-        //查询
-        public event PageQuery Query;
-
         #region 属性
-        private static readonly Type _thisType = typeof(Paging);
+        private static readonly Type _thisType = typeof(DataPager2);
         public static readonly DependencyProperty TotalPageProperty =
             DependencyProperty.Register("TotalPage", typeof(int), _thisType,
-                new PropertyMetadata(0, OnTotalPagePropertyChanged));
+                new PropertyMetadata(DEFAULT_INITIALED_PAGE_INDEX,
+                    (d, e) => ((DataPager2)d).OnTotalPagePropertyChanged((int)e.OldValue, (int)e.NewValue)));
 
         public int TotalPage
         {
@@ -74,60 +58,95 @@ namespace Suites.Wpf.Controls
             set => SetValue(TotalPageProperty, value);
         }
 
-        private static void OnTotalPagePropertyChanged(
-            DependencyObject dependencyObject,
-            DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        /// <summary>
+        /// 总页数阈值1，当总页数小于该阈值时，展示所有页码按钮
+        /// </summary>
+        private const int MAX_PAGE_BUTTON = 10;
+
+        private Button CreateNewPageButton(int pageIndex, int columnIndex)
         {
-            //var pager = (Paging)dependencyObject;
-            //if (pager == null)
-            //{
-            //    return;
-            //}
+            var pageButton = new Button
+            {
+                BorderThickness = new Thickness(1),
+                Height = 26,
+                Padding = new Thickness(3, 0, 3, 0),
+                HorizontalAlignment = HorizontalAlignment.Left,
+                Content = GetPageBttonContentFromPageIndex(pageIndex, columnIndex),
+                Tag = pageIndex,
+                Style = (Style)FindResource("PageTextBlock3"),
+                IsEnabled = pageIndex != PageIndex
+            };
 
-            //pager.setButtonVisible();
+            pageButton.Click += pageIndexButton_Click;
+            Grid.SetColumn(pageButton, columnIndex);
 
-            //if (pager.PageIndex + 1 > pager.TotalPage)
-            //{
-            //    return;
-            //}
+            return pageButton;
+        }
 
-            //pager.ButtonPreviousPage.IsEnabled = pager.PageIndex > 0;
-            //pager.ButtonNextPage.IsEnabled = pager.PageIndex + 1 < pager.TotalPage;
+        private int GetPageBttonContentFromPageIndex(int pageIndex, int columnIndex)
+        {
+            return MIN_PAGE_INDEX == 0 ? pageIndex + 1 : pageIndex;
+        }
 
-            //int currentPageButtonIndex = getCurrentPageButtonIndex(pager);
-            //setButtonText(pager, currentPageButtonIndex);
-            //pager.SetButtonBorder(currentPageButtonIndex);
+        private void RefreshBttonEnabled(int pageIndex, int totalPage)
+        {
+            var goButtonEnabled = GetGoButtonEnabled();
+            pageGo.IsEnabled = goButtonEnabled;
+            btnGo.IsEnabled = goButtonEnabled;
+
+            btnPrev.IsEnabled = GetPrevButtonEnabled();
+            btnNext.IsEnabled = GetNextButtonEnabled();
+
+            bool GetGoButtonEnabled() => totalPage > 1;
+            bool GetPrevButtonEnabled() => pageIndex != MIN_PAGE_INDEX;
+            bool GetNextButtonEnabled() => pageIndex != totalPage;
+        }
+
+        private void OnTotalPagePropertyChanged(int oldTotalPage, int newTotalPage)
+        {
+            if (oldTotalPage == newTotalPage)
+                return;
+
+            RefreshBttonEnabled(PageIndex, newTotalPage);
+
+            grid.ColumnDefinitions.Clear();
+            grid.Children.Clear();
+
+            var count = Math.Max(MAX_PAGE_BUTTON, newTotalPage);
+            for (var index = 0; index < count; ++index)
+            {
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                grid.Children.Add(CreateNewPageButton(index, index));
+            }
+
+
         }
 
         public static readonly DependencyProperty PageIndexProperty =
-            DependencyProperty.Register("PageIndex", typeof(int), _thisType, new PropertyMetadata(0, OnPageIndexPropertyChanged));
+            DependencyProperty.Register("PageIndex", typeof(int), _thisType,
+                new PropertyMetadata(DEFAULT_INITIALED_TOTAL_PAGE,
+                    (d, e) => ((DataPager2)d).OnPageIndexPropertyChanged((int)e.OldValue, (int)e.NewValue),
+                    (d, v) => ((DataPager2)d).CoercePageIndexChanged((int)v)));
+
         public int PageIndex
         {
             get => (int)GetValue(PageIndexProperty);
             set => SetValue(PageIndexProperty, value);
         }
 
-        private static void OnPageIndexPropertyChanged(
-            DependencyObject dependencyObject,
-            DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        private void OnPageIndexPropertyChanged(int oldValue, int newValue)
         {
-            //var pager = (Paging)dependencyObject;
-            //if (pager == null)
-            //{
-            //    return;
-            //}
+            if (oldValue == newValue)
+                return;
 
-            //if (pager.PageIndex + 1 > pager.TotalPage)
-            //{
-            //    return;
-            //}
+            RefreshBttonEnabled(newValue, TotalPage);
 
-            //pager.ButtonPreviousPage.IsEnabled = pager.PageIndex > 0;
-            //pager.ButtonNextPage.IsEnabled = pager.PageIndex + 1 < pager.TotalPage;
 
-            //int currentPageButtonIndex = getCurrentPageButtonIndex(pager);
-            //setButtonText(pager, currentPageButtonIndex);
-            //pager.SetButtonBorder(currentPageButtonIndex);
+        }
+
+        private int CoercePageIndexChanged(int newValue)
+        {
+            return CoercePageIndex(newValue);
         }
 
         public int MaxPageIndex
@@ -137,67 +156,32 @@ namespace Suites.Wpf.Controls
 
         private int CoercePageIndex(int pageIndex)
         {
-            return Math.Max(Math.Min(pageIndex, MaxPageIndex), MIN_PAGE_INDEX);
+            return CoercePageIndex(pageIndex, MIN_PAGE_INDEX, MaxPageIndex);
         }
-        #endregion 属性
-
-        /// <summary>
-        /// 初始化数据
-        /// </summary>
-        /// <param name="grd"></param>
-        /// <param name="total"></param>
-        /// <param name="pageIndex"></param>
-        /// <param name="pageSize"></param>
-        public void ShowPages(DataGrid grd, int total, int pageIndex, int pageSize)
-        {
-            _grdList = grd;
-            _pageSize = pageSize;
-            _pageIndex = pageIndex;
-            _allNum = total;
-            //SetMaxIndex();
-            DisplayPagingInfo();
-            if (_maxIndex > 1)
-            {
-                pageGo.IsEnabled = true;
-                btnGo.IsEnabled = true;
-            }
-        }
+        #endregion 属性        
 
         /// <summary>
         /// 画每页显示等数据
         /// </summary>
-        private void DisplayPagingInfo()
+        private void RefreshUI()
         {
-            if (_pageIndex == 1)
-            {
-                btnPrev.IsEnabled = false;
-            }
-            else
-            {
-                btnPrev.IsEnabled = true;
-            }
-            if (_pageIndex == _maxIndex)
-            {
-                btnNext.IsEnabled = false;
-            }
-            else
-            {
-                btnNext.IsEnabled = true;
-            }
+            var goButtonEnabled = GetGoButtonEnabled();
+            pageGo.IsEnabled = goButtonEnabled;
+            btnGo.IsEnabled = goButtonEnabled;
+
+            btnPrev.IsEnabled = GetPrevButtonEnabled();
+            btnNext.IsEnabled = GetNextButtonEnabled();
 
             var first = 1;
-            var last = _maxIndex;
-            grid.Children.Clear();
-            if (_maxIndex <= 8)
+            var last = TotalPage;
+
+            if (IsTotalPageLowerEqualThan8())
             {
-                for (var i = first; i <= last; i++)
-                {
-                    NumberDisplay(i);
-                }
+                DisplayAllPageButton(TotalPage);
             }
             else
             {
-                if (_pageIndex < 5)   //选中页位于前三页   1~3
+                if (PageIndex < 5) //选中页位于前三页   1~3
                 {
                     for (var i = first; i <= last; i++)   //初始化分页
                     {
@@ -215,7 +199,7 @@ namespace Suites.Wpf.Controls
                         }
                     }
                 }
-                if (_pageIndex > 5 && _pageIndex < last - 3)  //选中页位于中间页码 
+                if (PageIndex > 5 && PageIndex < last - 3)  //选中页位于中间页码 
                 {
                     for (var i = first; i <= last; i++)   //初始化分页
                     {
@@ -227,7 +211,7 @@ namespace Suites.Wpf.Controls
                         {
                             EllipsisDisplay();
                         }
-                        else if (i >= _pageIndex - 2 && i <= _pageIndex + 2)
+                        else if (i >= PageIndex - 2 && i <= PageIndex + 2)
                         {
                             NumberDisplay(i);
                         }
@@ -241,7 +225,7 @@ namespace Suites.Wpf.Controls
                         }
                     }
                 }
-                else if (_pageIndex > last - 5)   //选中页位于最后三页
+                else if (PageIndex > last - 5)   //选中页位于最后三页
                 {
                     for (var i = first; i <= last; i++)   //初始化分页
                     {
@@ -259,7 +243,7 @@ namespace Suites.Wpf.Controls
                         }
                     }
                 }
-                else if (_pageIndex == 5)
+                else if (PageIndex == 5)
                 {
                     for (var i = first; i <= last; i++)   //初始化分页
                     {
@@ -275,7 +259,7 @@ namespace Suites.Wpf.Controls
                         {
                             EllipsisDisplay();
                         }
-                        else if (i >= _pageIndex - 2 && i <= _pageIndex + 2)
+                        else if (i >= PageIndex - 2 && i <= PageIndex + 2)
                         {
                             NumberDisplay(i);
                         }
@@ -286,6 +270,32 @@ namespace Suites.Wpf.Controls
                         }
                     }
                 }
+            }
+
+            bool GetGoButtonEnabled() => TotalPage > 1;
+            bool IsTotalPageLowerEqualThan8() => TotalPage <= MAX_PAGE_BUTTON;
+            bool GetPrevButtonEnabled() => PageIndex != MIN_PAGE_INDEX;
+            bool GetNextButtonEnabled() => PageIndex != TotalPage;
+
+            void ReInitialGrid2()
+            {
+                grid.ColumnDefinitions.Clear();
+                grid.Children.Clear();
+            }
+
+            void DisplayAllPageButton(int count)
+            {
+                ReInitialGrid2();
+                for (var i = 0; i <= count - 1; i++)
+                {
+                    CreateNewPageButton2(i);
+                }
+            }
+
+            void CreateNewPageButton2(int pageIndex)
+            {
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                grid.Children.Add(CreateNewPageButton(pageIndex, pageIndex));
             }
         }
 
@@ -333,7 +343,7 @@ namespace Suites.Wpf.Controls
             tbl.Content = i.ToString();
             tbl.Style = FindResource("PageTextBlock3") as Style;
             tbl.Click += pageIndexButton_Click;
-            if (i == _pageIndex)
+            if (i == PageIndex)
             {
                 tbl.IsEnabled = false;
             }
@@ -341,57 +351,6 @@ namespace Suites.Wpf.Controls
             Grid.SetColumn(tbl, grid.ColumnDefinitions.Count - 1);
             Grid.SetRow(tbl, 0);
             grid.Children.Add(tbl);
-        }
-
-        private double CalcPageButtonWidth(int pageIndex)
-        {
-            if (0 < pageIndex && pageIndex < 10)
-            {
-                return 22;
-            }
-            else if (10 <= pageIndex && pageIndex < 100)
-            {
-                return 32;
-            }
-            else if (100 <= pageIndex && pageIndex < 1000)
-            {
-                return 36;
-            }
-            else if (1000 <= pageIndex && pageIndex < 10000)
-            {
-                return 44;
-            }
-            else if (10000 <= pageIndex && pageIndex < 100000)
-            {
-                return 52;
-            }
-            else if (100000 <= pageIndex && pageIndex < 1000000)
-            {
-                return 58;
-            }
-            else
-            {
-                return 65;
-            }
-        }
-        private void CreateNewPageButton(int pageIndex, double width)
-        {
-            var cdf = new ColumnDefinition();
-            grid.ColumnDefinitions.Add(cdf);
-            var pageButton = new Button
-            {
-                BorderThickness = new Thickness(1),
-                Height = 26,
-                Width = CalcPageButtonWidth(pageIndex),
-                Content = GetPageBttonContentFromPageIndex(pageIndex).ToString(),
-                Style = (Style)FindResource("PageTextBlock3"),
-                IsEnabled = pageIndex != _pageIndex
-            };
-
-            pageButton.Click += pageIndexButton_Click;
-
-            Grid.SetColumn(pageButton, grid.ColumnDefinitions.Count - 1);
-            grid.Children.Add(pageButton);
         }
 
         /// <summary>
@@ -468,11 +427,7 @@ namespace Suites.Wpf.Controls
         /// <param name="e"></param>
         private void pageIndexButton_Click(object sender, RoutedEventArgs e)
         {
-            var text = (string)((Button)sender).Content;
-            if (int.TryParse(text, out var index))
-            {
-                PageIndex = CoercePageIndex(GetPageIndexFromPageBttonContent(index));
-            }
+            PageIndex = (int)((Button)sender).Tag;
         }
     }
 }

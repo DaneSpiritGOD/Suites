@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WebApiClient.JIT" Version="1.0.4" />
+    <PackageReference Include="WebApiClient.JIT" Version="1.0.5" />
   </ItemGroup>
 
   <ItemGroup>
