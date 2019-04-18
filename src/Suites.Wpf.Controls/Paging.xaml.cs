@@ -119,6 +119,16 @@ namespace Suites.Wpf.Controls
             //setButtonText(pager, currentPageButtonIndex);
             //pager.SetButtonBorder(currentPageButtonIndex);
         }
+
+        public int MaxPageIndex
+        {
+            get => GetMaxPageIndex(TotalPage, MIN_PAGE_INDEX);
+        }
+
+        private int CoercePageIndex(int pageIndex)
+        {
+            return Math.Max(Math.Min(pageIndex, MaxPageIndex), MIN_PAGE_INDEX);
+        }
         #endregion 属性
 
         /// <summary>
@@ -134,7 +144,7 @@ namespace Suites.Wpf.Controls
             _pageSize = pageSize;
             _pageIndex = pageIndex;
             _allNum = total;
-            SetMaxIndex();
+            //SetMaxIndex();
             DisplayPagingInfo();
             if (_maxIndex > 1)
             {
@@ -442,32 +452,12 @@ namespace Suites.Wpf.Controls
         /// <param name="e"></param>
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
-            if (PageIndex >= GetMaxPageIndex(TotalPage, MIN_PAGE_INDEX))
+            if (PageIndex >= MaxPageIndex)
             {
                 return;
             }
 
             PageIndex++;
-        }
-
-        /// <summary>
-        /// 设置最多大页面
-        /// </summary>
-        private void SetMaxIndex()
-        {
-            var pages = _allNum / _pageSize;
-            if (_allNum != (pages * _pageSize))
-            {
-                if (_allNum < (pages * _pageSize))
-                {
-                    pages--;
-                }
-                else
-                {
-                    pages++;
-                }
-            }
-            _maxIndex = pages;
         }
 
         /// <summary>
@@ -479,7 +469,7 @@ namespace Suites.Wpf.Controls
         {
             if (int.TryParse(pageGo.Text, out var index))
             {
-                PageIndex = CoercePageIndex(index, MIN_PAGE_INDEX, GetMaxPageIndex(TotalPage, MIN_PAGE_INDEX));
+                PageIndex = CoercePageIndex(index));
             }
             pageGo.Clear();
         }
