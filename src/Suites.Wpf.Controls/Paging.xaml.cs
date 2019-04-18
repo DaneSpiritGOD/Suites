@@ -29,6 +29,16 @@ namespace Suites.Wpf.Controls
             return Math.Max(Math.Min(pageIndex, maxPageIndex), MIN_PAGE_INDEX);
         }
 
+        private static int GetPageBttonContentFromPageIndex(int pageIndex)
+        {
+            return MIN_PAGE_INDEX == 0 ? pageIndex + 1 : pageIndex;
+        }
+
+        private static int GetPageIndexFromPageBttonContent(int content)
+        {
+            return MIN_PAGE_INDEX == 0 ? content - 1 : content;
+        }
+
         public Paging()
         {
             InitializeComponent();
@@ -322,7 +332,7 @@ namespace Suites.Wpf.Controls
             }
             tbl.Content = i.ToString();
             tbl.Style = FindResource("PageTextBlock3") as Style;
-            tbl.Click += new RoutedEventHandler(tbl_Click);
+            tbl.Click += pageIndexButton_Click;
             if (i == _pageIndex)
             {
                 tbl.IsEnabled = false;
@@ -373,12 +383,12 @@ namespace Suites.Wpf.Controls
                 BorderThickness = new Thickness(1),
                 Height = 26,
                 Width = CalcPageButtonWidth(pageIndex),
-                Content = (pageIndex + 1).ToString(),
+                Content = GetPageBttonContentFromPageIndex(pageIndex).ToString(),
                 Style = (Style)FindResource("PageTextBlock3"),
                 IsEnabled = pageIndex != _pageIndex
             };
 
-            pageButton.Click += tbl_Click;
+            pageButton.Click += pageIndexButton_Click;
 
             Grid.SetColumn(pageButton, grid.ColumnDefinitions.Count - 1);
             grid.Children.Add(pageButton);
@@ -456,24 +466,12 @@ namespace Suites.Wpf.Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tbl_Click(object sender, RoutedEventArgs e)
+        private void pageIndexButton_Click(object sender, RoutedEventArgs e)
         {
-            var text = ((ContentControl)e.Source).Content as string;
-            if (string.IsNullOrEmpty(text))
+            var text = (string)((Button)sender).Content;
+            if (int.TryParse(text, out var index))
             {
-                return;
-            }
-
-            var index = int.Parse(text);
-            _pageIndex = index;
-            if (index > _maxIndex)
-            {
-                _pageIndex = _maxIndex;
-            }
-
-            if (index < 1)
-            {
-                _pageIndex = 1;
+                PageIndex = CoercePageIndex(GetPageIndexFromPageBttonContent(index));
             }
         }
     }
