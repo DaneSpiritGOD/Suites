@@ -13,6 +13,22 @@ namespace Suites.Wpf.Controls
     {
         public delegate dynamic PageQuery(int page, int size);
 
+        private const int MIN_PAGE_INDEX = 1;
+        private static int GetMaxPageIndex(int totalPageCount, int minPageIndex)
+        {
+            return Math.Max(minPageIndex + totalPageCount - 1, minPageIndex);
+        }
+
+        private static bool IsValidPageIndex(int pageIndex, int minPageIndex, int maxPageIndex)
+        {
+            return pageIndex <= maxPageIndex && pageIndex >= minPageIndex;
+        }
+
+        private static int CoercePageIndex(int pageIndex, int minPageIndex, int maxPageIndex)
+        {
+            return Math.Max(Math.Min(pageIndex, maxPageIndex), MIN_PAGE_INDEX);
+        }
+
         public Paging()
         {
             InitializeComponent();
@@ -37,72 +53,72 @@ namespace Suites.Wpf.Controls
         public event PageQuery Query;
 
         #region 属性
-        //private static readonly Type _thisType = typeof(Paging);
-        //public static readonly DependencyProperty TotalPageProperty =
-        //    DependencyProperty.Register("TotalPage", typeof(int), _thisType,
-        //        new PropertyMetadata(0, OnTotalPagePropertyChanged));
+        private static readonly Type _thisType = typeof(Paging);
+        public static readonly DependencyProperty TotalPageProperty =
+            DependencyProperty.Register("TotalPage", typeof(int), _thisType,
+                new PropertyMetadata(0, OnTotalPagePropertyChanged));
 
-        //public int TotalPage
-        //{
-        //    get => (int)GetValue(TotalPageProperty);
-        //    set => SetValue(TotalPageProperty, value);
-        //}
+        public int TotalPage
+        {
+            get => (int)GetValue(TotalPageProperty);
+            set => SetValue(TotalPageProperty, value);
+        }
 
-        //private static void OnTotalPagePropertyChanged(
-        //    DependencyObject dependencyObject,
-        //    DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        //{
-        //    var pager = (Paging)dependencyObject;
-        //    if (pager == null)
-        //    {
-        //        return;
-        //    }
+        private static void OnTotalPagePropertyChanged(
+            DependencyObject dependencyObject,
+            DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        {
+            //var pager = (Paging)dependencyObject;
+            //if (pager == null)
+            //{
+            //    return;
+            //}
 
-        //    pager.setButtonVisible();
+            //pager.setButtonVisible();
 
-        //    if (pager.PageIndex + 1 > pager.TotalPage)
-        //    {
-        //        return;
-        //    }
+            //if (pager.PageIndex + 1 > pager.TotalPage)
+            //{
+            //    return;
+            //}
 
-        //    pager.ButtonPreviousPage.IsEnabled = pager.PageIndex > 0;
-        //    pager.ButtonNextPage.IsEnabled = pager.PageIndex + 1 < pager.TotalPage;
+            //pager.ButtonPreviousPage.IsEnabled = pager.PageIndex > 0;
+            //pager.ButtonNextPage.IsEnabled = pager.PageIndex + 1 < pager.TotalPage;
 
-        //    int currentPageButtonIndex = getCurrentPageButtonIndex(pager);
-        //    setButtonText(pager, currentPageButtonIndex);
-        //    pager.SetButtonBorder(currentPageButtonIndex);
-        //}
+            //int currentPageButtonIndex = getCurrentPageButtonIndex(pager);
+            //setButtonText(pager, currentPageButtonIndex);
+            //pager.SetButtonBorder(currentPageButtonIndex);
+        }
 
-        //public static readonly DependencyProperty PageIndexProperty =
-        //    DependencyProperty.Register("PageIndex", typeof(int), _thisType, new PropertyMetadata(0, OnPageIndexPropertyChanged));
-        //public int PageIndex
-        //{
-        //    get => (int)GetValue(PageIndexProperty);
-        //    set => SetValue(PageIndexProperty, value);
-        //}
+        public static readonly DependencyProperty PageIndexProperty =
+            DependencyProperty.Register("PageIndex", typeof(int), _thisType, new PropertyMetadata(0, OnPageIndexPropertyChanged));
+        public int PageIndex
+        {
+            get => (int)GetValue(PageIndexProperty);
+            set => SetValue(PageIndexProperty, value);
+        }
 
-        //private static void OnPageIndexPropertyChanged(
-        //    DependencyObject dependencyObject,
-        //    DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-        //{
-        //    var pager = (Paging)dependencyObject;
-        //    if (pager == null)
-        //    {
-        //        return;
-        //    }
+        private static void OnPageIndexPropertyChanged(
+            DependencyObject dependencyObject,
+            DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        {
+            //var pager = (Paging)dependencyObject;
+            //if (pager == null)
+            //{
+            //    return;
+            //}
 
-        //    if (pager.PageIndex + 1 > pager.TotalPage)
-        //    {
-        //        return;
-        //    }
+            //if (pager.PageIndex + 1 > pager.TotalPage)
+            //{
+            //    return;
+            //}
 
-        //    pager.ButtonPreviousPage.IsEnabled = pager.PageIndex > 0;
-        //    pager.ButtonNextPage.IsEnabled = pager.PageIndex + 1 < pager.TotalPage;
+            //pager.ButtonPreviousPage.IsEnabled = pager.PageIndex > 0;
+            //pager.ButtonNextPage.IsEnabled = pager.PageIndex + 1 < pager.TotalPage;
 
-        //    int currentPageButtonIndex = getCurrentPageButtonIndex(pager);
-        //    setButtonText(pager, currentPageButtonIndex);
-        //    pager.SetButtonBorder(currentPageButtonIndex);
-        //}
+            //int currentPageButtonIndex = getCurrentPageButtonIndex(pager);
+            //setButtonText(pager, currentPageButtonIndex);
+            //pager.SetButtonBorder(currentPageButtonIndex);
+        }
         #endregion 属性
 
         /// <summary>
@@ -411,13 +427,12 @@ namespace Suites.Wpf.Controls
         /// <param name="e"></param>
         private void btnPrev_Click(object sender, RoutedEventArgs e)
         {
-            if (_pageIndex <= 1)
+            if (PageIndex <= MIN_PAGE_INDEX)
             {
                 return;
             }
 
-            _pageIndex--;
-            ReadDataTable();
+            PageIndex--;
         }
 
         /// <summary>
@@ -427,13 +442,12 @@ namespace Suites.Wpf.Controls
         /// <param name="e"></param>
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
-            if (_pageIndex >= _maxIndex)
+            if (PageIndex >= GetMaxPageIndex(TotalPage, MIN_PAGE_INDEX))
             {
                 return;
             }
 
-            _pageIndex++;
-            ReadDataTable();
+            PageIndex++;
         }
 
         /// <summary>
@@ -463,21 +477,11 @@ namespace Suites.Wpf.Controls
         /// <param name="e"></param>
         private void btnGo_Click(object sender, RoutedEventArgs e)
         {
-            if (IsNumber(pageGo.Text))
+            if (int.TryParse(pageGo.Text, out var index))
             {
-                var pageNum = int.Parse(pageGo.Text);
-                if (pageNum > 0 && pageNum <= _maxIndex)
-                {
-                    _pageIndex = pageNum;
-                    ReadDataTable();
-                }
-                else if (pageNum > _maxIndex)
-                {
-                    _pageIndex = _maxIndex;
-                    ReadDataTable();
-                }
+                PageIndex = CoercePageIndex(index, MIN_PAGE_INDEX, GetMaxPageIndex(TotalPage, MIN_PAGE_INDEX));
             }
-            pageGo.Text = "";
+            pageGo.Clear();
         }
 
         /// <summary>
@@ -507,19 +511,6 @@ namespace Suites.Wpf.Controls
 
             ReadDataTable();
         }
-
-        /// <summary>
-        /// 判断是否是数字
-        /// </summary>
-        /// <param name="valString"></param>
-        /// <returns></returns>
-        public static bool IsNumber(string valString)
-        {
-            var m = RegNumber.Match(valString);
-            return m.Success;
-        }
-
-        private static readonly Regex RegNumber = new Regex("^[0-9]+$");
 
         /// <summary>
         /// 页码输入框宽度适应
