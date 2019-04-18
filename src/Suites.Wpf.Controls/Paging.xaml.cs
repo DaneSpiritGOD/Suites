@@ -154,29 +154,6 @@ namespace Suites.Wpf.Controls
         }
 
         /// <summary>
-        /// 画数据
-        /// </summary>
-        private void ReadDataTable()
-        {
-            try
-            {
-                Dispatcher.Invoke(() =>
-                {
-                    IEnumerable result = Query?.Invoke(_pageIndex, _pageSize);
-                    _grdList.ItemsSource = result;
-                });
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("加载出现错误");
-            }
-            finally
-            {
-                DisplayPagingInfo();
-            }
-        }
-
-        /// <summary>
         /// 画每页显示等数据
         /// </summary>
         private void DisplayPagingInfo()
@@ -469,7 +446,7 @@ namespace Suites.Wpf.Controls
         {
             if (int.TryParse(pageGo.Text, out var index))
             {
-                PageIndex = CoercePageIndex(index));
+                PageIndex = CoercePageIndex(index);
             }
             pageGo.Clear();
         }
@@ -498,8 +475,6 @@ namespace Suites.Wpf.Controls
             {
                 _pageIndex = 1;
             }
-
-            ReadDataTable();
         }
     }
 }
