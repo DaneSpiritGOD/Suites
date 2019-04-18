@@ -511,35 +511,5 @@ namespace Suites.Wpf.Controls
 
             ReadDataTable();
         }
-
-        /// <summary>
-        /// 页码输入框宽度适应
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pageGo_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var pageGoLength = pageGo.Text.Trim().Length;
-            if (pageGoLength <= 3)
-            {
-                pageGo.Width = 36;
-            }
-            else if (pageGoLength == 4)
-            {
-                pageGo.Width = 44;
-            }
-            else if (pageGoLength == 5)
-            {
-                pageGo.Width = 52;
-            }
-            else if (pageGoLength == 6)
-            {
-                pageGo.Width = 58;
-            }
-            else
-            {
-                pageGo.Width = 65;
-            }
-        }
     }
 }

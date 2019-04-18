@@ -28,5 +28,9 @@
                             Command="{Binding ReturnCommand}" />
             </swc:SearchBox.InputBindings>
         </swc:SearchBox>
+        <TextBox Width="Auto"
+                 MinWidth="20px"
+                 MaxLength="10"
+                 HorizontalAlignment="Left" />
     </StackPanel>
 </Window>
