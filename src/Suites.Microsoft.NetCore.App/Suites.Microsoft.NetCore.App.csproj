@@ -3,14 +3,6 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Authors>DaneSpiritGOD</Authors>
-    <Company>NanJing.cn</Company>
-    <Description>Some common packages for .net core,e.g. Microsoft.Extensions.Configuration,Microsoft.Extensions.Logging.Also some useful apis.</Description>
-    <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
-    <PackageTags>.netcore2.0 baselib</PackageTags>
-    <Version>0.0.3</Version>
     <RootNamespace>Suites</RootNamespace>
   </PropertyGroup>
 

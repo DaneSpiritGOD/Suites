@@ -19,5 +19,10 @@ namespace Suites.Wpf.App.Test
         {
             Trace.WriteLine(e.NewText);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Width_Button.Content = "1";
+        }
     }
 }

@@ -4,15 +4,6 @@
     <TargetFrameworks>net471;net461</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Authors>DaneSpiritGOD</Authors>
-    <Company>NanJing.cn</Company>
-    <Description>Some common packages for .net core,e.g. Microsoft.Extensions.Configuration,Microsoft.Extensions.Logging.Also some useful apis.</Description>
-    <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
-    <PackageTags>.netcore2.0 baselib</PackageTags>
-    <Version>1.0.6</Version>
   </PropertyGroup>
 
   <ItemGroup>

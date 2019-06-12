@@ -3,19 +3,11 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Authors>DaneSpiritGOD</Authors>
-    <Company>NanJing.cn</Company>
-    <Version>1.0.5</Version>
-    <Description>Some common packages for .net core,e.g. Microsoft.Extensions.Configuration,Microsoft.Extensions.Logging.Also some useful apis.</Description>
-    <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
-    <PackageTags>.netcore2.0 baselib</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="8.0.0" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
   </ItemGroup>
 
   <ItemGroup>
