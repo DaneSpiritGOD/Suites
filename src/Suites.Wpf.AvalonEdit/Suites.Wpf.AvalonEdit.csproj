@@ -5,14 +5,7 @@
     <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Authors>DaneSpiritGOD</Authors>
-    <Company>NanJing.cn</Company>
     <Description>my own AvalonEdit enhancement</Description>
-    <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
-    <PackageTags>.netcore2.0 baselib</PackageTags>
-    <Version>0.0.7</Version>
   </PropertyGroup>
 
   <ItemGroup>
