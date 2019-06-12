@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 #if !NET45
 using Microsoft.Extensions.DependencyInjection;
 #endif
@@ -19,6 +15,8 @@ namespace WebApiClient
         {
             _serviceProvider = NamedNullException.Assert(provider, nameof(provider));
         }
+
+        public Type InterfaceType => typeof(TInterface);
 
         [Obsolete("不需要使用该方法！")]
         public void ConfigureHttpApiConfig(Action<HttpApiConfig> options)

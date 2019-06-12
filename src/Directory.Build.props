@@ -1,0 +1,13 @@
+﻿<Project>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Authors>DaneSpiritGOD</Authors>
+    <Company>NanJing.cn</Company>
+    <Description>base lib for suites.core</Description>
+    <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
+    <PackageTags>netcore netstandard</PackageTags>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+</Project>
