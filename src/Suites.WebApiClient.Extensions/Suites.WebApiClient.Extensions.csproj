@@ -19,16 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="WebApiClient.JIT" Version="1.0.9" />
+    <PackageReference Include="WebApiClient.JIT" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Suites.Utils\Suites.Utils.csproj" />
     <ProjectReference Include="..\Suites.WebApiClient.Extensions.Abstraction\Suites.WebApiClient.Extensions.Abstraction.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Microsoft.Extensions.DependencyInjection\" />
   </ItemGroup>
 
 </Project>

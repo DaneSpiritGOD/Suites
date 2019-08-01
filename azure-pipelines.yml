@@ -31,8 +31,6 @@ jobs:
       wacPrj: 'Suites.WebApiClient.Extensions'
       autoMapperPrj: 'Suites.AutoMapper'
       mediatRPrj: 'Suites.MediatR'
-      prismPrj: 'Suites.Prism.Wpf.Fx'
-      wpfAppPrj: 'Suites.Wpf.App'
       wpfCorePrj: 'Suites.Wpf.Core'
       avalonEditPrj: 'Suites.Wpf.AvalonEdit'
       netcoreapp: 'Suites.Microsoft.NetCore.App'
@@ -42,7 +40,7 @@ jobs:
     - task: DotNetCoreInstaller@0
       inputs:
         packageType: 'sdk' # Options: runtime, sdk
-        version: '3.0.100-preview5-011568'
+        version: '3.0.100-preview7-012821'
 
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(utilsPrj)/$(utilsPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(corePrj)/$(corePrj).csproj
@@ -50,56 +48,8 @@ jobs:
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacPrj)/$(wacPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(autoMapperPrj)/$(autoMapperPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(mediatRPrj)/$(mediatRPrj).csproj
-    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(netcoreapp)/$(netcoreapp).csproj
-    #- script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(prismPrj)/$(prismPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wpfCorePrj)/$(wpfCorePrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(avalonEditPrj)/$(avalonEditPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(controls)/$(controls).csproj
-
-    #- task: NuGetToolInstaller@0
-      #inputs:
-        #versionSpec: '4.9.2'
-    #- task: NuGetCommand@2
-      #inputs:
-        #command: 'restore'
-        #restoreSolution: $(srcRoot)$(utilsPrj)/$(utilsPrj).csproj
-        #feedsToUse: 'select'
-        #includeNuGetOrg: true
-    #- task: NuGetCommand@2
-      #inputs:
-        #command: 'restore'
-        #restoreSolution: $(srcRoot)$(controls)/$(controls).csproj
-        #feedsToUse: 'select'
-        #includeNuGetOrg: true
-    #- task: VSBuild@1
-      #inputs: 
-        #solution: $(srcRoot)$(controls)/$(controls).csproj
-        #configuration: $(buildConfiguration)
-        #platform: '$(csprojBuildPlatform)'
-    #- task: NuGetCommand@2
-      #inputs:
-        #command: pack
-        #packagesToPack: $(srcRoot)$(controls)/$(controls).csproj.nuspec
-        #configuration: $(buildConfiguration)
-        #packDestination: $(Build.ArtifactStagingDirectory)
-
-    #- task: NuGetToolInstaller@0
-    #- task: NuGetCommand@2
-      #inputs:
-        #command: 'restore'
-        #restoreSolution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
-        #feedsToUse: 'select'
-        #includeNuGetOrg: true
-    #- task: VSBuild@1
-      #inputs: 
-        #solution: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj
-        #configuration: $(buildConfiguration)
-        #platform: '$(csprojBuildPlatform)'
-    #- task: NuGetCommand@2
-      #inputs:
-        #command: pack
-        #packagesToPack: $(srcRoot)$(wpfAppPrj)/$(wpfAppPrj).csproj.nuspec
-        #configuration: $(buildConfiguration)
-        #packDestination: $(Build.ArtifactStagingDirectory)
 
     - script: dotnet nuget push $(Build.ArtifactStagingDirectory)\*.nupkg -k $(nuget.key) -s $(nugetSource) # -n

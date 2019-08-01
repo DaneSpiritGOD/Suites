@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Runtime.CompilerServices;
 
 namespace System
 {
@@ -12,13 +9,14 @@ namespace System
 
     public class StringNullOrEmptyException : RuntimeException
     {
-        public StringNullOrEmptyException(string variableName) : base($"{variableName} - must be not be null or empty.") { }
+        private StringNullOrEmptyException(string variableName, string method)
+            : base($"Variable(`{variableName}`) in method(`{method}`) must be not be null or empty.") { }
 
         public static string Assert(string arg, string exceptionShowName, [CallerMemberName]string methodName = null)
         {
             if (string.IsNullOrEmpty(arg))
             {
-                throw new StringNullOrEmptyException($"variable: {exceptionShowName} in method: {methodName}");
+                throw new StringNullOrEmptyException(exceptionShowName, methodName);
             }
 
             return arg;
@@ -27,13 +25,14 @@ namespace System
 
     public class StringNullOrWhiteSpaceException : RuntimeException
     {
-        public StringNullOrWhiteSpaceException(string variableName) : base($"{variableName} - must be not be null or empty or whitespace.") { }
+        private StringNullOrWhiteSpaceException(string variableName, string method)
+            : base($"Variable(`{variableName}`) in method(`{method}`) must be not be null or whitespace.") { }
 
         public static string Assert(string arg, string exceptionShowName, [CallerMemberName]string methodName = null)
         {
             if (string.IsNullOrWhiteSpace(arg))
             {
-                throw new StringNullOrWhiteSpaceException($"variable: {exceptionShowName} in method: {methodName}");
+                throw new StringNullOrWhiteSpaceException(exceptionShowName, methodName);
             }
 
             return arg;
@@ -42,27 +41,25 @@ namespace System
 
     public class NamedNullException : RuntimeException
     {
-        public NamedNullException(string variableName) : base($"{variableName} is null.") { }
+        private NamedNullException(string variableName, string method)
+            : base($"Variable(`{variableName}`) in method(`{method}`) is null.") { }
 
         public static T Assert<T>(T arg, string exceptionShowName, [CallerMemberName]string methodName = null)
             where T : class
-            => arg ?? throw new NamedNullException($"variable: {exceptionShowName} in method: {methodName}");
+            => arg ?? throw new NamedNullException(exceptionShowName, methodName);
     }
 
     public class NumberOutOfRangeException<T> : RuntimeException where T : struct, IComparable
     {
-        public NumberOutOfRangeException(T real, T low, T high, string exceptionShowName)
-            : base($"{exceptionShowName}: {real} is out of range ({low},{high}).") { }
+        private NumberOutOfRangeException(T real, T low, T high, string variableName, string method)
+            : base($"Variable(`{variableName}`) in method(`{method}`) : {real} is out of range ({low},{high}).") { }
 
         public static T Assert(T arg, T low, T high, string exceptionShowName, [CallerMemberName]string methodName = null)
         {
             if (arg.CompareTo(high) > 0 || arg.CompareTo(low) < 0)
             {
-                throw new NumberOutOfRangeException<T>(
-                arg,
-                low,
-                high,
-                $"variable: {exceptionShowName} in method: {methodName}");
+                throw new NumberOutOfRangeException<T>(arg, low, high,
+                    exceptionShowName, methodName);
             }
 
             return arg;
@@ -71,13 +68,14 @@ namespace System
 
     public class NotTrueException : RuntimeException
     {
-        public NotTrueException(string msg) : base($"{msg} is not true.") { }
+        private NotTrueException(string predictName, string method)
+            : base($"Predict(`{predictName}`) in method(`{method}`) is not true.") { }
 
         public static void Assert(Func<bool> predict, string predictName, [CallerMemberName]string methodName = null)
         {
             if (!predict())
             {
-                throw new NotTrueException($"predict: {predictName} in method: {methodName}");
+                throw new NotTrueException(predictName, methodName);
             }
         }
 
@@ -85,18 +83,8 @@ namespace System
         {
             if (!predictResult)
             {
-                throw new NotTrueException($"predict: {predictName} in method: {methodName}");
+                throw new NotTrueException(predictName, methodName);
             }
-        }
-
-        public static T Assert<T>(T value, bool condition, string valueName, [CallerMemberName]string methodName = null)
-        {
-            if (!condition)
-            {
-                throw new NotTrueException($"the condition of {valueName} in method: {methodName}");
-            }
-
-            return value;
         }
     }
 }

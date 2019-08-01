@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using System.Diagnostics;
 
 namespace System.IO
 {
@@ -29,7 +24,7 @@ namespace System.IO
         {
             foreach (var c in Path.GetInvalidPathChars())
             {
-                path=path.Replace(c, replace);
+                path = path.Replace(c, replace);
             }
             return path;
         }
@@ -38,9 +33,15 @@ namespace System.IO
         {
             foreach (var c in Path.GetInvalidFileNameChars())
             {
-                path=path.Replace(c, replace);
+                path = path.Replace(c, replace);
             }
             return path;
+        }
+
+        public static void LocateFile(this string path)
+        {
+            var absolutePath = Path.GetFullPath(path);
+            Process.Start("explorer.exe", $"/select, {absolutePath}");
         }
     }
 }

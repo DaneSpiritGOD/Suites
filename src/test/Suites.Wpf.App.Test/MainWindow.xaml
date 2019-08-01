@@ -20,7 +20,8 @@
         <swc:SearchBox ClearIconVisibility="Visible"
                        SearchIconVisibility="Visible"
                        Background="Transparent"
-                       Height="24px"
+                       Height="27px"
+                       FontSize="12px"
                        TextChanged="SearchBox_TextChanged"
                        Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}">
             <swc:SearchBox.InputBindings>
