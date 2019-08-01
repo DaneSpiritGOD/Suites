@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 
@@ -19,7 +17,10 @@ namespace WebApiClient.Extensions.Caches
         public Task<ResponseCacheResult> GetAsync(string key)
         {
             if (_cache.TryGetValue<ResponseCacheEntry>(key, out var result))
+            {
                 return Task.FromResult(new ResponseCacheResult(result, hasValue: true));
+            }
+
             return Task.FromResult(ResponseCacheResult.NoValue);
         }
 
