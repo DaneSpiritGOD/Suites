@@ -1,15 +1,26 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace WebApiClient.Extensions.Caches
 {
-    public class CacheAdapter : IResponseCacheProvider
+    public interface ICacheProvider : IResponseCacheProvider
+    {
+        void RemoveKeyHeadWith(string keyHead);
+        void Remove(string key);
+    }
+
+    public class CacheProvider : ICacheProvider
     {
         private readonly IMemoryCache _cache;
-        public CacheAdapter(IMemoryCache cache)
+        private readonly ConcurrentDictionary<string, string> _keys;
+
+        public CacheProvider(IMemoryCache cache)
         {
             _cache = NamedNullException.Assert(cache, nameof(cache));
+            _keys = new ConcurrentDictionary<string, string>();
         }
 
         public string Name => typeof(IMemoryCache).FullName;
@@ -28,7 +39,26 @@ namespace WebApiClient.Extensions.Caches
         {
             _cache.Set(key, entry,
                 new MemoryCacheEntryOptions().SetAbsoluteExpiration(expiration));
+            _keys.TryAdd(key, key);
             return Task.CompletedTask;
+        }
+
+        public void Remove(string key)
+        {
+            _cache.Remove(key);
+            _keys.TryRemove(key, out _);
+        }
+
+        public void RemoveKeyHeadWith(string keyHead)
+        {
+            var keys = _keys.Keys
+                .Where(x => x.StartsWith(keyHead, StringComparison.Ordinal))
+                .ToArray();
+
+            foreach (var key in keys)
+            {
+                Remove(key);
+            }
         }
     }
 }
