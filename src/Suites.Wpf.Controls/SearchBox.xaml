@@ -53,6 +53,7 @@
                      Margin="5px 0 0 0"
                      BorderThickness="0"
                      VerticalContentAlignment="Center"
+                     VerticalAlignment="Center"
                      Text="{Binding Text,RelativeSource={RelativeSource AncestorType={x:Type local:SearchBox},AncestorLevel=1,Mode=FindAncestor},UpdateSourceTrigger=PropertyChanged}" />
             <Button Grid.Column="2"
                     HorizontalAlignment="Right"
