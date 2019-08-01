@@ -31,8 +31,6 @@ jobs:
       wacPrj: 'Suites.WebApiClient.Extensions'
       autoMapperPrj: 'Suites.AutoMapper'
       mediatRPrj: 'Suites.MediatR'
-      prismPrj: 'Suites.Prism.Wpf.Fx'
-      wpfAppPrj: 'Suites.Wpf.App'
       wpfCorePrj: 'Suites.Wpf.Core'
       avalonEditPrj: 'Suites.Wpf.AvalonEdit'
       netcoreapp: 'Suites.Microsoft.NetCore.App'
