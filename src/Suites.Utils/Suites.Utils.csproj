@@ -1,9 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <RootNamespace>Suites</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="System\Threading\Tasks\" />
+  </ItemGroup>
   
 </Project>
