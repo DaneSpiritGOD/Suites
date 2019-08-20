@@ -10,6 +10,6 @@ namespace WebApiClient.Extensions.Auth
     public class AllowAnonymousAttribute : ApiActionAttribute
     {
         public override Task BeforeRequestAsync(ApiActionContext context)
-            => TaskEx.CompletedTask;
+            => Task.CompletedTask;
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Net.Http;
-#if !NET45
 using Microsoft.Extensions.DependencyInjection;
-#endif
 
 namespace WebApiClient
 {
@@ -27,11 +25,7 @@ namespace WebApiClient
             => throw new NotImplementedException("不需要使用该方法！");
 
         public TInterface CreateHttpApi()
-#if NET45
-            => (TInterface)_serviceProvider.GetService(typeof(TInterface));
-#else
             => _serviceProvider.GetRequiredService<TInterface>();
-#endif
 
         [Obsolete("不需要使用该方法！")]
         HttpApi IHttpApiFactory.CreateHttpApi()
