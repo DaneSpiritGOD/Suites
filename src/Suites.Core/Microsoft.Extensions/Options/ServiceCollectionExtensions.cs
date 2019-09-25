@@ -18,7 +18,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.Configure<T>(section);
             services.AddTransient<IWritableOptions<T>>(provider =>
             {
-                var environment = provider.GetService<IHostingEnvironment>();
+                var environment = provider.GetService<IHostEnvironment>();
                 var options = provider.GetService<IOptionsMonitor<T>>();
                 return new WritableJsonOptions<T>(environment, options, section.Key, file);
             });
