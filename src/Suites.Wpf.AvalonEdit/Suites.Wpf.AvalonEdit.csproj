@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AvalonEdit" Version="6.0.0-preview1" />
+    <PackageReference Include="AvalonEdit" Version="6.0.0" />
     <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
   </ItemGroup>
 
