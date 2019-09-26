@@ -1,15 +1,13 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using System.IO;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
 namespace Microsoft.Extensions.Hosting
 {
+    [Obsolete("netcore30已经支持了完整的`CreateDefaultHostBuilder`链")]
     public static class HostBuilderExt
     {
         private static IServiceProvider _serviceProvider;
@@ -27,10 +25,7 @@ namespace Microsoft.Extensions.Hosting
             }
         }
 
-        public static IHostBuilder CreateDefaultHostBuilder()
-        {
-            return CreateDefaultHostBuilder(null);
-        }
+        public static IHostBuilder CreateDefaultHostBuilder() => CreateDefaultHostBuilder(null);
 
         public static IHostBuilder CreateDefaultHostBuilder(string[] args)
         {
@@ -90,9 +85,6 @@ namespace Microsoft.Extensions.Hosting
             });
         }
 
-        public static IHostBuilder ForceProcessSingleton(this IHostBuilder builder)
-        {
-            return builder.UseHostedService<ProcessSingletonService>();
-        }
+        public static IHostBuilder ForceProcessSingleton(this IHostBuilder builder) => builder.UseHostedService<ProcessSingletonService>();
     }
 }
