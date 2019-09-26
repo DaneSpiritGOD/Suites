@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Interactivity;
 using ICSharpCode.AvalonEdit;
+using Microsoft.Xaml.Behaviors;
 
 namespace Suites.Wpf.AvalonEdit.Behaviors
 {
