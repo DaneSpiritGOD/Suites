@@ -27,7 +27,6 @@ jobs:
       nugetSource: 'https://api.nuget.org/v3/index.json'
       utilsPrj: 'Suites.Utils'
       corePrj: 'Suites.Core'
-      wacAbPrj: 'Suites.WebApiClient.Extensions.Abstraction'
       wacPrj: 'Suites.WebApiClient.Extensions'
       autoMapperPrj: 'Suites.AutoMapper'
       mediatRPrj: 'Suites.MediatR'
@@ -40,11 +39,10 @@ jobs:
     - task: DotNetCoreInstaller@0
       inputs:
         packageType: 'sdk' # Options: runtime, sdk
-        version: '3.0.100-preview7-012821'
+        version: '3.0.100'
 
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(utilsPrj)/$(utilsPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(corePrj)/$(corePrj).csproj
-    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacAbPrj)/$(wacAbPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacPrj)/$(wacPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(autoMapperPrj)/$(autoMapperPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(mediatRPrj)/$(mediatRPrj).csproj
