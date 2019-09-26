@@ -5,9 +5,5 @@
     <LangVersion>latest</LangVersion>
     <RootNamespace>System</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="System\Threading\Tasks\" />
-  </ItemGroup>
   
 </Project>
