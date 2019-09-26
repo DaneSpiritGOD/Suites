@@ -27,6 +27,7 @@ jobs:
       nugetSource: 'https://api.nuget.org/v3/index.json'
       utilsPrj: 'Suites.Utils'
       corePrj: 'Suites.Core'
+      akavache: 'Suites.Akavache'
       wacPrj: 'Suites.WebApiClient.Extensions'
       autoMapperPrj: 'Suites.AutoMapper'
       mediatRPrj: 'Suites.MediatR'
@@ -43,6 +44,7 @@ jobs:
 
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(utilsPrj)/$(utilsPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(corePrj)/$(corePrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(akavache)/$(akavache).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacPrj)/$(wacPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(autoMapperPrj)/$(autoMapperPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(mediatRPrj)/$(mediatRPrj).csproj
