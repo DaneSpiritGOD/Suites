@@ -8,6 +8,6 @@
     <PackageProjectUrl>https://github.com/DaneSpiritGOD/Suites</PackageProjectUrl>
     <RepositoryUrl>https://github.com/DaneSpiritGOD/Suites</RepositoryUrl>
     <PackageTags>netcore netstandard</PackageTags>
-    <Version>6.0.2</Version>
+    <Version>6.0.3</Version>
   </PropertyGroup>
 </Project>
