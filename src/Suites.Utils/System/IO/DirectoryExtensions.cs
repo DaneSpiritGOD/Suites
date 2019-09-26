@@ -38,10 +38,24 @@ namespace System.IO
             return path;
         }
 
+        /// <summary>
+        /// 定位文件
+        /// </summary>
+        /// <param name="path"></param>
         public static void LocateFile(this string path)
         {
             var absolutePath = Path.GetFullPath(path);
             Process.Start("explorer.exe", $"/select, {absolutePath}");
+        }
+
+        /// <summary>
+        /// 定位目录
+        /// </summary>
+        /// <param name="dir"></param>
+        public static void LocateDirectory(this string dir)
+        {
+            var absolutePath = Path.GetFullPath(dir);
+            Process.Start("explorer.exe", $"/root, {absolutePath}");
         }
     }
 }
