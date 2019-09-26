@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApiClient.Extensions.Properties {
+namespace Suites.Akavache.Properties {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace WebApiClient.Extensions.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -39,7 +39,7 @@ namespace WebApiClient.Extensions.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WebApiClient.Extensions.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Suites.Akavache.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,20 @@ namespace WebApiClient.Extensions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 没有获取到token，请确认您已经登陆或检查登陆过期！.
+        ///   Looks up a localized string similar to 不能词创建相同名称( {0} )的存储介质！.
         /// </summary>
-        internal static string AuthTokenNotFoundOrExpiredExceptionString {
+        internal static string CreateSameNameMediaExceptionString {
             get {
-                return ResourceManager.GetString("AuthTokenNotFoundOrExpiredExceptionString", resourceCulture);
+                return ResourceManager.GetString("CreateSameNameMediaExceptionString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 不存在名称为 {0} 的存储介质!.
+        /// </summary>
+        internal static string DoNotExistSuchNameMediaExceptionString {
+            get {
+                return ResourceManager.GetString("DoNotExistSuchNameMediaExceptionString", resourceCulture);
             }
         }
     }

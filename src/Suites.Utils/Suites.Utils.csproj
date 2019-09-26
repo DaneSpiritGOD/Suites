@@ -3,11 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netcoreapp3.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
-    <RootNamespace>Suites</RootNamespace>
+    <RootNamespace>System</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="System\Threading\Tasks\" />
-  </ItemGroup>
   
 </Project>

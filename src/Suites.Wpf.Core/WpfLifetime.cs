@@ -17,9 +17,9 @@ namespace Microsoft.Extensions.Hosting
 
         private WpfLifetimeOptions Options { get; }
 
-        private IHostingEnvironment Environment { get; }
+        private IHostEnvironment Environment { get; }
 
-        private IApplicationLifetime ApplicationLifetime { get; }
+        private IHostApplicationLifetime ApplicationLifetime { get; }
 
         private readonly ILogger<WpfLifetime> _logger;
         private readonly Application _app;
@@ -27,8 +27,8 @@ namespace Microsoft.Extensions.Hosting
         public WpfLifetime(
             Application app,
             IOptions<WpfLifetimeOptions> options,
-            IHostingEnvironment environment,
-            IApplicationLifetime applicationLifetime,
+            IHostEnvironment environment,
+            IHostApplicationLifetime applicationLifetime,
             ILogger<WpfLifetime> logger)
         {
             Options = NamedNullException.Assert(options?.Value, nameof(options));

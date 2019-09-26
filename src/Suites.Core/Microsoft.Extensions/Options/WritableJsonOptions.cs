@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -11,13 +8,13 @@ namespace Microsoft.Extensions.Options.Writable
 {
     public class WritableJsonOptions<T> : IWritableOptions<T> where T : class, new()
     {
-        private readonly IHostingEnvironment _environment;
+        private readonly IHostEnvironment _environment;
         private readonly IOptionsMonitor<T> _options;
         private readonly string _section;
         private readonly string _file;
 
         public WritableJsonOptions(
-            IHostingEnvironment environment,
+            IHostEnvironment environment,
             IOptionsMonitor<T> options,
             string section,
             string file)
@@ -34,13 +31,13 @@ namespace Microsoft.Extensions.Options.Writable
         public void Update(Action<T> applyChanges)
         {
             var physicalPath = _environment.ContentRootFileProvider.GetFileInfo(_file).PhysicalPath;
-            if(string.IsNullOrWhiteSpace(physicalPath) && Path.IsPathRooted(_file))
+            if (string.IsNullOrWhiteSpace(physicalPath) && Path.IsPathRooted(_file))
             {
                 physicalPath = _file;
             }
 
             var jObject = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(physicalPath));
-            var sectionObject = jObject.TryGetValue(_section, out JToken section) ?
+            var sectionObject = jObject.TryGetValue(_section, out var section) ?
                 JsonConvert.DeserializeObject<T>(section.ToString()) : (Value ?? new T());
 
             applyChanges(sectionObject);
