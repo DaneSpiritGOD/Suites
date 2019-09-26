@@ -24,7 +24,7 @@ namespace System
             if (!Monitor.TryEnter(o, timeout))
             {
 #if DEBUG
-                System.GC.SuppressFinalize(tl);
+                GC.SuppressFinalize(tl);
 #endif
                 throw new LockTimeoutException();
             }
@@ -57,12 +57,12 @@ namespace System
             // If this finalizer runs, someone somewhere failed to
             // call Dispose, which means we've failed to leave
             // a monitor!
-            System.Diagnostics.Debug.Fail("Undisposed lock");
+            Diagnostics.Debug.Fail("Undisposed lock");
         }
 #endif
 
     }
-    public class LockTimeoutException : System.Exception
+    public class LockTimeoutException : Exception
     {
         public LockTimeoutException() : base("Timeout waiting for lock") { }
     }
