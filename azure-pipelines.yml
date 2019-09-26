@@ -30,7 +30,6 @@ jobs:
       akavache: 'Suites.Akavache'
       wacPrj: 'Suites.WebApiClient.Extensions'
       autoMapperPrj: 'Suites.AutoMapper'
-      mediatRPrj: 'Suites.MediatR'
       wpfCorePrj: 'Suites.Wpf.Core'
       avalonEditPrj: 'Suites.Wpf.AvalonEdit'
       netcoreapp: 'Suites.Microsoft.NetCore.App'
@@ -47,7 +46,6 @@ jobs:
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(akavache)/$(akavache).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacPrj)/$(wacPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(autoMapperPrj)/$(autoMapperPrj).csproj
-    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(mediatRPrj)/$(mediatRPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wpfCorePrj)/$(wpfCorePrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(avalonEditPrj)/$(avalonEditPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(controls)/$(controls).csproj
