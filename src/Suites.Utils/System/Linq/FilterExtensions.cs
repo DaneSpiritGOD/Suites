@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
-namespace System.System.Linq
+namespace System.Linq
 {
     /// <summary>
     /// 应用在列表上的用于关键词过滤的扩展方法
