@@ -10,8 +10,4 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Suites.Core\Suites.Core.csproj" />
-  </ItemGroup>
-
 </Project>

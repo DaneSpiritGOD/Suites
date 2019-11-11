@@ -4,9 +4,8 @@
     <LangVersion>latest</LangVersion>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\Suites.Core\Suites.Core.csproj" />
+    <ProjectReference Include="..\Suites.Utils\Suites.Utils.csproj" />
   </ItemGroup>
 
 </Project>
