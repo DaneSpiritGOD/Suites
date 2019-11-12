@@ -17,13 +17,14 @@
         </ResourceDictionary>
     </Window.Resources>
     <StackPanel>
-        <TextBox Width="400px"
-                 Height="300px"
+        <TextBox Height="300px"
                  TextWrapping="Wrap"
                  VerticalScrollBarVisibility="Auto"
-                 HorizontalAlignment="Left"
+                 HorizontalAlignment="Stretch"
                  Name="Log" />
         <swc:DataPager TotalPage="100"
+                       HorizontalAlignment="Right"
+                       Margin="0 20 0 0"
                        PageIndexChanged="DataPager_PageIndexChanged" />
     </StackPanel>
 </Window>
