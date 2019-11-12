@@ -45,7 +45,7 @@ namespace System
             StringNullOrEmptyException.Assert(seperator, nameof(seperator));
 
             var sepLength = seperator.Length;
-            var sepIndex = source.IndexOf(seperator);
+            var sepIndex = source.AsSpan().IndexOf(seperator.AsSpan());
 
             if (sepIndex < 0)
             {

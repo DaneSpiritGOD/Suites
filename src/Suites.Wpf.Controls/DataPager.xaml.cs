@@ -1,295 +1,279 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Suites.Wpf.Controls
 {
+    public sealed class PageIndexChangedEventArgs : RoutedEventArgs
+    {
+        internal PageIndexChangedEventArgs(int oldValue, int newValue)
+            : base(DataPager.PageIndexChangedEvent)
+        {
+            OldValue = oldValue;
+            NewValue = newValue;
+        }
+
+        public int OldValue { get; }
+        public int NewValue { get; }
+    }
+    public delegate void PageIndexChangedEventHandler(object sender, PageIndexChangedEventArgs e);
+
     /// <summary>
     /// DataPager.xaml 的交互逻辑
     /// </summary>
     public partial class DataPager : UserControl
     {
+        #region 常量
+        private const string More = "...";
+        private const string One = "1";
+        private const string Two = "2";
+        private const string Three = "3";
+        private const string Four = "4";
+        private const string Five = "5";
+
+        private static SolidColorBrush CreateConstBrush(Color color)
+        {
+            var brush = new SolidColorBrush(color);
+            brush.Freeze();
+            return brush;
+        }
+
+        private readonly Brush _normalBrush;
+        private readonly Brush _selectedBrush;
+        private readonly Brush _hover;
+        #endregion 常量
+
+        static DataPager()
+        {
+            TotalPageProperty = DependencyProperty.Register("TotalPage",
+               typeof(int),
+               typeof(DataPager),
+               new PropertyMetadata(0, OnTotalPagePropertyChanged));
+
+            PageIndexProperty = DependencyProperty.Register("PageIndex",
+                    typeof(int),
+                    typeof(DataPager),
+                    new PropertyMetadata(0, OnPageIndexPropertyChanged));
+
+            PageIndexChangedEvent = EventManager.RegisterRoutedEvent("PageIndexChanged", RoutingStrategy.Bubble, typeof(PageIndexChangedEventHandler), typeof(DataPager));
+        }
 
         public DataPager()
         {
             InitializeComponent();
 
-            setButtonVisible();
+            _normalBrush = (Brush)FindResource("Normal");
+            _selectedBrush = (Brush)FindResource("Selected");
+            _hover = (Brush)FindResource("MouseHover");
 
-            int currentPageButtonIndex = getCurrentPageButtonIndex(this);
-            setButtonText(this, currentPageButtonIndex);
-            SetButtonBorder(currentPageButtonIndex);
+            SetButtonVisible();
+            MeasureAppearance();
         }
 
-        public static readonly DependencyProperty TotalPageProperty =
-        DependencyProperty.Register("TotalPage", typeof(int), typeof(DataPager),
-            new PropertyMetadata(0, OnTotalPagePropertyChanged));
-
+        public static readonly DependencyProperty TotalPageProperty;
         public int TotalPage
         {
             get => (int)GetValue(TotalPageProperty);
             set => SetValue(TotalPageProperty, value);
         }
-
         private static void OnTotalPagePropertyChanged(
             DependencyObject dependencyObject,
             DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
-            var pager = dependencyObject as DataPager;
-            if (pager == null)
-            {
-                return;
-            }
-
-            pager.setButtonVisible();
-
-            if (pager.PageIndex + 1 > pager.TotalPage)
-            {
-                return;
-            }
-
-            pager.ButtonPreviousPage.IsEnabled = pager.PageIndex > 0;
-            pager.ButtonNextPage.IsEnabled = pager.PageIndex + 1 < pager.TotalPage;
-
-            int currentPageButtonIndex = getCurrentPageButtonIndex(pager);
-            setButtonText(pager, currentPageButtonIndex);
-            pager.SetButtonBorder(currentPageButtonIndex);
+            var pager = (DataPager)dependencyObject;
+            pager.OnValueChanged();
         }
 
-        public static readonly DependencyProperty PageIndexProperty =
-            DependencyProperty.Register("PageIndex", typeof(int), typeof(DataPager), new PropertyMetadata(0, OnPageIndexPropertyChanged));
+        public static readonly DependencyProperty PageIndexProperty;
         public int PageIndex
         {
             get => (int)GetValue(PageIndexProperty);
             set => SetValue(PageIndexProperty, value);
         }
-
         private static void OnPageIndexPropertyChanged(
             DependencyObject dependencyObject,
-            DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+            DependencyPropertyChangedEventArgs e)
         {
-            var pager = dependencyObject as DataPager;
-            if (pager == null)
+            var pager = (DataPager)dependencyObject;
+            pager.RaiseEvent(new PageIndexChangedEventArgs((int)e.OldValue, (int)e.NewValue));
+            pager.OnValueChanged();
+        }
+
+        public static readonly RoutedEvent PageIndexChangedEvent;
+        public event PageIndexChangedEventHandler PageIndexChanged
+        {
+            add
+            {
+                AddHandler(PageIndexChangedEvent, value);
+            }
+            remove
+            {
+                RemoveHandler(PageIndexChangedEvent, value);
+            }
+        }
+
+        private int CalcSelectedPageButtonIndex()
+            => (PageIndex, TotalPage) switch
+            {
+                var (i, t) when i >= t => -1,
+                var (i, t) when t <= 5 || i <= 2 => i,
+                var (i, t) when i + 1 == t => 4,
+                var (i, t) when i + 2 == t => 3,
+                _ => 2
+            };
+
+        private void OnValueChanged()
+        {
+            SetButtonVisible();
+
+            if (PageIndex + 1 > TotalPage)
             {
                 return;
             }
 
-            if (pager.PageIndex + 1 > pager.TotalPage)
-            {
-                return;
-            }
+            ButtonPreviousPage.IsEnabled = PageIndex > 0;
+            ButtonNextPage.IsEnabled = PageIndex + 1 < TotalPage;
 
-            pager.ButtonPreviousPage.IsEnabled = pager.PageIndex > 0;
-            pager.ButtonNextPage.IsEnabled = pager.PageIndex + 1 < pager.TotalPage;
-
-            int currentPageButtonIndex = getCurrentPageButtonIndex(pager);
-            setButtonText(pager, currentPageButtonIndex);
-            pager.SetButtonBorder(currentPageButtonIndex);
+            MeasureAppearance();
         }
 
-        private static int getCurrentPageButtonIndex(DataPager pager)
+        private void MeasureAppearance()
         {
-            if (pager.PageIndex + 1 > pager.TotalPage)
+            var btnSeletedIndex = CalcSelectedPageButtonIndex();
+            SetButtonText(btnSeletedIndex);
+            SetButtonBorder(btnSeletedIndex);
+
+            void SetButtonText(int selectedIndex)
             {
-                return -1;
+                var (index, total) = (PageIndex, TotalPage);
+                if (total <= 5)
+                {
+                    Button1.Content = One;
+                    Button2.Content = Two;
+                    Button3.Content = Three;
+                    Button4.Content = Four;
+                    Button5.Content = Five;
+                    return;
+                }
+                switch (selectedIndex)
+                {
+                    case 0:
+                        Button1.Content = (index + 1).ToString();
+                        Button2.Content = (index + 2).ToString();
+                        Button3.Content = (index + 3).ToString();
+                        Button4.Content = (index + 4).ToString();
+                        Button5.Content = More;
+                        break;
+                    case 1:
+                        Button1.Content = index.ToString();
+                        Button2.Content = (index + 1).ToString();
+                        Button3.Content = (index + 2).ToString();
+                        Button4.Content = (index + 3).ToString();
+                        Button5.Content = More;
+                        break;
+                    case 2:
+                        Button1.Content = index > 2 ? More : (index - 1).ToString();
+                        Button2.Content = index.ToString();
+                        Button3.Content = (index + 1).ToString();
+                        Button4.Content = (index + 2).ToString();
+                        Button5.Content = (index + 3 < total) ? More : total.ToString();
+                        break;
+                    case 3:
+                        Button1.Content = More;
+                        Button2.Content = (total - 3).ToString();
+                        Button3.Content = (total - 2).ToString();
+                        Button4.Content = (total - 1).ToString();
+                        Button5.Content = total.ToString();
+                        break;
+                    case 4:
+                        Button1.Content = More;
+                        Button2.Content = (total - 3).ToString();
+                        Button3.Content = (total - 2).ToString();
+                        Button4.Content = (total - 1).ToString();
+                        Button5.Content = total.ToString();
+                        break;
+                    default:
+                        throw new NotImplementedException();
+                };
             }
 
-            if (pager.TotalPage <= 5)
+            void SetButtonBorder(int selectedIndex)
             {
-                return pager.PageIndex;
-            }
+                foreach (var btn in new[] { Button1, Button2, Button3, Button4, Button5 })
+                {
+                    SetButtonBorderBrush(btn);
+                }
 
-            if (pager.PageIndex + 1 <= 3)
-            {
-                return pager.PageIndex;
-            }
+                void SetButtonBorderBrush(Button btn)
+                    => btn.BorderBrush = GetBrush(GetIndexOfButton(btn));
 
-            if (pager.PageIndex + 1 == pager.TotalPage)
-            {
-                return 4;
-            }
-            else if (pager.PageIndex + 1 == pager.TotalPage - 1)
-            {
-                return 3;
-            }
-
-            return 2;
-        }
-
-        private static void setButtonText(DataPager pager, int currentPageButtonIndex)
-        {
-            if (pager.TotalPage <= 5)
-            {
-                pager.ButtonText1.Text = "1";
-                pager.ButtonText2.Text = "2";
-                pager.ButtonText3.Text = "3";
-                pager.ButtonText4.Text = "4";
-                pager.ButtonText5.Text = "5";
-                return;
-            }
-
-            if (currentPageButtonIndex == 0)
-            {
-                pager.ButtonText1.Text = (pager.PageIndex + 1).ToString();
-                pager.ButtonText2.Text = (pager.PageIndex + 2).ToString();
-                pager.ButtonText3.Text = (pager.PageIndex + 3).ToString();
-                pager.ButtonText4.Text = (pager.PageIndex + 4).ToString();
-                pager.ButtonText5.Text = "...";
-            }
-            else if (currentPageButtonIndex == 1)
-            {
-                pager.ButtonText1.Text = pager.PageIndex.ToString();
-                pager.ButtonText2.Text = (pager.PageIndex + 1).ToString();
-                pager.ButtonText3.Text = (pager.PageIndex + 2).ToString();
-                pager.ButtonText4.Text = (pager.PageIndex + 3).ToString();
-                pager.ButtonText5.Text = "...";
-            }
-            else if (currentPageButtonIndex == 2)
-            {
-                pager.ButtonText1.Text = (pager.PageIndex + 1 - 2) > 1 ? "..." : (pager.PageIndex + 1 - 2).ToString();
-                pager.ButtonText2.Text = pager.PageIndex.ToString();
-                pager.ButtonText3.Text = (pager.PageIndex + 1).ToString();
-                pager.ButtonText4.Text = (pager.PageIndex + 2).ToString();
-                pager.ButtonText5.Text = (pager.PageIndex + 3 < pager.TotalPage) ? "..." : pager.TotalPage.ToString();
-            }
-            else if (currentPageButtonIndex == 3)
-            {
-                pager.ButtonText1.Text = "...";
-                pager.ButtonText2.Text = (pager.TotalPage - 3).ToString();
-                pager.ButtonText3.Text = (pager.TotalPage - 2).ToString();
-                pager.ButtonText4.Text = (pager.TotalPage - 1).ToString();
-                pager.ButtonText5.Text = pager.TotalPage.ToString();
-            }
-            else if (currentPageButtonIndex == 4)
-            {
-                pager.ButtonText1.Text = "...";
-                pager.ButtonText2.Text = (pager.TotalPage - 3).ToString();
-                pager.ButtonText3.Text = (pager.TotalPage - 2).ToString();
-                pager.ButtonText4.Text = (pager.TotalPage - 1).ToString();
-                pager.ButtonText5.Text = pager.TotalPage.ToString();
+                Brush GetBrush(int index)
+                    => index == selectedIndex ? _selectedBrush : _normalBrush;
             }
         }
 
-        private void setButtonVisible()
+        private void SetButtonVisible()
         {
             Button1.Visibility = Visibility.Visible;
-            Button2.Visibility = checkVisible(2);
-            Button3.Visibility = checkVisible(3);
-            Button4.Visibility = checkVisible(4);
-            Button5.Visibility = checkVisible(5);
-        }
 
-        private Visibility checkVisible(int total)
-            => TotalPage >= total ? Visibility.Visible : Visibility.Collapsed;
-
-        private void SetButtonBorder(int currentPageButtonIndex)
-        {
-            Color normalColor = Color.FromRgb(216, 216, 216);
-            Color selectedColor = Color.FromRgb(39, 124, 220);
-
-            this.Button1.BorderBrush = new SolidColorBrush(currentPageButtonIndex == 0 ? selectedColor : normalColor);
-            this.Button2.BorderBrush = new SolidColorBrush(currentPageButtonIndex == 1 ? selectedColor : normalColor);
-            this.Button3.BorderBrush = new SolidColorBrush(currentPageButtonIndex == 2 ? selectedColor : normalColor);
-            this.Button4.BorderBrush = new SolidColorBrush(currentPageButtonIndex == 3 ? selectedColor : normalColor);
-            this.Button5.BorderBrush = new SolidColorBrush(currentPageButtonIndex == 4 ? selectedColor : normalColor);
-        }
-
-        private void Button1_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            if (this.ButtonText1.Text == "...")
+            foreach (var btn in new[] { Button2, Button3, Button4, Button5 })
             {
-                this.PageIndex = Convert.ToInt32(this.ButtonText2.Text) - 1 - 1;
+                SetButtonVisible(btn);
             }
-            else
+
+            void SetButtonVisible(Button btn)
+                => btn.Visibility = CheckVisible(GetIndexOfButton(btn) + 1);
+            Visibility CheckVisible(int total)
+                => TotalPage >= total ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private int GetIndexOfButton(Button button)
+            => Convert.ToInt32(button.Tag);
+
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            var button = (Button)sender;
+
+            if (GetIndexOfButton(button) != CalcSelectedPageButtonIndex())
             {
-                this.PageIndex = Convert.ToInt32(this.ButtonText1.Text) - 1;
+                button.BorderBrush = _normalBrush;
             }
         }
 
-        private void Button2_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-            => PageIndex = Convert.ToInt32(this.ButtonText2.Text) - 1;
-
-        private void Button3_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-            => PageIndex = Convert.ToInt32(this.ButtonText3.Text) - 1;
-
-        private void Button4_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-            => PageIndex = Convert.ToInt32(this.ButtonText4.Text) - 1;
-
-        private void Button5_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void Button_MouseMove(object sender, MouseEventArgs e)
         {
-            if (ButtonText5.Text == "...")
+            var button = (Button)sender;
+
+            if (GetIndexOfButton(button) != CalcSelectedPageButtonIndex())
             {
-                PageIndex = Convert.ToInt32(ButtonText4.Text) + 1 - 1;
-            }
-            else
-            {
-                PageIndex = Convert.ToInt32(ButtonText5.Text) - 1;
-            }
-        }
-
-        private void Button1_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Border button = sender as Border;
-
-            int currentButtonIndex = getCurrentPageButtonIndex(this);
-            if (currentButtonIndex == -1)
-            {
-                return;
-            }
-
-            if (button.Name != "Button" + (currentButtonIndex + 1).ToString())
-            {
-                button.BorderBrush = new SolidColorBrush(Color.FromRgb(91, 156, 228));
-            }
-        }
-
-        private void Button1_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Border button = sender as Border;
-
-            int currentButtonIndex = getCurrentPageButtonIndex(this);
-            if (currentButtonIndex == -1)
-            {
-                return;
-            }
-
-            if (button.Name != "Button" + (currentButtonIndex + 1).ToString())
-            {
-                button.BorderBrush = new SolidColorBrush(Color.FromRgb(216, 216, 216));
-            }
-        }
-
-        private void Button1_MouseMove(object sender, MouseEventArgs e)
-        {
-            Border button = sender as Border;
-
-            int currentButtonIndex = getCurrentPageButtonIndex(this);
-            if (currentButtonIndex == -1)
-            {
-                return;
-            }
-
-            if (button.Name != "Button" + (currentButtonIndex + 1).ToString())
-            {
-                button.BorderBrush = new SolidColorBrush(Color.FromRgb(91, 156, 228));
+                button.BorderBrush = _hover;
             }
         }
 
         private void ButtonPreviousPage_Click(object sender, RoutedEventArgs e)
-            => this.PageIndex -= 1;
+            => PageIndex -= 1;
 
         private void ButtonNextPage_Click(object sender, RoutedEventArgs e)
-            => this.PageIndex += 1;
+            => PageIndex += 1;
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PageIndex = GetClickedPageIndex();
+
+            int GetClickedPageIndex()
+                => sender switch
+                {
+                    var btn when btn == Button1
+                        => (string)Button1.Content == More ? Convert.ToInt32(Button2.Content) - 2 : Convert.ToInt32(Button1.Content) - 1,
+                    var btn when btn == Button2 => Convert.ToInt32(Button2.Content) - 1,
+                    var btn when btn == Button3 => Convert.ToInt32(Button3.Content) - 1,
+                    var btn when btn == Button4 => Convert.ToInt32(Button4.Content) - 1,
+                    var btn when btn == Button5
+                        => (string)Button5.Content == More ? Convert.ToInt32(Button4.Content) : Convert.ToInt32(Button5.Content) - 1,
+                    _ => 0
+                };
+        }
     }
 }

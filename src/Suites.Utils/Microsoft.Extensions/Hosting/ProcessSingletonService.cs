@@ -34,9 +34,6 @@ namespace Microsoft.Extensions.Hosting
             if (!_procSingleton.IsOwnedByCurrentProcess)
             {
                 return Task.FromException(new ProcessNotSingletonException());
-
-                //(_hostLifetime as IDisposable).Dispose();
-                //Environment.Exit(0);
             }
             return Task.CompletedTask;
         }

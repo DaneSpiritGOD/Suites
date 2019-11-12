@@ -2,15 +2,14 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netcoreapp3.0</TargetFrameworks>
-    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="7.0.0" />
+    <ProjectReference Include="..\Suites.Utils\Suites.Utils.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Suites.Core\Suites.Core.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
 </Project>

@@ -15,14 +15,11 @@ namespace Suites.Wpf.App.Test
             InitializeComponent();
         }
 
-        private void SearchBox_TextChanged(object sender, TextChangedEventArgs2 e)
+        private void DataPager_PageIndexChanged(object sender, PageIndexChangedEventArgs e)
         {
-            Trace.WriteLine(e.NewText);
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Width_Button.Content = "1";
+            var pager = (DataPager)sender;
+            Log.AppendText($"You change the pager index to {e.NewValue + 1}/{pager.TotalPage} .\n");
+            Log.ScrollToEnd();
         }
     }
 }
