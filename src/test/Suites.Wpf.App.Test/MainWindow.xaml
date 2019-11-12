@@ -17,26 +17,13 @@
         </ResourceDictionary>
     </Window.Resources>
     <StackPanel>
-        <swc:SearchBox ClearIconVisibility="Visible"
-                       SearchIconVisibility="Visible"
-                       Background="Transparent"
-                       Height="27px"
-                       FontSize="12px"
-                       TextChanged="SearchBox_TextChanged"
-                       Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}">
-            <swc:SearchBox.InputBindings>
-                <KeyBinding Key="Return"
-                            Command="{Binding ReturnCommand}" />
-            </swc:SearchBox.InputBindings>
-        </swc:SearchBox>
-        <TextBox Width="Auto"
-                 MinWidth="20px"
-                 MaxLength="10"
-                 HorizontalAlignment="Left" />
-        <Button Content="111111111111111111111"
-                HorizontalAlignment="Left"
-                Name="Width_Button"
-                Padding="10 0"
-                Click="Button_Click" />
+        <TextBox Width="400px"
+                 Height="300px"
+                 TextWrapping="Wrap"
+                 VerticalScrollBarVisibility="Auto"
+                 HorizontalAlignment="Left"
+                 Name="Log" />
+        <swc:DataPager TotalPage="100"
+                       PageIndexChanged="DataPager_PageIndexChanged" />
     </StackPanel>
 </Window>

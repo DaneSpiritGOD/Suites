@@ -5,106 +5,103 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Suites.Wpf.Controls"
              xmlns:converter="clr-namespace:Suites.Wpf.Converters"
+             xmlns:opt="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
-  <Grid>
-    <Border Grid.Row="2"
-            BorderBrush="#333333"
-            BorderThickness="1">
-      <StackPanel Orientation="Horizontal"
-                  Background="White">
-        <Button x:Name="ButtonPreviousPage"
-                Width="74"
-                Height="32"
-                Content="上一页"
-                Click="ButtonPreviousPage_Click" />
-        <Border x:Name="Button1"
-                BorderBrush="#D8D8D8"
-                BorderThickness="1"
-                CornerRadius="2"
-                Height="32"
-                Width="32"
-                Margin="8,0,0,0"
-                PreviewMouseLeftButtonUp="Button1_PreviewMouseLeftButtonUp"
-                MouseEnter="Button1_MouseEnter"
-                MouseLeave="Button1_MouseLeave"
-                MouseMove="Button1_MouseMove"
-                Background="White">
-          <TextBlock x:Name="ButtonText1"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Center" />
-        </Border>
-        <Border x:Name="Button2"
-                BorderBrush="#D8D8D8"
-                BorderThickness="1"
-                CornerRadius="2"
-                Height="32"
-                Width="32"
-                Margin="8,0,0,0"
-                PreviewMouseLeftButtonUp="Button2_PreviewMouseLeftButtonUp"
-                MouseEnter="Button1_MouseEnter"
-                MouseLeave="Button1_MouseLeave"
-                Background="White">
-          <TextBlock x:Name="ButtonText2"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Center" />
-        </Border>
-        <Border x:Name="Button3"
-                BorderBrush="#D8D8D8"
-                BorderThickness="1"
-                CornerRadius="2"
-                Height="32"
-                Width="32"
-                Margin="8,0,0,0"
-                PreviewMouseLeftButtonUp="Button3_PreviewMouseLeftButtonUp"
-                MouseEnter="Button1_MouseEnter"
-                MouseLeave="Button1_MouseLeave"
-                MouseMove="Button1_MouseMove"
-                Background="White">
-          <TextBlock x:Name="ButtonText3"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Center" />
-        </Border>
-        <Border x:Name="Button4"
-                BorderBrush="#D8D8D8"
-                BorderThickness="1"
-                CornerRadius="2"
-                Height="32"
-                Width="32"
-                Margin="8,0,0,0"
-                PreviewMouseLeftButtonUp="Button4_PreviewMouseLeftButtonUp"
-                MouseEnter="Button1_MouseEnter"
-                MouseLeave="Button1_MouseLeave"
-                MouseMove="Button1_MouseMove"
-                Background="White">
-          <TextBlock x:Name="ButtonText4"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Center" />
-        </Border>
-        <Border x:Name="Button5"
-                BorderBrush="#D8D8D8"
-                BorderThickness="1"
-                CornerRadius="2"
-                Height="32"
-                Width="32"
-                Margin="8,0,0,0"
-                PreviewMouseLeftButtonUp="Button5_PreviewMouseLeftButtonUp"
-                MouseEnter="Button1_MouseEnter"
-                MouseLeave="Button1_MouseLeave"
-                MouseMove="Button1_MouseMove"
-                Background="White">
-          <TextBlock x:Name="ButtonText5"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Center" />
-        </Border>
-        <Button x:Name="ButtonNextPage"
-                Width="74"
-                Height="32"
-                Content="下一页"
-                Margin="8,0,0,0"
-                Click="ButtonNextPage_Click" />
-      </StackPanel>
-    </Border>
-  </Grid>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Suites.Wpf.Controls;component/Themes/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Suites.Wpf.Controls;component/Themes/ImageCaches.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <SolidColorBrush x:Key="Normal"
+                             Color="#FFD8D8D8"
+                             opt:Freeze="True" />
+            <SolidColorBrush x:Key="Selected"
+                             Color="#FF277CDC"
+                             opt:Freeze="True" />
+            <SolidColorBrush x:Key="MouseHover"
+                             Color="#FF5B9CE4"
+                             opt:Freeze="True" />
+            <SolidColorBrush x:Key="Text"
+                             Color="#FF333333"
+                             opt:Freeze="True" />
+            <Style TargetType="Button"
+                   x:Key="PageButton"
+                   BasedOn="{StaticResource FlatButtonStyle}">
+                <Setter Property="BorderBrush"
+                        Value="{StaticResource Normal}" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+                <Setter Property="Height"
+                        Value="32" />
+                <Setter Property="Width"
+                        Value="32" />
+                <Setter Property="Margin"
+                        Value="8 0 0 0" />
+                <Setter Property="Background"
+                        Value="White" />
+                <EventSetter Event="MouseEnter"
+                             Handler="Button_MouseMove" />
+                <EventSetter Event="MouseLeave"
+                             Handler="Button_MouseLeave" />
+                <EventSetter Event="MouseMove"
+                             Handler="Button_MouseMove" />
+            </Style>
+            <Style TargetType="Button"
+                   x:Key="NEXTPageButton"
+                   BasedOn="{StaticResource FlatButtonStyle}">
+                <Setter Property="Height"
+                        Value="32" />
+                <Setter Property="Width"
+                        Value="74" />
+                <Setter Property="BorderBrush"
+                        Value="{StaticResource Normal}" />
+                <Setter Property="BorderThickness"
+                        Value="1" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Orientation="Horizontal"
+                    Background="White">
+            <StackPanel.Resources></StackPanel.Resources>
+            <Button x:Name="ButtonPreviousPage"
+                    Style="{StaticResource NEXTPageButton}"
+                    Click="ButtonPreviousPage_Click">
+                <Image Source="{StaticResource Image.Prev.Page}"
+                       Stretch="Uniform"
+                       Height="16px" />
+            </Button>
+            <Button Name="Button1"
+                    Style="{StaticResource PageButton}"
+                    Click="Button_Click"
+                    Tag="0" />
+            <Button Name="Button2"
+                    Style="{StaticResource PageButton}"
+                    Click="Button_Click"
+                    Tag="1" />
+            <Button Name="Button3"
+                    Style="{StaticResource PageButton}"
+                    Click="Button_Click"
+                    Tag="2" />
+            <Button Name="Button4"
+                    Style="{StaticResource PageButton}"
+                    Click="Button_Click"
+                    Tag="3" />
+            <Button Name="Button5"
+                    Style="{StaticResource PageButton}"
+                    Click="Button_Click"
+                    Tag="4" />
+            <Button x:Name="ButtonNextPage"
+                    Style="{StaticResource NEXTPageButton}"
+                    Margin="8,0,0,0"
+                    Click="ButtonNextPage_Click">
+                <Image Source="{StaticResource Image.Next.Page}"
+                       Stretch="Uniform"
+                       Height="16px" />
+            </Button>
+        </StackPanel>
+    </Grid>
 </UserControl>
