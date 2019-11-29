@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="akavache" Version="6.9.10" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.0.1" />
   </ItemGroup>
 
   <ItemGroup>
