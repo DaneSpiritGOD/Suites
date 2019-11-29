@@ -107,13 +107,14 @@
                      Height="28px"
                      Width="32px"
                      Margin="8 0 0 0"
-                     Padding="2 0"
+                     Padding="2 5"
                      VerticalContentAlignment="Center" />
             <TextBlock Margin="8 0 0 0"
                        VerticalAlignment="Center">
                 <Run Text="/ " /><Run Name="TotalCount" /></TextBlock>
             <Button Name="Go"
                     Content="Go"
+                    Margin="8 0 8 0"
                     Style="{StaticResource PageButton}"
                     Click="ButtonGo_Click" />
         </StackPanel>
