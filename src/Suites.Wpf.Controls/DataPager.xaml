@@ -36,8 +36,10 @@
                         Value="1" />
                 <Setter Property="Height"
                         Value="32" />
-                <Setter Property="Width"
+                <Setter Property="MinWidth"
                         Value="32" />
+                <Setter Property="Width"
+                        Value="Auto" />
                 <Setter Property="Margin"
                         Value="8 0 0 0" />
                 <Setter Property="Background"
@@ -66,7 +68,6 @@
     <Grid>
         <StackPanel Orientation="Horizontal"
                     Background="White">
-            <StackPanel.Resources></StackPanel.Resources>
             <Button x:Name="ButtonPreviousPage"
                     Style="{StaticResource NEXTPageButton}"
                     Click="ButtonPreviousPage_Click">
@@ -102,6 +103,19 @@
                        Stretch="Uniform"
                        Height="16px" />
             </Button>
+            <TextBox Name="Index_Input"
+                     Height="28px"
+                     Width="32px"
+                     Margin="8 0 0 0"
+                     Padding="2 0"
+                     VerticalContentAlignment="Center" />
+            <TextBlock Margin="8 0 0 0"
+                       VerticalAlignment="Center">
+                <Run Text="/ " /><Run Name="TotalCount" /></TextBlock>
+            <Button Name="Go"
+                    Content="Go"
+                    Style="{StaticResource PageButton}"
+                    Click="ButtonGo_Click" />
         </StackPanel>
     </Grid>
 </UserControl>
