@@ -97,8 +97,13 @@ namespace Suites.Wpf.Controls
             DependencyPropertyChangedEventArgs e)
         {
             var pager = (DataPager)dependencyObject;
-            pager.RaiseEvent(new PageIndexChangedEventArgs((int)e.OldValue, (int)e.NewValue));
-            pager.OnValueChanged();
+            pager.OnPageIndexPropertyChanged((int)e.OldValue, (int)e.NewValue);
+        }
+
+        private void OnPageIndexPropertyChanged(int oldIndex, int newIndex)
+        {
+            RaiseEvent(new PageIndexChangedEventArgs(oldIndex, newIndex));
+            OnValueChanged();
         }
 
         public static readonly RoutedEvent PageIndexChangedEvent;
@@ -127,6 +132,7 @@ namespace Suites.Wpf.Controls
         private void OnValueChanged()
         {
             SetButtonVisible();
+            TotalCount.Text = TotalPage.ToString();
 
             if (PageIndex + 1 > TotalPage)
             {
@@ -274,6 +280,18 @@ namespace Suites.Wpf.Controls
                         => (string)Button5.Content == More ? Convert.ToInt32(Button4.Content) : Convert.ToInt32(Button5.Content) - 1,
                     _ => 0
                 };
+        }
+
+        private void ButtonGo_Click(object sender, RoutedEventArgs e)
+        {
+            if (!int.TryParse(Index_Input.Text, out var input) || !IsValid(input))
+            {
+                return;
+            }
+            PageIndex = GetRealIndex(input);
+
+            int GetRealIndex(int i) => input - 1;
+            bool IsValid(int i) => i >= 1 && i <= TotalPage;
         }
     }
 }
