@@ -1,8 +1,6 @@
-﻿using System;
-using System.Security.Cryptography;
-using System.Text;
+﻿using System.Text;
 
-namespace Suites.Utils.System
+namespace System.Security.Cryptography
 {
     public static class HashExtensions
     {
