@@ -143,10 +143,10 @@ namespace System.Linq
             => source ?? Enumerable.Empty<T>();
 
         public static IEnumerable<T> SkipNull<T>(this IEnumerable<T> source)
-            => source.Where(x => x != default).ToArray();
+            => source.Where(x => !EqualityComparer<T>.Default.Equals(x, default)).ToArray();
 
         public static IEnumerable<T> ToEnumerable<T>(this T obj)
-            => obj == default ? Enumerable.Empty<T>() : new[] { obj };
+            => EqualityComparer<T>.Default.Equals(obj, default) ? Enumerable.Empty<T>() : new[] { obj };
 
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> source)
             => source == default || !source.Any();
