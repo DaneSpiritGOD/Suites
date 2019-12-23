@@ -7,6 +7,7 @@
         xmlns:swa="http://suites.com/"
         xmlns:swc="clr-namespace:Suites.Wpf.Controls;assembly=Suites.Wpf.Controls"
         xmlns:res="clr-namespace:Suites.Wpf.App.Test.Properties"
+        xmlns:Interactions="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="450"
@@ -21,10 +22,13 @@
                  TextWrapping="Wrap"
                  VerticalScrollBarVisibility="Auto"
                  HorizontalAlignment="Stretch"
-                 Name="Log" />
-        <swc:DataPager TotalPage="100"
-                       HorizontalAlignment="Right"
-                       Margin="0 20 0 0"
-                       PageIndexChanged="DataPager_PageIndexChanged" />
+                 Name="Log">
+            <Interactions:Interaction.Behaviors>
+                <local:TextBoxBehavior SearchKey="{Binding Text,ElementName=SearchBox,Mode=OneWay}" />
+            </Interactions:Interaction.Behaviors>
+        </TextBox>
+        <swc:SearchBox Name="SearchBox"
+                       Height="30px"
+                       FontSize="12px" />
     </StackPanel>
 </Window>
