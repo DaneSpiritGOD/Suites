@@ -40,7 +40,7 @@ jobs:
     - task: DotNetCoreInstaller@0
       inputs:
         packageType: 'sdk' # Options: runtime, sdk
-        version: '3.0.100'
+        version: '3.0.101'
 
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(utilsPrj)/$(utilsPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(memLoggerPrj)/$(memLoggerPrj).csproj
