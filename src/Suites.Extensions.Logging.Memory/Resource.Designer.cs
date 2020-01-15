@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApiClient.Extensions.Properties {
+namespace Suites.Extensions.Logging.Memory {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace WebApiClient.Extensions.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace WebApiClient.Extensions.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WebApiClient.Extensions.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Suites.Extensions.Logging.Memory.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,56 @@ namespace WebApiClient.Extensions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 没有获取到token，请确认您已经登录！.
+        ///   Looks up a localized string similar to 致命.
         /// </summary>
-        internal static string AuthTokenNotFoundOrExpiredExceptionString {
+        internal static string CriticalString {
             get {
-                return ResourceManager.GetString("AuthTokenNotFoundOrExpiredExceptionString", resourceCulture);
+                return ResourceManager.GetString("CriticalString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 调试.
+        /// </summary>
+        internal static string DebugString {
+            get {
+                return ResourceManager.GetString("DebugString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 错误.
+        /// </summary>
+        internal static string ErrorString {
+            get {
+                return ResourceManager.GetString("ErrorString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 信息.
+        /// </summary>
+        internal static string InformationString {
+            get {
+                return ResourceManager.GetString("InformationString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 跟踪.
+        /// </summary>
+        internal static string TraceString {
+            get {
+                return ResourceManager.GetString("TraceString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 警告.
+        /// </summary>
+        internal static string WarningString {
+            get {
+                return ResourceManager.GetString("WarningString", resourceCulture);
             }
         }
     }

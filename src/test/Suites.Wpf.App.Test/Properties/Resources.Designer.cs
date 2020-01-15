@@ -59,14 +59,5 @@ namespace Suites.Wpf.App.Test.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 输入关键字搜索....
-        /// </summary>
-        public static string SearchBoxBrushString {
-            get {
-                return ResourceManager.GetString("SearchBoxBrushString", resourceCulture);
-            }
-        }
     }
 }

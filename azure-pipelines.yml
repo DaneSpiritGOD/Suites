@@ -26,6 +26,7 @@ jobs:
       srcRoot: './src/'
       nugetSource: 'https://api.nuget.org/v3/index.json'
       utilsPrj: 'Suites.Utils'
+      memLoggerPrj: 'Suites.Extensions.Logging.Memory'
       WriteableJsonProject: 'Suites.WriteableJsonOptions'
       akavache: 'Suites.Akavache'
       wacPrj: 'Suites.WebApiClient.Extensions'
@@ -42,6 +43,7 @@ jobs:
         version: '3.0.100'
 
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(utilsPrj)/$(utilsPrj).csproj
+    - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(memLoggerPrj)/$(memLoggerPrj).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(WriteableJsonProject)/$(WriteableJsonProject).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(akavache)/$(akavache).csproj
     - script: dotnet pack -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory) $(srcRoot)$(wacPrj)/$(wacPrj).csproj

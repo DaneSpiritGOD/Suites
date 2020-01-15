@@ -117,4 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CriticalString" xml:space="preserve">
+    <value>致命</value>
+  </data>
+  <data name="DebugString" xml:space="preserve">
+    <value>调试</value>
+  </data>
+  <data name="ErrorString" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="InformationString" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="TraceString" xml:space="preserve">
+    <value>跟踪</value>
+  </data>
+  <data name="WarningString" xml:space="preserve">
+    <value>警告</value>
+  </data>
 </root>

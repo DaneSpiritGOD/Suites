@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
-using Prism.Commands;
 using Suites.Mvvm;
 using BindableBase = Suites.Mvvm.BindableBase;
 
@@ -32,11 +31,8 @@ namespace Suites.Wpf.App.Test
 
     public class MainWindowViewModel : BindableBase
     {
-        public DelegateCommand AddA { get; set; }
-
         public MainWindowViewModel()
         {
-            ReturnCommand = new DelegateCommand(Return);
         }
 
         private string _searchText;
