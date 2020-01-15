@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AuthTokenNotFoundOrExpiredExceptionString" xml:space="preserve">
-    <value>没有获取到token，请确认您已经登陆或检查登陆过期！</value>
+    <value>没有获取到token，请确认您已经登录！</value>
   </data>
 </root>

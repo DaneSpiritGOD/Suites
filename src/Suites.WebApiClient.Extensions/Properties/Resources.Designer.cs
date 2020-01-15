@@ -61,7 +61,7 @@ namespace WebApiClient.Extensions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 没有获取到token，请确认您已经登陆或检查登陆过期！.
+        ///   Looks up a localized string similar to 没有获取到token，请确认您已经登录！.
         /// </summary>
         internal static string AuthTokenNotFoundOrExpiredExceptionString {
             get {
